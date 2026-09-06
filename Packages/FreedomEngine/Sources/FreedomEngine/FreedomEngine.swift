@@ -28,6 +28,25 @@ public enum FreedomEngine {
         return FreedomResult(scenarios: scenarios, attributions: attributions)
     }
 
+    /// 达到 targetAge 前自由所需的最低储蓄率(把月支出重设为收入 ×(1−储蓄率) 后重跑)。
+    /// 二分搜索,0.5pp 精度;储蓄率 95% 仍不可达 → nil。BRIEF §6 / ADR-0003:未达时的可行动建议。
+    public static func requiredSavingsRate(_ profile: Profile, kind: ScenarioKind, for targetAge: Int = 65) -> Double? {
+        func reaches(_ rate: Double) -> Bool {
+            var alt = profile
+            alt.monthlyExpense = alt.monthlyIncome * (1 - rate)
+            guard let age = simulate(alt, kind: kind).freedomAge else { return false }
+            return age <= Double(targetAge)
+        }
+        var low = 0.0
+        var high = 0.95
+        guard reaches(high) else { return nil }
+        while high - low > 0.005 {
+            let mid = (low + high) / 2
+            if reaches(mid) { high = mid } else { low = mid }
+        }
+        return high
+    }
+
     public static func simulate(_ profile: Profile, kind: ScenarioKind) -> ScenarioResult {
         simulate(profile, kind: kind, params: EngineParams.scenario(kind))
     }

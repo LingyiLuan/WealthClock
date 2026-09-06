@@ -86,6 +86,19 @@ final class EngineInvariantTests: XCTestCase {
         }
     }
 
+    /// ADR-0003:requiredSavingsRate 给出的储蓄率确实能在目标年龄前自由,且再低 0.5pp 就不能。
+    func testRequiredSavingsRateReachesTarget() throws {
+        let rate = try XCTUnwrap(FreedomEngine.requiredSavingsRate(Profile.sample, kind: .pessimistic, for: 65))
+        var boosted = Profile.sample
+        boosted.monthlyExpense = boosted.monthlyIncome * (1 - rate)
+        let age = try XCTUnwrap(FreedomEngine.simulate(boosted, kind: .pessimistic).freedomAge)
+        XCTAssertLessThanOrEqual(age, 65)
+        boosted.monthlyExpense = boosted.monthlyIncome * (1 - rate + 0.01)
+        if let worse = FreedomEngine.simulate(boosted, kind: .pessimistic).freedomAge {
+            XCTAssertGreaterThan(worse, 65, "rate is not minimal")
+        }
+    }
+
     /// M1 验收产物:打印 Profile.sample 的三情景 + 归因表(engine-verification 技能要求的记录)。
     func testPrintSampleProfileReport() {
         let result = FreedomEngine.run(Profile.sample)
