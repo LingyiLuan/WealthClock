@@ -1,0 +1,61 @@
+name: WealthClock
+options:
+  bundleIdPrefix: app.wealthclock
+  deploymentTarget:
+    iOS: "17.0"
+  createIntermediateGroups: true
+  generateEmptyDirectories: true
+packages:
+  FreedomEngine:
+    path: Packages/FreedomEngine
+settings:
+  base:
+    SWIFT_VERSION: "5.9"
+    MARKETING_VERSION: "0.1.0"
+    CURRENT_PROJECT_VERSION: "1"
+    DEVELOPMENT_TEAM: "MQN29WDQ6Y"
+    CODE_SIGN_STYLE: Automatic
+targets:
+  WealthClock:
+    type: application
+    platform: iOS
+    sources:
+      - path: WealthClock
+    dependencies:
+      - package: FreedomEngine
+    info:
+      path: WealthClock/Info.plist
+      properties:
+        CFBundleDisplayName: WealthClock
+        CFBundleDevelopmentRegion: zh-Hans
+        UILaunchScreen: {}
+        UISupportedInterfaceOrientations: [UIInterfaceOrientationPortrait]
+        ITSAppUsesNonExemptEncryption: false
+        UIAppFonts: [MaShanZheng-Regular.ttf]
+        NSPhotoLibraryAddUsageDescription: "保存你的汇票到相册。"
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: app.wealthclock.ios
+        TARGETED_DEVICE_FAMILY: "1"
+        ENABLE_USER_SCRIPT_SANDBOXING: YES
+    preBuildScripts:
+      - name: SwiftLint
+        script: |
+          if which swiftlint >/dev/null; then swiftlint --strict --config "${SRCROOT}/.swiftlint.yml"; else echo "warning: swiftlint not installed"; fi
+        basedOnDependencyAnalysis: false
+  WealthClockTests:
+    type: bundle.unit-test
+    platform: iOS
+    sources:
+      - path: WealthClockTests
+    dependencies:
+      - target: WealthClock
+schemes:
+  WealthClock:
+    build:
+      targets:
+        WealthClock: all
+        WealthClockTests: [test]
+    test:
+      targets: [WealthClockTests]
+      gatherCoverageData: true

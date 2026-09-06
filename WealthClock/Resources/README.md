@@ -1,0 +1,3 @@
+- Fonts/:MaShanZheng-Regular.ttf + OFL.txt(见 Fonts/README.md)
+- WealthClock.storekit:M7 由智能体创建(StoreKit 配置文件,含 app.wealthclock.report.full 非消耗型)
+- Localizable.xcstrings:M0 创建 String Catalog(zh-Hans 默认、zh-Hant、en)

@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WealthClock v2-B — 完整四屏</title>
+<style>
+  :root{
+    --paper:#EFE6D2; --paper-2:#E6DCC4; --paper-3:#DED2B6;
+    --ink:#2B2622; --ink-soft:#6B625A;
+    --cinnabar:#B8412F; --gilt:#C6A14A; --gilt-deep:#9A7A2E; --verdigris:#5E7D6A;
+    --rule:#B8412F55;
+    --serif:"Songti SC","Noto Serif SC","Source Han Serif SC",Georgia,"Times New Roman",serif;
+    --sans:-apple-system,"PingFang SC","Helvetica Neue",sans-serif;
+    --mono:"SF Mono",Menlo,Consolas,monospace;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{
+    background:#D9CEB4;
+    background-image:radial-gradient(circle at 20% 10%,#E3D9C0 0,transparent 40%),radial-gradient(circle at 80% 90%,#CFC3A6 0,transparent 40%);
+    font-family:var(--sans);color:var(--ink);min-height:100vh;padding:48px 24px 72px;
+  }
+  .studio{max-width:1520px;margin:0 auto}
+  .head{margin-bottom:36px}
+  .head .mark{font-family:var(--mono);font-size:11px;letter-spacing:.3em;color:var(--cinnabar);text-transform:uppercase}
+  .head h1{font-family:var(--serif);font-weight:500;font-size:28px;margin-top:8px;letter-spacing:.04em}
+  .head p{font-size:13px;color:var(--ink-soft);margin-top:6px;max-width:640px;line-height:1.7}
+  .row{display:flex;gap:28px;flex-wrap:wrap;justify-content:center;align-items:flex-start}
+
+  .phone{width:336px;flex:0 0 336px;background:#1E1A17;border-radius:44px;padding:13px;box-shadow:0 30px 70px rgba(40,30,20,.35)}
+  .screen{
+    background:var(--paper);
+    background-image:radial-gradient(ellipse at 30% 20%,#F5EEDC 0,transparent 55%),radial-gradient(ellipse at 80% 90%,#E4D9BE 0,transparent 50%);
+    border-radius:32px;overflow:hidden;height:680px;display:flex;flex-direction:column;position:relative;
+  }
+  .statusbar{display:flex;justify-content:space-between;padding:16px 24px 0;font-family:var(--mono);font-size:11px;color:var(--ink-soft)}
+  .caption{text-align:center;margin-top:16px;font-family:var(--mono);font-size:11px;letter-spacing:.2em;color:var(--ink-soft)}
+  .caption b{color:var(--cinnabar);font-weight:600;margin-right:8px}
+  .frame{position:absolute;inset:60px 16px 16px;border:1px solid var(--rule);pointer-events:none}
+  .body{flex:1;display:flex;flex-direction:column;padding:14px 24px 22px;position:relative}
+  .seal{position:absolute;width:40px;height:40px;border:2px solid var(--cinnabar);display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:22px;color:var(--cinnabar);transform:rotate(-5deg);opacity:.9}
+  .cta{margin-top:auto;width:100%;background:var(--ink);color:var(--paper);border:none;font-family:var(--serif);font-size:15px;letter-spacing:.2em;padding:15px 0}
+  .ghost{margin-top:10px;width:100%;background:none;border:none;color:var(--ink-soft);font-family:var(--serif);font-size:13px;letter-spacing:.16em;padding:6px 0}
+  .eyebrow{font-family:var(--serif);font-size:12px;letter-spacing:.42em;color:var(--ink-soft)}
+  .foot{font-size:10.5px;color:var(--ink-soft);line-height:1.7;font-family:var(--serif)}
+  .foot b{color:var(--cinnabar);font-weight:500}
+
+  /* ---------- 01 问卷 ---------- */
+  .q .progress{display:flex;gap:6px;align-items:center;margin-top:8px}
+  .q .progress i{display:block;width:26px;height:3px;background:var(--ink)}
+  .q .progress i.yin{background:linear-gradient(90deg,var(--ink) 40%,transparent 40%,transparent 60%,var(--ink) 60%)}
+  .q .progress i.todo{background:#2B262226}
+  .q .pnote{font-family:var(--mono);font-size:10px;letter-spacing:.2em;color:var(--ink-soft);margin-top:8px}
+  .q h2{font-family:var(--serif);font-weight:500;font-size:24px;line-height:1.35;margin-top:26px;letter-spacing:.02em}
+  .q .why{font-family:var(--serif);font-size:12px;color:var(--ink-soft);margin-top:10px;line-height:1.7}
+  .q .opts{display:flex;flex-direction:column;gap:10px;margin-top:22px}
+  .q .opt{display:flex;justify-content:space-between;align-items:center;padding:13px 14px;border:1px solid #2B262233;background:#fff5;font-family:var(--serif);font-size:14px}
+  .q .opt .mod{font-family:var(--mono);font-size:11px;color:var(--ink-soft)}
+  .q .opt.sel{border-color:var(--gilt);background:#C6A14A1A}
+  .q .opt.sel .mod{color:var(--cinnabar)}
+  .q .opt svg{width:18px;height:18px;margin-right:10px;vertical-align:-3px}
+
+  /* ---------- 02 揭晓 (B) ---------- */
+  .r .body{align-items:center}
+  .r .digits{margin-top:14px;height:118px;display:flex;align-items:center;justify-content:center}
+  .r .digits svg{height:112px;width:auto}
+  .r .unit{font-family:var(--serif);font-size:15px;letter-spacing:.3em;color:var(--ink-soft);margin-top:2px}
+  .r .suzhou{margin-top:10px;font-family:var(--serif);font-size:13px;letter-spacing:.14em}
+  .r .suzhou .sz{font-size:18px;color:var(--gilt-deep);margin-right:6px}
+  .r .coins{margin-top:16px;display:flex;gap:12px;align-items:center;height:48px}
+  .r .coins svg{height:46px;width:46px}
+  .r .hex{display:flex;gap:6px;margin-top:8px}
+  .r .hex i{display:block;width:22px;height:3px;background:var(--ink)}
+  .r .hex i.yin{background:linear-gradient(90deg,var(--ink) 40%,transparent 40%,transparent 60%,var(--ink) 60%)}
+  .r .coin-note{font-family:var(--serif);font-size:10px;letter-spacing:.26em;color:var(--ink-soft);margin-top:6px}
+  .r .scen{display:flex;gap:10px;margin-top:18px;width:100%}
+  .chip{flex:1;text-align:center;padding:10px 0 9px;border:1px solid #2B262233;background:#fff5}
+  .chip .t{font-family:var(--serif);font-size:11px;letter-spacing:.2em;color:var(--ink-soft)}
+  .chip .v{font-family:var(--serif);font-size:22px;margin-top:2px}
+  .chip.mid{border-color:var(--gilt);background:#C6A14A1A}
+  .chip.mid .v{color:var(--gilt-deep)}
+  .miya{margin-top:16px;font-family:var(--serif);font-size:11px;letter-spacing:.18em;color:var(--cinnabar);display:flex;align-items:center;gap:8px}
+  .miya::before,.miya::after{content:"";width:22px;height:1px;background:var(--cinnabar);opacity:.5}
+  .r .seal{top:120px;right:30px}
+
+  /* ---------- 03 推演 ---------- */
+  .s h2{font-family:var(--serif);font-weight:500;font-size:22px;margin-top:12px;letter-spacing:.04em}
+  .s .sub{font-family:var(--mono);font-size:10.5px;color:var(--ink-soft);margin-top:6px;letter-spacing:.08em}
+  .s .chart{margin-top:16px;border:1px solid var(--rule);padding:12px 8px 6px;background:#fff4;position:relative}
+  .s .chart::before{content:"";position:absolute;inset:3px;border:1px solid var(--rule);pointer-events:none}
+  .s .legend{display:flex;gap:12px;font-family:var(--serif);font-size:10px;letter-spacing:.12em;color:var(--ink-soft);padding:0 6px;margin-bottom:6px}
+  .s .legend i{display:inline-block;width:14px;height:2px;vertical-align:middle;margin-right:5px}
+  .s .ledger{margin-top:14px}
+  .s .line{display:flex;justify-content:space-between;align-items:baseline;padding:11px 2px;border-bottom:1px solid var(--rule)}
+  .s .line .k{font-family:var(--serif);font-size:13px;color:var(--ink-soft);letter-spacing:.06em}
+  .s .line .v{font-family:var(--mono);font-size:13.5px}
+  .s .line .v.g{color:var(--gilt-deep)}
+  .s .line .v.c{color:var(--cinnabar)}
+  .s .line .k small{font-family:var(--mono);font-size:9px;color:#2B262277;margin-left:6px;letter-spacing:0}
+
+  /* ---------- 04 汇票 ---------- */
+  .p .screen{background:#CFC3A6;background-image:none}
+  .p .wrap{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:22px}
+  .card{
+    width:264px;height:436px;position:relative;
+    background:var(--paper-2);
+    background-image:radial-gradient(ellipse at 30% 20%,#EFE6D2 0,transparent 55%),radial-gradient(ellipse at 80% 90%,#D8CCAE 0,transparent 55%);
+    border:1px solid var(--cinnabar);box-shadow:0 18px 40px rgba(40,30,20,.35);
+    overflow:hidden;
+  }
+  .card::before{content:"";position:absolute;inset:5px;border:1px solid var(--cinnabar);opacity:.7;pointer-events:none}
+  .card .top{position:absolute;top:16px;left:0;right:0;text-align:center;font-family:var(--mono);font-size:9.5px;letter-spacing:.36em;color:var(--cinnabar)}
+  .card .rail{position:absolute;top:46px;writing-mode:vertical-rl;font-family:var(--serif);letter-spacing:.42em}
+  .card .rail.r{right:20px;font-size:14px;color:var(--ink)}
+  .card .rail.l{left:20px;font-size:12px;color:var(--ink-soft)}
+  .card .rail .sz{font-size:20px;color:var(--gilt-deep);letter-spacing:.2em}
+  .card .center{position:absolute;top:96px;left:0;right:0;display:flex;flex-direction:column;align-items:center}
+  .card .center svg.d{height:96px;width:auto}
+  .card .center .unit{font-family:var(--serif);font-size:13px;letter-spacing:.34em;color:var(--ink-soft);margin-top:6px}
+  .card .coins{position:absolute;top:238px;left:0;right:0;display:flex;justify-content:center;gap:8px}
+  .card .coins svg{width:22px;height:22px}
+  .card .range{position:absolute;top:276px;left:0;right:0;text-align:center;font-family:var(--mono);font-size:9.5px;letter-spacing:.1em;color:var(--ink-soft)}
+  .card .miya{position:absolute;top:306px;left:0;right:0;justify-content:center;font-size:10.5px}
+  .card .seal{width:46px;height:46px;font-size:26px;right:-10px;bottom:66px;transform:rotate(-8deg);border-width:2.5px;background:#EFE6D2AA}
+  .card .bottom{position:absolute;bottom:14px;left:18px;right:18px;border-top:1px solid var(--rule);padding-top:8px;display:flex;justify-content:space-between;font-family:var(--mono);font-size:8.5px;letter-spacing:.14em;color:var(--ink-soft)}
+  .p .hint{margin-top:18px;font-family:var(--serif);font-size:12px;letter-spacing:.12em;color:var(--ink)}
+
+  @media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div class="studio">
+  <div class="head">
+    <div class="mark">WealthClock · v2-B · 完整四屏</div>
+    <h1>问卷 → 掷钱揭晓 → 三种未来 → 汇票</h1>
+    <p>像素只落在两处:大数字(点阵钟)与铜钱(六爻)。其余全部古籍/汇票版式。朱砂只出现在栏线、印章、密押行——即"玄学层";算术层用墨、鎏金、铜绿。</p>
+  </div>
+
+  <div class="row">
+
+    <!-- ============ 01 问卷 ============ -->
+    <div class="q">
+      <div class="phone"><div class="screen">
+        <div class="statusbar"><span>21:44</span><span>◦◦◦</span></div>
+        <div class="frame"></div>
+        <div class="body">
+          <div class="eyebrow">第六问 · 共七问</div>
+          <div class="progress" aria-hidden="true">
+            <i></i><i class="yin"></i><i></i><i></i><i class="yin"></i><i class="todo"></i><i class="todo"></i>
+          </div>
+          <div class="pnote">每答一问 · 落一爻</div>
+          <h2>你炒股吗?</h2>
+          <div class="why">这一问会修正你的预期收益。频繁交易的散户平均跑输市场——这是有论文的,不是玄学。</div>
+          <div class="opts">
+            <div class="opt"><span><svg viewBox="0 0 11 11" data-coin-px shape-rendering="crispEdges"></svg>不炒,只定投指数</span><span class="mod">±0 年</span></div>
+            <div class="opt"><span><svg viewBox="0 0 11 11" data-coin-px shape-rendering="crispEdges"></svg>偶尔买卖,一年几次</span><span class="mod">+0.6 年</span></div>
+            <div class="opt sel"><span><svg viewBox="0 0 11 11" data-coin-px shape-rendering="crispEdges"></svg>每周都看盘,常换手</span><span class="mod">+2.3 年</span></div>
+            <div class="opt"><span><svg viewBox="0 0 11 11" data-coin-px shape-rendering="crispEdges"></svg>日内交易</span><span class="mod">+4.1 年</span></div>
+          </div>
+          <button class="cta">下一问</button>
+          <div class="foot" style="margin-top:12px">修正依据:Barber &amp; Odean(2000)。不构成投资建议。</div>
+        </div>
+      </div></div>
+      <div class="caption"><b>01</b>问卷 · 习惯修正题</div>
+    </div>
+
+    <!-- ============ 02 揭晓 ============ -->
+    <div class="r">
+      <div class="phone"><div class="screen">
+        <div class="statusbar"><span>21:47</span><span>◦◦◦</span></div>
+        <div class="frame"></div>
+        <div class="seal">財</div>
+        <div class="body">
+          <div class="eyebrow" style="margin-top:10px">你的财务自由年龄</div>
+          <div class="digits" data-digits-anim></div>
+          <div class="unit">岁</div>
+          <div class="suzhou"><span class="sz">〤〧</span>肆拾柒 · 储蓄率 28%</div>
+          <div class="coins">
+            <svg viewBox="0 0 11 11" data-coin-toss shape-rendering="crispEdges"></svg>
+            <svg viewBox="0 0 11 11" data-coin-toss shape-rendering="crispEdges"></svg>
+            <svg viewBox="0 0 11 11" data-coin-toss shape-rendering="crispEdges"></svg>
+          </div>
+          <div class="hex" aria-hidden="true"><i></i><i class="yin"></i><i></i><i></i><i class="yin"></i><i></i></div>
+          <div class="coin-note">六爻 · 第六爻落定</div>
+          <div class="scen">
+            <div class="chip"><div class="t">乐观</div><div class="v">43</div></div>
+            <div class="chip mid"><div class="t">中性</div><div class="v">47</div></div>
+            <div class="chip"><div class="t">悲观</div><div class="v">53</div></div>
+          </div>
+          <div class="miya">密押 · 乙巳流年 · 财帛宫见禄</div>
+          <button class="cta">查看完整推演</button>
+          <button class="ghost">保存汇票</button>
+        </div>
+      </div></div>
+      <div class="caption"><b>02</b>揭晓 · 掷钱 → 点阵</div>
+    </div>
+
+    <!-- ============ 03 推演 ============ -->
+    <div class="s">
+      <div class="phone"><div class="screen">
+        <div class="statusbar"><span>21:48</span><span>◦◦◦</span></div>
+        <div class="frame"></div>
+        <div class="body">
+          <div class="eyebrow">推演</div>
+          <h2>三种未来的你</h2>
+          <div class="sub">储蓄率 28% · 真实年化 3% / 6% / 9% · 含炒股修正</div>
+          <div class="chart">
+            <div class="legend">
+              <span><i style="background:var(--gilt)"></i>乐观</span>
+              <span><i style="background:var(--ink)"></i>中性</span>
+              <span><i style="background:var(--verdigris)"></i>悲观</span>
+            </div>
+            <svg viewBox="0 0 276 168" width="100%">
+              <!-- 账簿红栏网格 -->
+              <g stroke="#B8412F22">
+                <line x1="30" y1="26" x2="270" y2="26"/><line x1="30" y1="54" x2="270" y2="54"/>
+                <line x1="30" y1="82" x2="270" y2="82"/><line x1="30" y1="110" x2="270" y2="110"/>
+                <line x1="90" y1="18" x2="90" y2="138"/><line x1="150" y1="18" x2="150" y2="138"/><line x1="210" y1="18" x2="210" y2="138"/>
+              </g>
+              <line x1="30" y1="138" x2="270" y2="138" stroke="#2B2622" stroke-width="1"/>
+              <line x1="30" y1="18" x2="30" y2="138" stroke="#2B2622" stroke-width="1"/>
+              <!-- 自由线 -->
+              <line x1="30" y1="46" x2="270" y2="46" stroke="#B8412F" stroke-width="1.2" stroke-dasharray="3 4"/>
+              <text x="268" y="40" fill="#B8412F" font-size="8" font-family="Songti SC,serif" text-anchor="end" letter-spacing="1">自由線 ¥六百萬</text>
+              <!-- 曲线 -->
+              <path d="M30,136 C90,130 140,108 176,76 C196,58 210,42 224,26" fill="none" stroke="#C6A14A" stroke-width="2"/>
+              <path d="M30,136 C96,132 152,116 196,86 C216,72 232,56 246,42" fill="none" stroke="#2B2622" stroke-width="2"/>
+              <path d="M30,136 C104,134 168,124 216,104 C236,96 254,84 268,72" fill="none" stroke="#5E7D6A" stroke-width="2"/>
+              <!-- 交点:像素铜钱 -->
+              <g transform="translate(217,19) scale(1.3)"><svg viewBox="0 0 11 11" width="11" height="11" data-coin-px shape-rendering="crispEdges"></svg></g>
+              <g transform="translate(239,36) scale(1.3)"><svg viewBox="0 0 11 11" width="11" height="11" data-coin-ink shape-rendering="crispEdges"></svg></g>
+              <!-- 轴 -->
+              <text x="30" y="154" fill="#6B625A" font-size="8" font-family="Menlo">29</text>
+              <text x="146" y="154" fill="#6B625A" font-size="8" font-family="Menlo">45</text>
+              <text x="242" y="154" fill="#C6A14A" font-size="8" font-family="Menlo">43</text>
+              <text x="262" y="154" fill="#6B625A" font-size="8" font-family="Menlo">60</text>
+            </svg>
+          </div>
+          <div class="ledger">
+            <div class="line"><span class="k">你的自由线<small>年支出 × 25</small></span><span class="v g">¥6,000,000</span></div>
+            <div class="line"><span class="k">年支出</span><span class="v">¥240,000</span></div>
+            <div class="line"><span class="k">储蓄率每 +5%</span><span class="v g">提前 ≈ 2.4 年</span></div>
+            <div class="line"><span class="k">炒股修正<small>常换手</small></span><span class="v c">推迟 2.3 年</span></div>
+          </div>
+          <div class="foot" style="margin-top:auto">情景测算,非投资建议。<b>财帛宫见禄</b> 为命理趣味解读,不参与任何计算。</div>
+        </div>
+      </div></div>
+      <div class="caption"><b>03</b>推演 · 账簿式图表</div>
+    </div>
+
+    <!-- ============ 04 汇票 ============ -->
+    <div class="p">
+      <div class="phone"><div class="screen">
+        <div class="wrap">
+          <div class="card">
+            <div class="top">WEALTHCLOCK · 憑票</div>
+            <div class="rail r">憑此約定 · 財務自由於 肆拾柒歲</div>
+            <div class="rail l"><span class="sz">〤〧</span> 儲蓄率廿八 · 丙午年</div>
+            <div class="center">
+              <div data-digits-static></div>
+              <div class="unit">歲</div>
+            </div>
+            <div class="coins">
+              <svg viewBox="0 0 11 11" data-coin-px shape-rendering="crispEdges"></svg>
+              <svg viewBox="0 0 11 11" data-coin-ink shape-rendering="crispEdges"></svg>
+              <svg viewBox="0 0 11 11" data-coin-px shape-rendering="crispEdges"></svg>
+            </div>
+            <div class="range">樂觀 43 ─ 中性 47 ─ 悲觀 53</div>
+            <div class="miya">密押 · 乙巳流年 · 財帛宮見祿</div>
+            <div class="seal">財</div>
+            <div class="bottom"><span>R. 的汇票</span><span>用数学算命</span><span>wealthclock.app</span></div>
+          </div>
+          <div class="hint">长按保存 · 发给一个想一起自由的人</div>
+        </div>
+      </div></div>
+      <div class="caption"><b>04</b>汇票 · 结果卡</div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+(function(){
+  var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var NS='http://www.w3.org/2000/svg';
+  var FONT={
+    '0':['01110','10001','10011','10101','11001','10001','01110'],
+    '1':['00100','01100','00100','00100','00100','00100','01110'],
+    '2':['01110','10001','00001','00010','00100','01000','11111'],
+    '3':['11111','00010','00100','00010','00001','10001','01110'],
+    '4':['00010','00110','01010','10010','11111','00010','00010'],
+    '5':['11111','10000','11110','00001','00001','10001','01110'],
+    '6':['00110','01000','10000','11110','10001','10001','01110'],
+    '7':['11111','00001','00010','00100','01000','01000','01000'],
+    '8':['01110','10001','10001','01110','10001','10001','01110'],
+    '9':['01110','10001','10001','01111','00001','00010','01100']
+  };
+  function renderDigits(box,str,color,cls){
+    var gap=1,w=str.length*5+(str.length-1)*gap;
+    var svg=document.createElementNS(NS,'svg');
+    svg.setAttribute('viewBox','0 0 '+w+' 7'); svg.setAttribute('shape-rendering','crispEdges');
+    if(cls)svg.setAttribute('class',cls);
+    for(var i=0;i<str.length;i++){var rows=FONT[str[i]],ox=i*6;
+      for(var y=0;y<7;y++)for(var x=0;x<5;x++){
+        var on=rows[y][x]==='1';var r=document.createElementNS(NS,'rect');
+        r.setAttribute('x',ox+x);r.setAttribute('y',y);r.setAttribute('width',.9);r.setAttribute('height',.9);
+        r.setAttribute('fill',on?color:'#2B262214');svg.appendChild(r);}}
+    box.innerHTML='';box.appendChild(svg);
+  }
+  var COIN=['   #####   ','  #######  ',' ######### ','###########','####...####','####...####','####...####','###########',' ######### ','  #######  ','   #####   '];
+  function renderCoin(svg,face){
+    svg.innerHTML='';
+    var fill=face==='ink'?'#2B2622':'#C6A14A', edge=face==='ink'?'#2B2622':'#9A7A2E';
+    for(var y=0;y<11;y++)for(var x=0;x<11;x++){ if(COIN[y][x]!=='#')continue;
+      var r=document.createElementNS(NS,'rect');r.setAttribute('x',x);r.setAttribute('y',y);r.setAttribute('width',1);r.setAttribute('height',1);
+      var e=(y===0||y===10||x===0||x===10||COIN[y-1][x]!=='#'||COIN[y+1][x]!=='#'||COIN[y][x-1]!=='#'||COIN[y][x+1]!=='#');
+      r.setAttribute('fill',e?edge:fill);svg.appendChild(r);}
+  }
+  document.querySelectorAll('[data-coin-px]').forEach(function(s){renderCoin(s,'gold')});
+  document.querySelectorAll('[data-coin-ink]').forEach(function(s){renderCoin(s,'ink')});
+  document.querySelectorAll('[data-digits-static]').forEach(function(b){renderDigits(b,'47','#2B2622','d')});
+
+  var box=document.querySelector('[data-digits-anim]'), toss=document.querySelectorAll('[data-coin-toss]');
+  toss.forEach(function(s){renderCoin(s,'gold')});
+  if(reduce){renderDigits(box,'47','#2B2622');return;}
+  var n=0;
+  function tossOnce(){
+    toss.forEach(function(s){renderCoin(s,Math.random()<.5?'ink':'gold')});
+    renderDigits(box,String(Math.floor(29+Math.random()*30)),'#2B262266');
+    if(++n<6)setTimeout(tossOnce,180);else{toss.forEach(function(s){renderCoin(s,'gold')});countUp();}
+  }
+  function countUp(){var t0=null;function step(ts){if(!t0)t0=ts;var p=Math.min((ts-t0)/1300,1),e=1-Math.pow(1-p,3);
+    renderDigits(box,String(Math.round(29+18*e)),'#2B2622');if(p<1)requestAnimationFrame(step);}requestAnimationFrame(step);}
+  setTimeout(tossOnce,300);
+})();
+</script>
+</body>
+</html>

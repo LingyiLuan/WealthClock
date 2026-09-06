@@ -1,0 +1,72 @@
+name: CI
+on:
+  pull_request:
+  push:
+    branches: [main]
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  engine:
+    name: FreedomEngine (swift test)
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Select Xcode
+        run: sudo xcode-select -s /Applications/Xcode.app
+      - name: swift test
+        working-directory: Packages/FreedomEngine
+        run: swift test --enable-code-coverage
+  app:
+    name: App (build + test on simulator)
+    runs-on: macos-latest
+    needs: engine
+    steps:
+      - uses: actions/checkout@v4
+      - name: Select Xcode
+        run: sudo xcode-select -s /Applications/Xcode.app
+      - name: Install tools
+        run: brew install xcodegen swiftlint
+      - name: Generate project
+        run: xcodegen generate
+      - name: SwiftLint (strict)
+        run: swiftlint --strict
+      - name: Pick a simulator
+        id: sim
+        run: |
+          UDID=$(xcrun simctl list devices available --json | python3 -c "import sys,json; d=json.load(sys.stdin)['devices']; c=[x for k,v in d.items() if 'iOS' in k for x in v if x['name'].startswith('iPhone')]; print(c[-1]['udid'])")
+          echo "udid=$UDID" >> "$GITHUB_OUTPUT"
+      - name: Build & test
+        run: |
+          xcodebuild -project WealthClock.xcodeproj -scheme WealthClock \
+            -destination "platform=iOS Simulator,id=${{ steps.sim.outputs.udid }}" \
+            -resultBundlePath artifacts/Tests.xcresult \
+            CODE_SIGNING_ALLOWED=NO test | xcpretty || (echo "::error::build/test failed" && exit 1)
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: xcresult
+          path: artifacts/
+  policy:
+    name: Policy (change budget & protected paths)
+    runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request'
+    steps:
+      - uses: actions/checkout@v4
+        with: { fetch-depth: 0 }
+      - name: Change budget ≤ 400 code lines
+        run: |
+          BASE=${{ github.event.pull_request.base.sha }}
+          LINES=$(git diff --numstat $BASE...HEAD -- '*.swift' '*.yml' | awk '{a+=$1+$2} END{print a+0}')
+          echo "code lines changed: $LINES"
+          if [ "$LINES" -gt 400 ]; then echo "::error::PR exceeds 400 code lines (AGENTS.md §3). Split it."; exit 1; fi
+      - name: Protected paths require label 'L0-human-reviewed'
+        run: |
+          BASE=${{ github.event.pull_request.base.sha }}
+          if git diff --name-only $BASE...HEAD | grep -E '^(Packages/FreedomEngine/Tests/.*/Fixtures/|Packages/FreedomEngine/Sources/FreedomEngine/EngineParams.swift|\.github/|AGENTS\.md|CLAUDE\.md)' ; then
+            echo "protected path touched"
+            echo '${{ toJson(github.event.pull_request.labels.*.name) }}' | grep -q 'L0-human-reviewed' || (echo "::error::Protected path changed without L0-human-reviewed label (AGENTS.md §3)." && exit 1)
+          fi
+      - name: No networking symbols
+        run: |
+          ! grep -rnE "URLSession|Alamofire|NWConnection" --include='*.swift' WealthClock Packages || (echo "::error::networking is forbidden in v1" && exit 1)

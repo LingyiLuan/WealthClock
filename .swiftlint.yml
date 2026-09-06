@@ -1,0 +1,27 @@
+disabled_rules:
+  - trailing_whitespace
+  - line_length
+opt_in_rules:
+  - force_unwrapping
+  - empty_count
+  - closure_spacing
+excluded:
+  - .build
+  - DerivedData
+  - Packages/*/.build
+force_unwrapping:
+  severity: error
+custom_rules:
+  no_networking:
+    name: "No networking in v1"
+    regex: "(URLSession|Alamofire|import\\s+Network|NWConnection)"
+    message: "v1 is fully offline (AGENTS.md §7.1)."
+    severity: error
+  no_birthdate_in_engine:
+    name: "birthDate must not enter the engine"
+    included: "Packages/FreedomEngine/Sources/.*"
+    regex: "birthDate"
+    match_kinds: identifier
+    message: "birthDate is omen-layer only (AGENTS.md §7.6). Only Profile.swift may declare it."
+    severity: error
+    excluded: "Packages/FreedomEngine/Sources/FreedomEngine/Profile.swift"

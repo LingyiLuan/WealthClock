@@ -1,0 +1,7 @@
+# 人类必审(L0)。智能体可以提 PR,但这些路径必须由 Rinto 审核。
+/Packages/FreedomEngine/Tests/FreedomEngineTests/Fixtures/   @LingyiLuan
+/Packages/FreedomEngine/Sources/FreedomEngine/EngineParams.swift @LingyiLuan
+/.github/                                                    @LingyiLuan
+/AGENTS.md                                                   @LingyiLuan
+/CLAUDE.md                                                   @LingyiLuan
+/WealthClock/Store/                                          @LingyiLuan

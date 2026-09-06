@@ -1,0 +1,24 @@
+# Xcode
+*.xcodeproj/
+!project.yml
+xcuserdata/
+DerivedData/
+*.xcworkspace/xcuserdata/
+.build/
+*.ipa
+*.dSYM.zip
+# Secrets / local
+.env
+*.p8
+*.p12
+*.mobileprovision
+AuthKey_*.p8
+fastlane/report.xml
+# OS
+.DS_Store
+# Python (research scripts)
+__pycache__/
+*.csv
+!Packages/FreedomEngine/Tests/FreedomEngineTests/Fixtures/*.json
+# Screenshots produced during self-verify
+artifacts/

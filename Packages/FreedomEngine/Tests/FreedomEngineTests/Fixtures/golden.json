@@ -1,0 +1,13 @@
+{
+  "_readme": "独立评测集。智能体只读(CODEOWNERS 保护)。闭式解:n = ln((M(1-s)+s/r)/(s/r+A)) / ln(1+r)。收入零增长、支出零增长、无房贷、无任何修正。A 以年收入为单位。",
+  "tolerance_years": 1.0,
+  "cases": [
+    { "name": "mmm_50pct",  "savingsRate": 0.50, "realReturn": 0.05, "assetsInIncomeUnits": 0.0, "multiplier": 25, "expectedYears": 16.6 },
+    { "name": "mmm_25pct",  "savingsRate": 0.25, "realReturn": 0.05, "assetsInIncomeUnits": 0.0, "multiplier": 25, "expectedYears": 31.9 },
+    { "name": "sample_28pct","savingsRate": 0.28, "realReturn": 0.05, "assetsInIncomeUnits": 0.0, "multiplier": 25, "expectedYears": 29.5 },
+    { "name": "mmm_10pct",  "savingsRate": 0.10, "realReturn": 0.05, "assetsInIncomeUnits": 0.0, "multiplier": 25, "expectedYears": 51.4 },
+    { "name": "mmm_75pct",  "savingsRate": 0.75, "realReturn": 0.05, "assetsInIncomeUnits": 0.0, "multiplier": 25, "expectedYears": 7.1 },
+    { "name": "headstart_2x","savingsRate": 0.30, "realReturn": 0.05, "assetsInIncomeUnits": 2.0, "multiplier": 25, "expectedYears": 22.1 },
+    { "name": "lowreturn_3", "savingsRate": 0.30, "realReturn": 0.03, "assetsInIncomeUnits": 0.0, "multiplier": 28.5714, "expectedYears": 37.2 }
+  ]
+}

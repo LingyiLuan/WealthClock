@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WealthClock — 汇票结果卡 v3 · 雕版单色系列</title>
+<!-- 开源 OFL 毛笔字体(可商用)。离线时回落到系统宋体。 -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&family=Zhi+Mang+Xing&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --brush:"Ma Shan Zheng","Zhi Mang Xing","Songti SC","Noto Serif SC",serif;
+    --serif:"Songti SC","Noto Serif SC","Source Han Serif SC",Georgia,serif;
+    --mono:"SF Mono",Menlo,Consolas,monospace;
+    --cinnabar:#B8412F;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:#DAD2C2;font-family:-apple-system,"PingFang SC",sans-serif;color:#2B2622;padding:44px 24px 80px}
+  .studio{max-width:1240px;margin:0 auto}
+  .head .mark{font-family:var(--mono);font-size:11px;letter-spacing:.3em;color:var(--cinnabar)}
+  .head h1{font-family:var(--serif);font-weight:500;font-size:26px;margin-top:8px}
+  .head p{font-size:13px;color:#6B625A;margin-top:6px;max-width:660px;line-height:1.7}
+  .row{display:flex;gap:28px;flex-wrap:wrap;justify-content:center;margin-top:36px}
+  .card{width:360px;height:640px;box-shadow:0 24px 60px rgba(40,30,20,.35)}
+  .card svg{width:100%;height:100%;display:block}
+  .cap{text-align:center;margin-top:12px;font-family:var(--mono);font-size:11px;letter-spacing:.2em;color:#6B625A}
+  .cap b{color:var(--cinnabar);font-weight:600;margin-right:8px}
+  .notes{margin:40px auto 0;max-width:660px;font-size:12.5px;color:#6B625A;line-height:1.8;font-family:var(--serif)}
+</style>
+</head>
+<body>
+<div class="studio">
+  <div class="head">
+    <div class="mark">WealthClock · Share Card v3 · 雕版单色系列</div>
+    <h1>算法雕版花边 · 开源毛笔字 · 像素面额角</h1>
+    <p>花边不是贴图,是页面加载时用数学曲线现画的(钞票厂的老办法);大字用 OFL 授权的毛笔字体;印章永远朱砂,不随主色走;两个角上的"47"是钞票面额的位置。三张是同一张卡换色系。</p>
+  </div>
+
+  <div class="row">
+    <div><div class="card" data-hue="#B8412F" data-paper="#F3E9E1" data-tint="#E9D7CE"></div><div class="cap"><b>朱砂</b>CINNABAR</div></div>
+    <div><div class="card" data-hue="#4F7C63" data-paper="#E9EFE5" data-tint="#D6E2D2"></div><div class="cap"><b>铜绿</b>VERDIGRIS</div></div>
+    <div><div class="card" data-hue="#35507A" data-paper="#E7EBF1" data-tint="#D3DBE7"></div><div class="cap"><b>藏青</b>INDIGO</div></div>
+  </div>
+
+  <div class="notes">
+    SwiftUI 落地:整张卡就是一个 SVG 级别的矢量视图 —— 花边用 <code>Path</code> 按同样的参数方程画,毛笔字体打包进 App(OFL 允许),导出用 <code>ImageRenderer</code> 3×。
+    换色系只改一个 hue 参数,可以按用户的五行属性或流年自动选色(这是密押层唯一被允许影响视觉的地方)。
+  </div>
+</div>
+
+<script>
+(function(){
+  var NS='http://www.w3.org/2000/svg';
+  var CIN='#B8412F';
+  function el(n,a,parent){var e=document.createElementNS(NS,n);for(var k in a)e.setAttribute(k,a[k]);if(parent)parent.appendChild(e);return e;}
+  function txt(parent,a,s){var t=el('text',a,parent);t.textContent=s;return t;}
+
+  /* ---- 5×7 点阵 ---- */
+  var FONT={'4':['00010','00110','01010','10010','11111','00010','00010'],'7':['11111','00001','00010','00100','01000','01000','01000']};
+  function pixelDigits(g,str,x,y,s,color){
+    for(var i=0;i<str.length;i++){var rows=FONT[str[i]];
+      for(var r=0;r<7;r++)for(var c=0;c<5;c++)if(rows[r][c]==='1')
+        el('rect',{x:x+(i*6+c)*s,y:y+r*s,width:s*.92,height:s*.92,fill:color},g);}
+  }
+
+  /* ---- 花边:角饰玫瑰(叠加正弦极坐标曲线) ---- */
+  function rosette(g,cx,cy,R,hue,seed){
+    for(var k=0;k<10;k++){
+      var d='',ph=seed+k*0.31;
+      for(var deg=0;deg<=360;deg+=3){
+        var t=deg*Math.PI/180;
+        var r=R*(0.62+0.16*Math.sin(6*t+ph)+0.09*Math.sin(11*t-2*ph)+0.05*Math.sin(17*t+3*ph));
+        var x=cx+r*Math.cos(t),y=cy+r*Math.sin(t);
+        d+=(deg===0?'M':'L')+x.toFixed(2)+','+y.toFixed(2);
+      }
+      el('path',{d:d+'Z',fill:'none',stroke:hue,'stroke-width':.55,opacity:.9},g);
+    }
+    el('circle',{cx:cx,cy:cy,r:R*.28,fill:'none',stroke:hue,'stroke-width':.8},g);
+    el('circle',{cx:cx,cy:cy,r:R*.12,fill:hue},g);
+  }
+  /* ---- 花边:边带(交织正弦线) ---- */
+  function band(g,x0,y0,x1,y1,w,hue){
+    var horiz=Math.abs(x1-x0)>Math.abs(y1-y0), len=horiz?(x1-x0):(y1-y0);
+    for(var k=0;k<7;k++){
+      var d='',ph=k*Math.PI/3.5;
+      for(var u=0;u<=len;u+=2){
+        var off=(w/2)*Math.sin(u/7.5+ph)*Math.cos(u/41+k);
+        var x=horiz?x0+u:x0+off, y=horiz?y0+off:y0+u;
+        d+=(u===0?'M':'L')+x.toFixed(2)+','+y.toFixed(2);
+      }
+      el('path',{d:d,fill:'none',stroke:hue,'stroke-width':.5,opacity:.85},g);
+    }
+  }
+  /* ---- 花边:内框细密平行线(雕版底纹) ---- */
+  function hatchRect(svg,id,hue){
+    var defs=svg.querySelector('defs');
+    var p=el('pattern',{id:id,width:3,height:3,patternUnits:'userSpaceOnUse',patternTransform:'rotate(45)'},defs);
+    el('line',{x1:0,y1:0,x2:0,y2:3,stroke:hue,'stroke-width':.45,opacity:.55},p);
+  }
+
+  function arcText(svg,id,cx,cy,r,startDeg,endDeg,str,hue,size,flip){
+    var defs=svg.querySelector('defs');
+    var a0=startDeg*Math.PI/180,a1=endDeg*Math.PI/180;
+    var p0=[cx+r*Math.cos(a0),cy+r*Math.sin(a0)],p1=[cx+r*Math.cos(a1),cy+r*Math.sin(a1)];
+    var d='M'+p0[0]+','+p0[1]+' A'+r+','+r+' 0 0 '+(flip?0:1)+' '+p1[0]+','+p1[1];
+    el('path',{id:id,d:d,fill:'none'},defs);
+    var t=el('text',{'font-family':'Georgia,serif','font-size':size,fill:hue,'letter-spacing':'2.2','font-weight':'700'},svg);
+    var tp=el('textPath',{href:'#'+id,startOffset:'50%','text-anchor':'middle'},t);tp.textContent=str;
+  }
+
+  function buildCard(host){
+    var hue=host.dataset.hue,paper=host.dataset.paper,tint=host.dataset.tint;
+    var svg=el('svg',{viewBox:'0 0 360 640',xmlns:NS},host);
+    var defs=el('defs',{},svg);
+    // 纸纹
+    var f=el('filter',{id:'paper'+hue.slice(1)},defs);
+    el('feTurbulence',{type:'fractalNoise',baseFrequency:'.9',numOctaves:'2',seed:'7',result:'n'},f);
+    el('feColorMatrix',{type:'matrix',values:'0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 .07 0'},f);
+    var hid='hatch'+hue.slice(1); hatchRect(svg,hid,hue);
+
+    el('rect',{width:360,height:640,fill:paper},svg);
+    el('rect',{width:360,height:640,filter:'url(#paper'+hue.slice(1)+')'},svg);
+
+    /* 环绕英文(上下弧) */
+    arcText(svg,'arcT'+hue.slice(1),180,300,236,-125,-55,'FINANCIALLY FREE AT FORTY-SEVEN',hue,10.5,false);
+    arcText(svg,'arcB'+hue.slice(1),180,340,236,125,55,'THE MATH IS THE BLESSING',hue,10.5,true);
+
+    /* 侧边竖排英文 */
+    var side='May your savings compound & your freedom arrive early.';
+    txt(svg,{transform:'translate(24,330) rotate(-90)','text-anchor':'middle','font-family':'Georgia,serif','font-size':9.5,fill:hue,'letter-spacing':'1.4'},side);
+    txt(svg,{transform:'translate(336,330) rotate(90)','text-anchor':'middle','font-family':'Georgia,serif','font-size':9.5,fill:hue,'letter-spacing':'1.4'},side);
+
+    /* 外框:雕版花边 */
+    var X=44,Y=104,W=272,H=432,bw=14;
+    var g=el('g',{},svg);
+    band(g,X+24,Y+bw/2,X+W-24,Y+bw/2,bw,hue);
+    band(g,X+24,Y+H-bw/2,X+W-24,Y+H-bw/2,bw,hue);
+    band(g,X+bw/2,Y+24,X+bw/2,Y+H-24,bw,hue);
+    band(g,X+W-bw/2,Y+24,X+W-bw/2,Y+H-24,bw,hue);
+    rosette(g,X,Y,26,hue,0.2); rosette(g,X+W,Y,26,hue,1.4);
+    rosette(g,X,Y+H,26,hue,2.6); rosette(g,X+W,Y+H,26,hue,3.8);
+    el('rect',{x:X+bw+2,y:Y+bw+2,width:W-2*bw-4,height:H-2*bw-4,fill:'none',stroke:hue,'stroke-width':1.2},svg);
+    el('rect',{x:X+bw+6,y:Y+bw+6,width:W-2*bw-12,height:H-2*bw-12,fill:'url(#'+hid+')'},svg);
+    el('rect',{x:X+bw+16,y:Y+bw+16,width:W-2*bw-32,height:H-2*bw-32,fill:paper,stroke:hue,'stroke-width':.8},svg);
+
+    /* 面额角(像素 47) */
+    var s=2.4;
+    pixelDigits(svg,'47',X+bw+22,Y+bw+22,s,hue);
+    pixelDigits(svg,'47',X+W-bw-22-11*s,Y+H-bw-22-7*s,s,hue);
+    txt(svg,{x:X+bw+22,y:Y+bw+22+7*s+10,'font-family':'Georgia,serif','font-size':6.5,fill:hue,'letter-spacing':'1.6'},'SUI · 歲');
+
+    /* 顶部题签 */
+    txt(svg,{x:180,y:Y+bw+34,'text-anchor':'middle','font-family':'Georgia,serif','font-size':8.5,'font-weight':'700',fill:hue,'letter-spacing':'3.4'},'WEALTHCLOCK');
+    txt(svg,{x:180,y:Y+bw+50,'text-anchor':'middle','font-family':'Songti SC,Noto Serif SC,serif','font-size':9,fill:hue,'letter-spacing':'4'},'憑此約定');
+    el('line',{x1:150,y1:Y+bw+58,x2:210,y2:Y+bw+58,stroke:hue,'stroke-width':.8},svg);
+
+    /* 主体书法:自 / 由 */
+    txt(svg,{x:180,y:Y+H/2-8,'text-anchor':'middle','font-family':'Ma Shan Zheng,Zhi Mang Xing,Songti SC,serif','font-size':150,fill:hue},'自');
+    txt(svg,{x:180,y:Y+H/2+128,'text-anchor':'middle','font-family':'Ma Shan Zheng,Zhi Mang Xing,Songti SC,serif','font-size':150,fill:hue},'由');
+
+    /* 落款(竖排小字) */
+    txt(svg,{transform:'translate('+(X+bw+30)+','+(Y+H/2-30)+')','writing-mode':'tb','font-family':'Songti SC,Noto Serif SC,serif','font-size':9.5,fill:hue,'letter-spacing':'3'},'用數學算命');
+    txt(svg,{transform:'translate('+(X+W-bw-30)+','+(Y+H/2+10)+')','writing-mode':'tb','font-family':'Songti SC,Noto Serif SC,serif','font-size':9.5,fill:hue,'letter-spacing':'3'},'儲蓄率廿八');
+
+    /* 底部一行 */
+    txt(svg,{x:180,y:Y+H-bw-30,'text-anchor':'middle','font-family':'Songti SC,Noto Serif SC,serif','font-size':10,fill:hue,'letter-spacing':'3'},'肆拾柒歲 · 樂觀四三 · 悲觀五三');
+
+    /* 印章:永远朱砂 */
+    var sg=el('g',{transform:'translate('+(X+W-bw-14)+','+(Y+bw+70)+') rotate(4)'},svg);
+    el('rect',{x:-12,y:0,width:24,height:64,fill:'none',stroke:CIN,'stroke-width':1.8},sg);
+    txt(sg,{x:0,y:6,'writing-mode':'tb','text-anchor':'start','font-family':'Songti SC,Noto Serif SC,serif','font-size':10,fill:CIN,'letter-spacing':'2'},'財帛宮見祿');
+    var sq=el('g',{transform:'translate('+(X+bw+30)+','+(Y+H-bw-96)+') rotate(-6)'},svg);
+    el('rect',{x:-15,y:-15,width:30,height:30,fill:CIN,opacity:.92},sq);
+    txt(sq,{x:0,y:8,'text-anchor':'middle','font-family':'Songti SC,Noto Serif SC,serif','font-size':20,fill:paper},'財');
+
+    /* 页脚 */
+    txt(svg,{x:44,y:604,'font-family':'Menlo,monospace','font-size':7.5,fill:hue,'letter-spacing':'1.5'},'No. 0000047 · 密押 乙巳');
+    txt(svg,{x:316,y:604,'text-anchor':'end','font-family':'Menlo,monospace','font-size':7.5,fill:hue,'letter-spacing':'1.5'},'wealthclock.app');
+  }
+
+  document.querySelectorAll('.card').forEach(buildCard);
+})();
+</script>
+</body>
+</html>
