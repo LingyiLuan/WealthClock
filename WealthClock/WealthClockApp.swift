@@ -7,6 +7,8 @@ struct WealthClockApp: App {
             #if DEBUG
             if CommandLine.arguments.contains("-gallery") {
                 GalleryView()
+            } else if CommandLine.arguments.contains("-reveal") {
+                RevealView()
             } else {
                 ContentView()
             }
