@@ -11,7 +11,7 @@ public enum FreedomEngine {
             var alt = profile
             mutate(&alt)
             let altAge = simulate(alt, kind: .neutral).freedomAge
-            var delta: Double? = nil
+            var delta: Double?
             if let b = base, let a = altAge {
                 delta = ((b - a) * 10).rounded() / 10
             }
@@ -53,7 +53,7 @@ public enum FreedomEngine {
         let peakAge = peakBase + EngineParams.industryPeakAdjustment(profile.industry, region: profile.region)
         let preGrowth = sp.prePeakGrowth + EngineParams.educationGrowthAdjustment(profile.education)
 
-        var previousGap: Double? = nil
+        var previousGap: Double?
         var line = expense * sp.multiplier
 
         for age in profile.age..<EngineParams.maxAge {

@@ -1,0 +1,41 @@
+{
+  "sourceLanguage" : "zh-Hans",
+  "strings" : {
+    "WealthClock" : {
+      "shouldTranslate" : false
+    },
+    "示例中性情景:%lld 岁" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sample neutral scenario: age %lld"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "範例中性情景:%lld 歲"
+          }
+        }
+      }
+    },
+    "示例:100 岁前未达" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sample: not reached before 100"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "範例:100 歲前未達"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}

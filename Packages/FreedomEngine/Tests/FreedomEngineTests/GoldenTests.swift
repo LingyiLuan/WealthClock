@@ -11,8 +11,13 @@ final class GoldenTests: XCTestCase {
             let multiplier: Double
             let expectedYears: Double
         }
-        let tolerance_years: Double
+        let toleranceYears: Double
         let cases: [Case]
+
+        enum CodingKeys: String, CodingKey {
+            case toleranceYears = "tolerance_years"
+            case cases
+        }
     }
 
     private func loadFixture() throws -> Fixture {
@@ -59,7 +64,7 @@ final class GoldenTests: XCTestCase {
             let result = FreedomEngine.simulate(profile, kind: .neutral, params: flatParams(realReturn: c.realReturn, multiplier: c.multiplier))
             let age = try XCTUnwrap(result.freedomAge, "case \(c.name) returned nil")
             let years = age - Double(profile.age)
-            XCTAssertEqual(years, c.expectedYears, accuracy: fixture.tolerance_years, "case \(c.name): got \(years), expected \(c.expectedYears)")
+            XCTAssertEqual(years, c.expectedYears, accuracy: fixture.toleranceYears, "case \(c.name): got \(years), expected \(c.expectedYears)")
         }
     }
 
@@ -70,10 +75,12 @@ final class GoldenTests: XCTestCase {
         XCTAssertEqual(r.freedomAge, 40)
     }
 
+    /// BRIEF §3.6(b):零增长金标条件下,储蓄为负 → 永远达不到 → nil。
+    /// (真实中性参数含收入增速,储蓄可能由负转正,不属于此金标条件。)
     func testNegativeSavingsNeverReaches() {
         var p = neutralProfile(annualIncome: 100_000, savingsRate: 0.3, assetsUnits: 0)
         p.monthlyExpense = p.monthlyIncome * 1.2
-        let r = FreedomEngine.simulate(p, kind: .neutral)
+        let r = FreedomEngine.simulate(p, kind: .neutral, params: flatParams(realReturn: 0.05, multiplier: 25))
         XCTAssertNil(r.freedomAge)
     }
 
