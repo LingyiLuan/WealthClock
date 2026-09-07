@@ -1,6 +1,8 @@
 name: CI
 on:
   pull_request:
+    # labeled/unlabeled:补打 L0-human-reviewed 后 Policy 检查能拿到新负载重跑(PR #6 竞态的根治)
+    types: [opened, synchronize, reopened, labeled, unlabeled]
   push:
     branches: [main]
 concurrency:
