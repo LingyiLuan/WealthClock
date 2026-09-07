@@ -37,10 +37,14 @@ struct RevealView: View {
                 headline
                 coinRow
                 scenarioChips
-                Text("密押 · 待定")
-                    .font(.system(size: 11, design: .serif)).kerning(2)
-                    .foregroundStyle(Tokens.cinnabar)
-                    .padding(.top, 16)
+                HStack(spacing: 8) {
+                    miyaDash
+                    Text("密押 · 待定")
+                        .font(.system(size: 11, design: .serif)).kerning(2)
+                        .foregroundStyle(Tokens.cinnabar)
+                    miyaDash
+                }
+                .padding(.top, 16)
                 Spacer(minLength: 12)
                 buttons
                 Text("本应用提供的是基于公开文献的情景测算与传统文化趣味解读,不构成投资、财务或法律建议。")
@@ -161,6 +165,11 @@ struct RevealView: View {
                     .frame(maxWidth: .infinity, minHeight: 32)
             }
         }
+    }
+
+    /// 密押行两侧短横线(设计稿 .miya::before/::after:22×1,朱砂 50%)。
+    private var miyaDash: some View {
+        Rectangle().fill(Tokens.cinnabar.opacity(0.5)).frame(width: 22, height: 1)
     }
 
     private var seal: some View {
