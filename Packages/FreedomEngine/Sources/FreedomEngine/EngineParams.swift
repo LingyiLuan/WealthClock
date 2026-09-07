@@ -11,7 +11,8 @@ public enum EngineParams {
     public static func scenario(_ kind: ScenarioKind) -> ScenarioParams {
         switch kind {
         case .pessimistic:
-            return ScenarioParams(withdrawalRate: 0.035, realReturn: 0.03, prePeakGrowth: 0.02, postPeakGrowth: -0.01, expenseGrowth: 0.01, peakAgeCN: 35, peakAgeOther: 45)
+            // ADR-0003:悲观不再叠加收入下降+支出上涨;realReturn 3.5% 与 3.5% 提取率同一套历史假设,TODO(calibrate)。
+            return ScenarioParams(withdrawalRate: 0.035, realReturn: 0.035, prePeakGrowth: 0.02, postPeakGrowth: 0.0, expenseGrowth: 0.0, peakAgeCN: 35, peakAgeOther: 45)
         case .neutral:
             return ScenarioParams(withdrawalRate: 0.040, realReturn: 0.05, prePeakGrowth: 0.03, postPeakGrowth: 0.00, expenseGrowth: 0.00, peakAgeCN: 40, peakAgeOther: 50)
         case .optimistic:
@@ -31,7 +32,7 @@ public enum EngineParams {
     /// 行业对峰值年龄的修正(岁)。TODO(calibrate):接入国家统计局分行业工资曲线后替换。
     public static func industryPeakAdjustment(_ industry: Industry, region: Region) -> Int {
         switch industry {
-        case .tech: return region == .cnMainland ? -5 : -3
+        case .tech: return region == .cnMainland ? -3 : -2  // ADR-0003 收敛行业惩罚
         case .government, .healthcare, .education: return 5
         default: return 0
         }
