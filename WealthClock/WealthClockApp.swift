@@ -9,6 +9,8 @@ struct WealthClockApp: App {
                 GalleryView()
             } else if CommandLine.arguments.contains("-reveal") {
                 RevealView()
+            } else if CommandLine.arguments.contains("-bill") {
+                BillScreen()
             } else {
                 ContentView()
             }
