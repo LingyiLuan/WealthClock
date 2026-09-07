@@ -197,16 +197,30 @@ struct BillView: View {
     }
 }
 
-/// 汇票页容器:卡片缩放适配屏幕(M4 第二个 PR 接导出与 ShareLink)。
+/// 汇票页容器:卡片缩放适配屏幕 + ShareLink 导出(1080×1920 PNG)。
 struct BillScreen: View {
+    @State private var exportURL: URL?
+
     var body: some View {
         GeometryReader { geo in
-            ZStack {
+            ZStack(alignment: .bottom) {
                 Tokens.paper.ignoresSafeArea()
                 BillView()
-                    .scaleEffect(min(geo.size.width / 360, geo.size.height / 640) * 0.95)
+                    .scaleEffect(min(geo.size.width / 360, geo.size.height / 640) * 0.9)
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
+                if let exportURL {
+                    ShareLink(item: exportURL, preview: SharePreview("WealthClock 汇票")) {
+                        Text("分享汇票")
+                            .font(.system(size: 13, design: .serif)).kerning(2.4)
+                            .foregroundStyle(Tokens.inkSoft)
+                            .frame(maxWidth: .infinity, minHeight: 32)
+                    }
+                    .padding(.bottom, 8)
+                }
             }
+        }
+        .task {
+            exportURL = BillExporter.saveToDocuments()
         }
     }
 }
