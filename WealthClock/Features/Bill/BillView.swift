@@ -50,7 +50,7 @@ struct BillView: View {
             header
             bigCharacters
             verticalMotto("用數學算命", x: f.x + f.bw + 30, y: f.y + f.h / 2 - 30)
-            verticalMotto("儲蓄率\(trad(savingsRatePercent))", x: f.x + f.w - f.bw - 30, y: f.y + f.h / 2 + 10)
+            verticalMotto("儲蓄率\(Suzhou.inscription(savingsRatePercent))", x: f.x + f.w - f.bw - 30, y: f.y + f.h / 2 + 10)
             serif("\(Suzhou.chineseUpper(age ?? 0))歲 · 樂觀\(trad(scenarioAge(.optimistic))) · 悲觀\(trad(scenarioAge(.pessimistic)))", size: 10, kerning: 3)
                 .position(x: 180, y: f.y + f.h - f.bw - 30)
             seals

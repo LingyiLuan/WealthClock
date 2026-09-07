@@ -115,4 +115,13 @@ final class GoldenTests: XCTestCase {
         XCTAssertEqual(Suzhou.chineseUpper(47), "肆拾柒")
         XCTAssertEqual(Suzhou.chineseUpper(10), "拾")
     }
+
+    func testInscription() {
+        XCTAssertEqual(Suzhou.inscription(28), "廿八")
+        XCTAssertEqual(Suzhou.inscription(35), "卅五")
+        XCTAssertEqual(Suzhou.inscription(47), "四十七")
+        XCTAssertEqual(Suzhou.inscription(20), "廿")
+        XCTAssertEqual(Suzhou.inscription(10), "十")
+        XCTAssertEqual(Suzhou.inscription(7), "七")
+    }
 }

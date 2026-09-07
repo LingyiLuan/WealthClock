@@ -11,9 +11,8 @@ struct BillTheme: Equatable {
     static let cinnabar = BillTheme(name: "朱砂", hue: Color(hex: 0xB8412F), paper: Color(hex: 0xF3E9E1), tint: Color(hex: 0xE9D7CE))
     static let verdigris = BillTheme(name: "铜绿", hue: Color(hex: 0x4F7C63), paper: Color(hex: 0xE9EFE5), tint: Color(hex: 0xD6E2D2))
     static let indigo = BillTheme(name: "藏青", hue: Color(hex: 0x35507A), paper: Color(hex: 0xE7EBF1), tint: Color(hex: 0xD3DBE7))
-    // 土/金两系设计稿未给 paper/tint,按同明度推得,待人类目视验收调整。
-    static let gilt = BillTheme(name: "鎏金", hue: Color(hex: 0x9A7A2E), paper: Color(hex: 0xF2EBD8), tint: Color(hex: 0xE6DCC0))
-    static let ink = BillTheme(name: "墨", hue: Color(hex: 0x2B2622), paper: Color(hex: 0xEFE6D2), tint: Color(hex: 0xE0D8C6))
+    static let gilt = BillTheme(name: "鎏金", hue: Color(hex: 0x9A7A2E), paper: Color(hex: 0xF1E8D0), tint: Color(hex: 0xE4D6B4))
+    static let ink = BillTheme(name: "墨", hue: Color(hex: 0x2B2622), paper: Color(hex: 0xECE7DD), tint: Color(hex: 0xD9D2C4))
 
     /// 出生年天干 → 五行 → 色系(木=铜绿 火=朱砂 土=鎏金 金=墨 水=藏青)。
     /// 无出生日期 = 朱砂。仅视觉,永不参与计算(AGENTS §7.6)。

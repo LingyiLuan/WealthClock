@@ -12,6 +12,22 @@ public enum Suzhou {
         })
     }
 
+    private static let lower: [Character] = ["零", "一", "二", "三", "四", "五", "六", "七", "八", "九"]
+
+    /// 铭文读法(0–99):20–29 用"廿"、30–39 用"卅",其余"三十五"写法(汇票竖排铭文用)。
+    public static func inscription(_ value: Int) -> String {
+        let v = min(max(value, 0), 99)
+        if v < 10 { return String(lower[v]) }
+        let tens = v / 10, ones = v % 10
+        let onesPart = ones == 0 ? "" : String(lower[ones])
+        switch tens {
+        case 1: return "十" + onesPart
+        case 2: return "廿" + onesPart
+        case 3: return "卅" + onesPart
+        default: return String(lower[tens]) + "十" + onesPart
+        }
+    }
+
     private static let upper: [Character] = ["零", "壹", "贰", "叁", "肆", "伍", "陆", "柒", "捌", "玖"]
 
     /// 简化的中文大写(仅 0–99,足够表示年龄)。
