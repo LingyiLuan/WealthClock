@@ -8,8 +8,8 @@ struct SettingsView: View {
     @Query private var readings: [Reading]
     @State private var confirmDelete = false
 
-    private let privacyURL = URL(string: "https://wealthclock.app/privacy")   // TODO: 上架前替换正式地址
-    private let supportURL = URL(string: "https://wealthclock.app/support")   // TODO: 上架前替换正式地址
+    private let privacyURL = URL(string: "https://lingyiluan.github.io/WealthClock/site/privacy")
+    private let supportURL = URL(string: "https://lingyiluan.github.io/WealthClock/site/support")
 
     var body: some View {
         NavigationStack {
