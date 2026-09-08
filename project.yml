@@ -25,6 +25,9 @@ targets:
       - path: WealthClock
         excludes:
           - "**/README.md"
+          # 本机 Xcode 15.4 + macOS 26 的 actool 无法启动 AssetCatalogSimulatorAgent(已试清缓存/重启服务/设备目标)。
+          # 图标已生成入库;在能跑新 Xcode 的机器(CI / 上架机)删掉下面这行即可编入。
+          - "**/Assets.xcassets"
     dependencies:
       - package: FreedomEngine
     info:
@@ -41,6 +44,7 @@ targets:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: app.wealthclock.ios
         TARGETED_DEVICE_FAMILY: "1"
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
         # SwiftLint 构建阶段需要读仓库根的 .swiftlint.yml 与全部源码,无法在脚本沙盒下声明输入。
         ENABLE_USER_SCRIPT_SANDBOXING: NO
     preBuildScripts:

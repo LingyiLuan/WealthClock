@@ -16,6 +16,8 @@ struct WealthClockApp: App {
                 QuizView()
             } else if CommandLine.arguments.contains("-paywall") {
                 PaywallView()
+            } else if CommandLine.arguments.contains("-scenarios") {
+                ScenariosView(profile: .sample)  // 截图专用,绕过付费墙(仅 DEBUG)
             } else if CommandLine.arguments.contains("-history") {
                 RootTabView(initialTab: .history)
             } else {
