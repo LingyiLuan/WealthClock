@@ -41,15 +41,3 @@ struct RootTabView: View {
         #endif
     }
 }
-
-/// 设置占位(M6 第三个 PR 替换为完整 SettingsView)。
-struct SettingsView: View {
-    var body: some View {
-        ZStack {
-            Tokens.paper.ignoresSafeArea()
-            Text("设置 · 接入中")
-                .font(.system(size: 15, design: .serif)).kerning(3)
-                .foregroundStyle(Tokens.inkSoft)
-        }
-    }
-}
