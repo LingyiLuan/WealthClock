@@ -38,6 +38,15 @@ struct RootTabView: View {
         let existing = (try? modelContext.fetchCount(FetchDescriptor<Reading>())) ?? 0
         guard existing == 0 else { return }
         modelContext.insert(Reading(profile: .sample, result: FreedomEngine.run(.sample)))
+        // 一年前的一条(储蓄率更低、资产更少),供年度对比一节演示。
+        var older = Profile.sample
+        older.monthlyExpense = 19_500
+        older.investableAssets = 180_000
+        modelContext.insert(Reading(
+            profile: older,
+            result: FreedomEngine.run(older),
+            date: Date(timeIntervalSinceNow: -370 * 86_400)
+        ))
         #endif
     }
 }

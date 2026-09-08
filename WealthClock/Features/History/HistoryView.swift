@@ -62,10 +62,14 @@ struct HistoryView: View {
 /// 详情:输入摘要 + 三情景 + 归因 + 密押;可重看揭晓与汇票。
 struct HistoryDetailView: View {
     let reading: Reading
+    @Query(sort: \Reading.date) private var allReadings: [Reading]
     @State private var showBill = false
 
     var body: some View {
         List {
+            if StoreManager.shared.isUnlocked {
+                yearComparisonSection
+            }
             if let result = reading.result {
                 Section("三情景") {
                     ForEach(result.scenarios, id: \.kind) { scenario in
@@ -110,6 +114,39 @@ struct HistoryDetailView: View {
         .sheet(isPresented: $showBill) {
             if let profile = reading.profile { BillScreen(profile: profile, omenDate: reading.date) }
         }
+    }
+
+    /// 年度对比(BRIEF"年度对比",已解锁时显示)。
+    @ViewBuilder private var yearComparisonSection: some View {
+        Section("年度对比") {
+            if let comparison = YearComparison.make(current: reading, among: allReadings) {
+                HStack {
+                    Text("中性自由年龄")
+                        .font(.system(size: 13, design: .serif)).foregroundStyle(Tokens.inkSoft)
+                    Spacer()
+                    Text(verbatim: ageComparisonText(comparison))
+                        .font(.system(size: 12, design: .monospaced))
+                        .foregroundStyle((comparison.ageDelta ?? 0) <= 0 ? Tokens.verdigris : Tokens.cinnabar)
+                }
+                ledgerRow("储蓄率", "\(comparison.previousSavingsRate)% → \(comparison.currentSavingsRate)%")
+                ledgerRow(
+                    "可投资资产",
+                    String(format: "%.0f → %.0f", comparison.previousAssets, comparison.currentAssets)
+                )
+            } else {
+                Text("明年再来测一次,这里会告诉你这一年值多少年。")
+                    .font(.system(size: 12, design: .serif))
+                    .foregroundStyle(Tokens.inkSoft)
+            }
+        }
+    }
+
+    private func ageComparisonText(_ comparison: YearComparison) -> String {
+        let previous = comparison.previousAge.map { String(Int($0.rounded())) } ?? "未达"
+        let current = comparison.currentAge.map { String(Int($0.rounded())) } ?? "未达"
+        guard let delta = comparison.ageDelta else { return "\(previous) → \(current)" }
+        let verdict = delta <= 0 ? "提前 \(String(format: "%.1f", -delta)) 年" : "推迟 \(String(format: "%.1f", delta)) 年"
+        return "\(previous) → \(current),\(verdict)"
     }
 
     private func ledgerRow(_ key: String, _ value: String) -> some View {
