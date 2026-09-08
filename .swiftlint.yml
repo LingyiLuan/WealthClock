@@ -7,6 +7,8 @@ identifier_name:
   min_length: 1
 nesting:
   type_level: 2
+cyclomatic_complexity:
+  ignores_case_statements: true  # 枚举步骤机大量 switch,case 不计复杂度
 inclusive_language:
   override_allowed_terms:
     - masterPlus  # BRIEF §3.1 逐字规格的公开 API 枚举值(硕士及以上)
