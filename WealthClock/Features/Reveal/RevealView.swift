@@ -24,6 +24,8 @@ struct RevealView: View {
 
     private var neutralAge: Double? { result.scenario(.neutral)?.freedomAge }
 
+    private var omen: OmenEntry { OmenPicker.pick(for: profile) }
+
     private var savingsRatePercent: Int {
         guard profile.monthlyIncome > 0 else { return 0 }
         return Int(((1 - profile.monthlyExpense / profile.monthlyIncome) * 100).rounded())
@@ -43,12 +45,16 @@ struct RevealView: View {
                 scenarioChips
                 HStack(spacing: 8) {
                     miyaDash
-                    Text("密押 · 待定")
+                    Text(verbatim: "密押 · \(OmenPicker.yearGanzhi())流年 · \(omen.phrase)")
                         .font(.system(size: 11, design: .serif)).kerning(2)
                         .foregroundStyle(Tokens.cinnabar)
                     miyaDash
                 }
                 .padding(.top, 16)
+                Text(verbatim: omen.gloss)
+                    .font(.system(size: 10, design: .serif)).kerning(1.2)
+                    .foregroundStyle(Tokens.inkSoft)
+                    .padding(.top, 4)
                 Spacer(minLength: 12)
                 buttons
                 Text("本应用提供的是基于公开文献的情景测算与传统文化趣味解读,不构成投资、财务或法律建议。")
