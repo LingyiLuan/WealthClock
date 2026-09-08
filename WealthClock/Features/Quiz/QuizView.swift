@@ -134,16 +134,4 @@ struct QuizView: View {
     }
 }
 
-/// 题面内容分发。M5 第一个 PR 全部为占位;第二个 PR 换成真输入组件。
-struct QuizStepContent: View {
-    let step: QuizStep
-    var draft: QuizDraft
-
-    var body: some View {
-        Text("(题型组件接入中)")
-            .font(.system(size: 12, design: .serif))
-            .foregroundStyle(Tokens.inkSoft.opacity(0.6))
-    }
-}
-
 #Preview { QuizView() }
