@@ -39,6 +39,7 @@ struct MoneyField: View {
     let prefix: String
     let placeholder: String
     @Binding var value: Double?
+    @FocusState private var focused: Bool
 
     var body: some View {
         HStack(spacing: 10) {
@@ -47,6 +48,13 @@ struct MoneyField: View {
                 .foregroundStyle(Tokens.giltDeep)
             TextField(placeholder, value: $value, format: .number.precision(.fractionLength(0)))
                 .keyboardType(.decimalPad)
+                .focused($focused)
+                .toolbar {
+                    ToolbarItemGroup(placement: .keyboard) {
+                        Spacer()
+                        Button("完成") { focused = false }
+                    }
+                }
                 .font(.system(size: 22, design: .monospaced))
                 .foregroundStyle(Tokens.ink)
         }
@@ -111,6 +119,10 @@ struct LiteracyStepView: View {
                     .foregroundStyle(answer == question.correctIndex ? Tokens.verdigris : Tokens.cinnabar)
                     .padding(.top, 6)
             }
+            Text("以首次作答计分")
+                .font(.system(size: 10, design: .serif)).kerning(1.5)
+                .foregroundStyle(Tokens.inkSoft.opacity(0.7))
+                .padding(.top, 2)
         }
     }
 
@@ -184,17 +196,28 @@ struct QuizStepContent: View {
             case .selfControl:
                 selfControlSlider
             case .birthDate:
-                DatePicker(
-                    "出生日期",
-                    selection: Binding(
-                        get: { draft.birthDate ?? Date(timeIntervalSince1970: 631_152_000) },
-                        set: { draft.birthDate = $0 }
-                    ),
-                    displayedComponents: .date
-                )
-                .datePickerStyle(.wheel)
-                .labelsHidden()
-                .environment(\.locale, Locale(identifier: "zh-Hans"))
+                Toggle(isOn: Binding(
+                    get: { draft.birthDate != nil },
+                    set: { draft.birthDate = $0 ? Date(timeIntervalSince1970: 631_152_000) : nil }
+                )) {
+                    Text(draft.birthDate == nil ? "不填(汇票用朱砂色系)" : "填写出生日期")
+                        .font(.system(size: 13, design: .serif))
+                        .foregroundStyle(Tokens.ink)
+                }
+                .tint(Tokens.giltDeep)
+                if draft.birthDate != nil {
+                    DatePicker(
+                        "出生日期",
+                        selection: Binding(
+                            get: { draft.birthDate ?? Date(timeIntervalSince1970: 631_152_000) },
+                            set: { draft.birthDate = $0 }
+                        ),
+                        displayedComponents: .date
+                    )
+                    .datePickerStyle(.wheel)
+                    .labelsHidden()
+                    .environment(\.locale, Locale(identifier: "zh-Hans"))
+                }
             }
         }
     }

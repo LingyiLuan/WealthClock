@@ -43,15 +43,28 @@ struct QuizView: View {
                 .lineSpacing(5)
                 .foregroundStyle(Tokens.inkSoft)
                 .padding(.top, 10)
-            ScrollView {
+            if step.usesWheel {
                 QuizStepContent(step: step, draft: draft)
                     .padding(.top, 22)
+            } else {
+                ScrollView {
+                    QuizStepContent(step: step, draft: draft)
+                        .padding(.top, 22)
+                }
+                .scrollIndicators(.hidden)
+                .scrollDismissesKeyboard(.interactively)
             }
-            .scrollIndicators(.hidden)
             Spacer(minLength: 8)
             controls
         }
         .padding(.horizontal, Tokens.pageMargin)
+        .contentShape(Rectangle())
+        .onTapGesture { Self.endEditing() }
+    }
+
+    /// 点空白收起数字键盘(decimalPad 无回车键)。
+    static func endEditing() {
+        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
     }
 
     private var eyebrow: String {
@@ -67,12 +80,16 @@ struct QuizView: View {
         }
     }
 
+    /// 既济纹样(阳实阴断),与揭晓页一致;未落爻淡显。
     private func hexagramRow(lit: Int) -> some View {
-        HStack(spacing: 6) {
+        let pattern = [true, false, true, false, true, false]
+        return HStack(spacing: 6) {
             ForEach(0..<6, id: \.self) { index in
-                Rectangle()
-                    .fill(index < lit ? Tokens.ink : Tokens.ink.opacity(0.15))
-                    .frame(width: 20, height: 3)
+                let color = index < lit ? Tokens.ink : Tokens.ink.opacity(0.15)
+                HStack(spacing: pattern[index] ? 0 : 4) {
+                    Rectangle().fill(color).frame(width: pattern[index] ? 20 : 8, height: 3)
+                    if !pattern[index] { Rectangle().fill(color).frame(width: 8, height: 3) }
+                }
             }
         }
     }
