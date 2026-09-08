@@ -43,6 +43,13 @@ public struct ScenarioResult: Equatable {
     public let freedomLine: Double
 }
 
+/// 年度轨迹检查点(推演页曲线;见 FreedomEngine.trajectory)。
+public struct TrajectoryPoint: Equatable {
+    public let age: Int
+    public let assets: Double
+    public let freedomLine: Double
+}
+
 public struct Attribution: Equatable {
     /// "trading" / "sideHustle" / "literacy" / "selfControl"
     public let key: String
