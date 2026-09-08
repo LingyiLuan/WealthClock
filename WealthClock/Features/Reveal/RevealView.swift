@@ -3,6 +3,7 @@ import SwiftUI
 
 /// 揭晓页(BRIEF §6 Reveal,设计稿 screens_v2B.html 第二屏)。
 /// M3 先用 Profile.sample 硬编码;唯一动效:掷钱六次(180ms/次)→ 数字 1.3s ease-out 滚动。
+@MainActor
 struct RevealView: View {
     let profile: Profile
     /// 密押按此日期抽取(历史重看传存档日期,保证复看不变)。
@@ -17,12 +18,16 @@ struct RevealView: View {
     @State private var shownAge = 0.0
     @State private var revealed = false
     @State private var showBill = false
+    @State private var showPaywall = false
+    @State private var showScenarios = false
+    @State private var store: StoreManager
 
     init(profile: Profile = .sample, omenDate: Date = .now, onRestart: (() -> Void)? = nil) {
         self.profile = profile
         self.omenDate = omenDate
         self.onRestart = onRestart
         result = FreedomEngine.run(profile)
+        _store = State(initialValue: StoreManager.shared)
     }
 
     private var neutralAge: Double? { result.scenario(.neutral)?.freedomAge }
@@ -68,7 +73,10 @@ struct RevealView: View {
             }
             .padding(.horizontal, Tokens.pageMargin)
         }
-        .task { await playReveal() }
+        .task {
+            store.start()
+            await playReveal()
+        }
     }
 
     /// 大数字区:点阵年龄 + 岁 + 苏州码子行;未达时改为建议句(ADR-0003 / BRIEF §6)。
@@ -164,13 +172,17 @@ struct RevealView: View {
 
     private var buttons: some View {
         VStack(spacing: 10) {
-            Button {} label: {
+            Button {
+                if store.isUnlocked { showScenarios = true } else { showPaywall = true }
+            } label: {
                 Text("查看完整推演")
                     .font(.system(size: 15, design: .serif)).kerning(3)
                     .foregroundStyle(Tokens.paper)
                     .frame(maxWidth: .infinity, minHeight: Tokens.primaryButtonHeight)
                     .background(Tokens.ink)
             }
+            .sheet(isPresented: $showPaywall) { PaywallView() }
+            .sheet(isPresented: $showScenarios) { scenariosDestination }
             Button { showBill = true } label: {
                 Text("保存汇票")
                     .font(.system(size: 13, design: .serif)).kerning(2.4)
@@ -186,6 +198,16 @@ struct RevealView: View {
                         .frame(maxWidth: .infinity, minHeight: 24)
                 }
             }
+        }
+    }
+
+    /// 推演页在 M7 第三个 PR 落地;先用占位,避免付费后无处可去。
+    private var scenariosDestination: some View {
+        ZStack {
+            Tokens.paper.ignoresSafeArea()
+            Text("推演页 · 接入中")
+                .font(.system(size: 15, design: .serif)).kerning(3)
+                .foregroundStyle(Tokens.inkSoft)
         }
     }
 
