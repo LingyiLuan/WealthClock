@@ -55,12 +55,15 @@ targets:
       - path: WealthClockTests
     dependencies:
       - target: WealthClock
+      - sdk: StoreKitTest.framework
 schemes:
   WealthClock:
     build:
       targets:
         WealthClock: all
         WealthClockTests: [test]
+    run:
+      storeKitConfiguration: WealthClock/Resources/WealthClock.storekit
     test:
       targets: [WealthClockTests]
       gatherCoverageData: true
