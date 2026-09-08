@@ -6,8 +6,20 @@ import SwiftUI
 struct QuizView: View {
     @Environment(\.modelContext) private var modelContext
     @State private var draft = QuizDraft()
-    @State private var stepIndex = 0
+    @State private var stepIndex = Self.debugInitialStep()
     @State private var finishedProfile: Profile?
+
+    /// DEBUG:-quizStep N 直达第 N 问(截图脚本用)。
+    private static func debugInitialStep() -> Int {
+        #if DEBUG
+        let args = CommandLine.arguments
+        if let flag = args.firstIndex(of: "-quizStep"), flag + 1 < args.count,
+           let number = Int(args[flag + 1]) {
+            return QuizStep.all.firstIndex { $0.questionNumber == number } ?? 0
+        }
+        #endif
+        return 0
+    }
 
     private var step: QuizStep { QuizStep.all[stepIndex] }
 

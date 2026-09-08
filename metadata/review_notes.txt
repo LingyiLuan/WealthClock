@@ -1,0 +1,3 @@
+WealthClock calculates a "financial freedom age" from user-entered income, expenses, assets and habits, using published research (safe-withdrawal-rate studies; age-earnings profiles; retail-investor trading studies; financial-literacy studies). All calculations run on-device; no account, no network, no data collection. The "omen" line and colour on the shareable card are traditional-culture flavour text and are explicitly labelled as not affecting any calculation. The one-time in-app purchase unlocks the detailed scenario report; core results and the share card are free. The app is not available in mainland China.
+
+The app is fully offline and requires no account. The IAP product app.wealthclock.report.full (non-consumable) is submitted with this version.
