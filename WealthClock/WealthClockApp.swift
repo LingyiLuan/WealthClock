@@ -14,11 +14,13 @@ struct WealthClockApp: App {
                 BillScreen()
             } else if CommandLine.arguments.contains("-quiz") {
                 QuizView()
+            } else if CommandLine.arguments.contains("-history") {
+                RootTabView(initialTab: .history)
             } else {
-                ContentView()
+                RootTabView()
             }
             #else
-            ContentView()
+            RootTabView()
             #endif
         }
         .modelContainer(for: Reading.self)
