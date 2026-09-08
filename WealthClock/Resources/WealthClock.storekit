@@ -1,0 +1,38 @@
+{
+  "identifier" : "3F6A2C10-9B7E-4D21-8C55-0A9E47C11A01",
+  "nonRenewingSubscriptions" : [
+
+  ],
+  "products" : [
+    {
+      "displayPrice" : "4.99",
+      "familyShareable" : false,
+      "internalID" : "3F6A2C10-9B7E-4D21-8C55-0A9E47C11A02",
+      "localizations" : [
+        {
+          "description" : "完整推演:曲线、归因、年度对比。买断一次,永久可用。",
+          "displayName" : "完整推演",
+          "locale" : "zh_CN"
+        },
+        {
+          "description" : "Full scenario report: curves, attribution, yearly comparison. One-time purchase.",
+          "displayName" : "Full Report",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "app.wealthclock.report.full",
+      "referenceName" : "Full Report Unlock",
+      "type" : "NonConsumable"
+    }
+  ],
+  "settings" : {
+
+  },
+  "subscriptionGroups" : [
+
+  ],
+  "version" : {
+    "major" : 3,
+    "minor" : 0
+  }
+}
