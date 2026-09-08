@@ -17,6 +17,9 @@ struct SettingsView: View {
                 Section("链接") {
                     if let privacyURL { Link("隐私政策", destination: privacyURL) }
                     if let supportURL { Link("支持", destination: supportURL) }
+                    if let mail = URL(string: "mailto:L01Mi@outlook.com") {
+                        Link("联系邮箱", destination: mail)
+                    }
                 }
                 Section("数据") {
                     if let url = exportFile(ext: "json", content: exportJSON()) {

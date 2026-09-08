@@ -5,7 +5,7 @@ permalink: /site/support/
 
 # 支持
 
-联系邮箱:support@wealthclock.app(占位,上架前替换)
+联系邮箱:L01Mi@outlook.com
 
 ## 常见问题
 
