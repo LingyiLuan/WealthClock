@@ -13,11 +13,8 @@ struct QuizView: View {
     var body: some View {
         ZStack {
             Tokens.paper.ignoresSafeArea()
-            if finishedProfile != nil {
-                // 接引擎与揭晓在 M5 第三个 PR;先显示完成占位。
-                Text("已答完 · 揭晓接入中")
-                    .font(.system(size: 15, design: .serif)).kerning(3)
-                    .foregroundStyle(Tokens.inkSoft)
+            if let profile = finishedProfile {
+                RevealView(profile: profile)
             } else {
                 quizBody
             }
@@ -116,7 +113,7 @@ struct QuizView: View {
 
     private func next() {
         if stepIndex == QuizStep.all.count - 1 {
-            finishedProfile = Profile.sample  // M5 第三个 PR:改为组装真实 Profile 并跳揭晓
+            finishedProfile = draft.assembleProfile()
         } else {
             stepIndex += 1
         }
