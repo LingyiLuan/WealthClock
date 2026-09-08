@@ -32,9 +32,21 @@ enum OmenPicker {
         return String(stems[offset % 10]) + String(branches[offset % 12])
     }
 
-    /// 用 Profile 的稳定哈希做种子抽一条:同一次测算复看不变(跨启动、跨设备一致)。
-    static func pick(for profile: Profile) -> OmenEntry {
-        entries[Int(stableHash(profile) % UInt64(max(entries.count, 1)))]
+    /// 种子 = Profile 稳定哈希 + 测算日期(yyyy-MM-dd):同日同 Profile 复看不变,不同日的新测算可换词条(人类决定,2026-09-08)。
+    static func pick(for profile: Profile, on date: Date = .now) -> OmenEntry {
+        var hash = stableHash(profile)
+        for byte in Array(dayString(date).utf8) {
+            hash ^= UInt64(byte)
+            hash = hash &* 0x0000_0100_0000_01b3
+        }
+        return entries[Int(hash % UInt64(max(entries.count, 1)))]
+    }
+
+    static func dayString(_ date: Date) -> String {
+        let formatter = DateFormatter()
+        formatter.calendar = Calendar(identifier: .gregorian)
+        formatter.dateFormat = "yyyy-MM-dd"
+        return formatter.string(from: date)
     }
 
     /// FNV-1a over 排序键 JSON——不用 Swift hashValue(跨启动不稳定)。

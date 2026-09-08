@@ -16,7 +16,7 @@ final class Reading {
         self.date = date
         profileJSON = (try? JSONEncoder().encode(profile)) ?? Data()
         resultJSON = (try? JSONEncoder().encode(ReadingResultDTO(result))) ?? Data()
-        let omen = OmenPicker.pick(for: profile)
+        let omen = OmenPicker.pick(for: profile, on: date)
         omenPhrase = omen.phrase
         omenGloss = omen.gloss
         ganzhi = OmenPicker.yearGanzhi(for: date)

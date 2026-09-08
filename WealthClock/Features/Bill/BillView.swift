@@ -5,6 +5,8 @@ import SwiftUI
 /// 设计坐标系 360×640;ImageRenderer scale 3 → 1080×1920(M4 第二个 PR 接导出)。
 struct BillView: View {
     let profile: Profile
+    /// 密押按此日期抽取(历史重看传存档日期)。
+    var omenDate: Date = .now
     let theme: BillTheme
     private let result: FreedomResult
 
@@ -12,8 +14,9 @@ struct BillView: View {
     private static let frame = (x: 44.0, y: 104.0, w: 272.0, h: 432.0, bw: 14.0)
     private static let sealColor = Color(hex: 0xB8412F)  // 印章永远朱砂
 
-    init(profile: Profile = .sample) {
+    init(profile: Profile = .sample, omenDate: Date = .now) {
         self.profile = profile
+        self.omenDate = omenDate
         theme = BillTheme.forBirthDate(profile.birthDate)
         result = FreedomEngine.run(profile)
     }
@@ -159,7 +162,7 @@ struct BillView: View {
         let f = Self.frame
         return Group {
             VStack(spacing: 2) {
-                ForEach(Array(OmenPicker.pick(for: profile).phrase.enumerated()), id: \.offset) { _, char in
+                ForEach(Array(OmenPicker.pick(for: profile, on: omenDate).phrase.enumerated()), id: \.offset) { _, char in
                     Text(String(char)).font(.system(size: 10, design: .serif)).foregroundStyle(Self.sealColor)
                 }
             }
@@ -179,7 +182,7 @@ struct BillView: View {
 
     private var footer: some View {
         HStack {
-            Text(verbatim: "No. \(String(format: "%07d", age ?? 0)) · 密押 \(OmenPicker.yearGanzhi())")
+            Text(verbatim: "No. \(String(format: "%07d", age ?? 0)) · 密押 \(OmenPicker.yearGanzhi(for: omenDate))")
             Spacer()
             Text(verbatim: "wealthclock.app")
         }
@@ -200,13 +203,14 @@ struct BillView: View {
 /// 汇票页容器:卡片缩放适配屏幕 + ShareLink 导出(1080×1920 PNG)。
 struct BillScreen: View {
     var profile: Profile = .sample
+    var omenDate: Date = .now
     @State private var exportURL: URL?
 
     var body: some View {
         GeometryReader { geo in
             ZStack(alignment: .bottom) {
                 Tokens.paper.ignoresSafeArea()
-                BillView(profile: profile)
+                BillView(profile: profile, omenDate: omenDate)
                     .scaleEffect(min(geo.size.width / 360, geo.size.height / 640) * 0.9)
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
                 if let exportURL {
@@ -221,7 +225,7 @@ struct BillScreen: View {
             }
         }
         .task {
-            exportURL = BillExporter.saveToDocuments(profile: profile)
+            exportURL = BillExporter.saveToDocuments(profile: profile, omenDate: omenDate)
         }
     }
 }

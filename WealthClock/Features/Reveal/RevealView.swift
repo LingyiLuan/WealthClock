@@ -5,6 +5,8 @@ import SwiftUI
 /// M3 先用 Profile.sample 硬编码;唯一动效:掷钱六次(180ms/次)→ 数字 1.3s ease-out 滚动。
 struct RevealView: View {
     let profile: Profile
+    /// 密押按此日期抽取(历史重看传存档日期,保证复看不变)。
+    var omenDate: Date = .now
     /// 问卷上下文提供:重新测算(清空答案回第一题)。nil 时不显示。
     var onRestart: (() -> Void)?
     private let result: FreedomResult
@@ -16,15 +18,16 @@ struct RevealView: View {
     @State private var revealed = false
     @State private var showBill = false
 
-    init(profile: Profile = .sample, onRestart: (() -> Void)? = nil) {
+    init(profile: Profile = .sample, omenDate: Date = .now, onRestart: (() -> Void)? = nil) {
         self.profile = profile
+        self.omenDate = omenDate
         self.onRestart = onRestart
         result = FreedomEngine.run(profile)
     }
 
     private var neutralAge: Double? { result.scenario(.neutral)?.freedomAge }
 
-    private var omen: OmenEntry { OmenPicker.pick(for: profile) }
+    private var omen: OmenEntry { OmenPicker.pick(for: profile, on: omenDate) }
 
     private var savingsRatePercent: Int {
         guard profile.monthlyIncome > 0 else { return 0 }
@@ -174,7 +177,7 @@ struct RevealView: View {
                     .foregroundStyle(Tokens.inkSoft)
                     .frame(maxWidth: .infinity, minHeight: 32)
             }
-            .sheet(isPresented: $showBill) { BillScreen(profile: profile) }
+            .sheet(isPresented: $showBill) { BillScreen(profile: profile, omenDate: omenDate) }
             if let onRestart {
                 Button(action: onRestart) {
                     Text("重新测算")
