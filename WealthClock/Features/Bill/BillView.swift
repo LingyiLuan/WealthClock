@@ -159,7 +159,7 @@ struct BillView: View {
         let f = Self.frame
         return Group {
             VStack(spacing: 2) {
-                ForEach(Array("密押待定".enumerated()), id: \.offset) { _, char in
+                ForEach(Array(OmenPicker.pick(for: profile).phrase.enumerated()), id: \.offset) { _, char in
                     Text(String(char)).font(.system(size: 10, design: .serif)).foregroundStyle(Self.sealColor)
                 }
             }
@@ -179,7 +179,7 @@ struct BillView: View {
 
     private var footer: some View {
         HStack {
-            Text(verbatim: "No. \(String(format: "%07d", age ?? 0)) · 密押 待定")
+            Text(verbatim: "No. \(String(format: "%07d", age ?? 0)) · 密押 \(OmenPicker.yearGanzhi())")
             Spacer()
             Text(verbatim: "wealthclock.app")
         }
