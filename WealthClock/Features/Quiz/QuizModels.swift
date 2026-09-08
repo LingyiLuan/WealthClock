@@ -152,6 +152,48 @@ enum RegionChoice: String, CaseIterable, Identifiable {
         }
     }
 
+    /// 组装引擎输入。未答项用保守默认;birthDate 原样传入(引擎忽略,有单测守护)。
+    func assembleProfile() -> Profile {
+        Profile(
+            age: age,
+            region: regionChoice?.region ?? .other,
+            currencyCode: regionChoice?.currencyCode ?? "USD",
+            monthlyIncome: monthlyIncome ?? 0,
+            monthlyExpense: monthlyExpense ?? 0,
+            investableAssets: investableAssets ?? 0,
+            mortgageMonthly: mortgageMonthly ?? 0,
+            mortgageYearsLeft: (mortgageMonthly ?? 0) > 0 ? mortgageYearsLeft : 0,
+            industry: industry ?? .other,
+            yearsExperience: yearsExperience,
+            education: education ?? .bachelor,
+            tradingHabit: tradingHabit ?? .indexOnly,
+            accountTier: accountTier ?? .k100to500k,
+            hasSideHustle: hasSideHustle ?? false,
+            literacyScore: Literacy.score(answers: literacyAnswers),
+            selfControl: selfControl,
+            birthDate: birthDate
+        )
+    }
+
+    /// 第 9 题选项右侧的实时修正年数:该习惯 vs 只定投,在中性情景下的年数差。
+    /// 基于当前已答内容(账户规模未选时按 ×1.0 档,选后实时重算)。
+    func tradingDelta(_ habit: TradingHabit) -> Double? {
+        guard habit != .indexOnly else { return 0 }
+        var withHabit = assembleProfile()
+        withHabit.tradingHabit = habit
+        var baseline = withHabit
+        baseline.tradingHabit = .indexOnly
+        guard let a = FreedomEngine.simulate(withHabit, kind: .neutral).freedomAge,
+              let b = FreedomEngine.simulate(baseline, kind: .neutral).freedomAge else { return nil }
+        return ((a - b) * 10).rounded() / 10
+    }
+
+    func tradingDeltaText(_ habit: TradingHabit) -> String {
+        guard let delta = tradingDelta(habit) else { return "未达" }
+        if delta == 0 { return "±0 年" }
+        return String(format: "%+.1f 年", delta)
+    }
+
     /// 已落爻数 0...12(第 N 问全部作答即落第 N 爻;附问不落爻)。
     func yaoCount(upTo stepIndex: Int) -> Int {
         var answered = Set<Int>()

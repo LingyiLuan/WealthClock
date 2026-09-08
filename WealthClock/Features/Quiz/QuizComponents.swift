@@ -163,7 +163,7 @@ struct QuizStepContent: View {
                 }
             case .trading:
                 ForEach(TradingHabit.allCases, id: \.self) { habit in
-                    ChoiceRow(label: habit.label, detail: nil, selected: draft.tradingHabit == habit) {
+                    ChoiceRow(label: habit.label, detail: draft.tradingDeltaText(habit), selected: draft.tradingHabit == habit) {
                         draft.tradingHabit = habit
                     }
                 }
