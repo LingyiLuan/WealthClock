@@ -87,7 +87,7 @@ struct HistoryDetailView: View {
                     ledgerRow("交易习惯", profile.tradingHabit.label)
                 }
                 Section {
-                    NavigationLink("重看揭晓") { RevealView(profile: profile) }
+                    NavigationLink("重看揭晓") { RevealView(profile: profile, omenDate: reading.date) }
                     Button("查看汇票") { showBill = true }
                         .foregroundStyle(Tokens.ink)
                 }
@@ -105,7 +105,7 @@ struct HistoryDetailView: View {
         .background(Tokens.paper.ignoresSafeArea())
         .navigationTitle(reading.date.formatted(date: .abbreviated, time: .omitted))
         .sheet(isPresented: $showBill) {
-            if let profile = reading.profile { BillScreen(profile: profile) }
+            if let profile = reading.profile { BillScreen(profile: profile, omenDate: reading.date) }
         }
     }
 
