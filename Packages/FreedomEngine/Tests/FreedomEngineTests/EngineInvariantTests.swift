@@ -99,6 +99,23 @@ final class EngineInvariantTests: XCTestCase {
         }
     }
 
+    /// trajectory 与 simulate 用同一状态转移:首次越线年份须与 freedomAge 一致(±1 年,月级插值差)。
+    func testTrajectoryConsistentWithSimulate() throws {
+        for kind in ScenarioKind.allCases {
+            let points = FreedomEngine.trajectory(Profile.sample, kind: kind)
+            XCTAssertFalse(points.isEmpty)
+            let simulated = FreedomEngine.simulate(Profile.sample, kind: kind).freedomAge
+            let crossed = points.last.map { $0.assets >= $0.freedomLine } ?? false
+            if let simulated {
+                XCTAssertTrue(crossed, "\(kind): simulate 达标但轨迹未越线")
+                let lastAge = Double(points.last?.age ?? -1)
+                XCTAssertEqual(lastAge, simulated, accuracy: 1.0, "\(kind): 轨迹越线年份偏离 freedomAge")
+            } else {
+                XCTAssertFalse(crossed, "\(kind): simulate 未达但轨迹越线")
+            }
+        }
+    }
+
     /// M1 验收产物:打印 Profile.sample 的三情景 + 归因表(engine-verification 技能要求的记录)。
     func testPrintSampleProfileReport() {
         let result = FreedomEngine.run(Profile.sample)

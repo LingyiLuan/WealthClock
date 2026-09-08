@@ -90,6 +90,9 @@ struct HistoryDetailView: View {
                     NavigationLink("重看揭晓") { RevealView(profile: profile, omenDate: reading.date) }
                     Button("查看汇票") { showBill = true }
                         .foregroundStyle(Tokens.ink)
+                    if StoreManager.shared.isUnlocked {
+                        NavigationLink("查看完整推演") { ScenariosView(profile: profile) }
+                    }
                 }
             }
             Section("密押") {

@@ -201,14 +201,8 @@ struct RevealView: View {
         }
     }
 
-    /// 推演页在 M7 第三个 PR 落地;先用占位,避免付费后无处可去。
     private var scenariosDestination: some View {
-        ZStack {
-            Tokens.paper.ignoresSafeArea()
-            Text("推演页 · 接入中")
-                .font(.system(size: 15, design: .serif)).kerning(3)
-                .foregroundStyle(Tokens.inkSoft)
-        }
+        ScenariosView(profile: profile)
     }
 
     /// 密押行两侧短横线(设计稿 .miya::before/::after:22×1,朱砂 50%)。

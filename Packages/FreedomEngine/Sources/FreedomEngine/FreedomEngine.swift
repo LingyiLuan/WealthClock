@@ -51,6 +51,43 @@ public enum FreedomEngine {
         simulate(profile, kind: kind, params: EngineParams.scenario(kind))
     }
 
+    /// 年度轨迹(推演页曲线用):每年检查点的资产与自由线;含到达那一年,未达则到 100 岁。
+    /// 与 simulate 同一状态转移;testTrajectoryConsistentWithSimulate 守护两者不漂移。
+    public static func trajectory(_ profile: Profile, kind: ScenarioKind) -> [TrajectoryPoint] {
+        let sp = EngineParams.scenario(kind)
+        let trading = EngineParams.tradingAdjustment(profile.tradingHabit)
+        var realReturn = sp.realReturn
+            + trading.delta * EngineParams.tierMultiplier(profile.accountTier)
+            + EngineParams.literacyAdjustment(profile.literacyScore)
+        realReturn = max(realReturn, -0.5)
+
+        var assets = profile.investableAssets
+        var income = profile.monthlyIncome * 12 * (profile.hasSideHustle ? 1 + EngineParams.sideHustleUplift : 1)
+        var expense = profile.monthlyExpense * 12
+        if kind == .pessimistic && profile.selfControl >= EngineParams.selfControlThreshold {
+            expense *= EngineParams.selfControlExpenseFactor
+        }
+        let mortgage = profile.mortgageMonthly * 12
+        var mortgageLeft = max(profile.mortgageYearsLeft, 0)
+        let peakBase = profile.region == .cnMainland ? sp.peakAgeCN : sp.peakAgeOther
+        let peakAge = peakBase + EngineParams.industryPeakAdjustment(profile.industry, region: profile.region)
+        let preGrowth = sp.prePeakGrowth + EngineParams.educationGrowthAdjustment(profile.education)
+
+        var points: [TrajectoryPoint] = []
+        for age in profile.age..<EngineParams.maxAge {
+            let line = expense * sp.multiplier
+            points.append(TrajectoryPoint(age: age, assets: assets, freedomLine: line))
+            if assets >= line && mortgageLeft == 0 { break }
+            let savings = income - expense - (mortgageLeft > 0 ? mortgage : 0)
+            assets = assets * (1 + realReturn) + savings
+            let growth = age < peakAge ? preGrowth : sp.postPeakGrowth
+            income *= (1 + growth)
+            expense *= (1 + sp.expenseGrowth)
+            if mortgageLeft > 0 { mortgageLeft -= 1 }
+        }
+        return points
+    }
+
     /// 核心模拟。`params` 可注入,供金标测试用闭式解校验。
     static func simulate(_ profile: Profile, kind: ScenarioKind, params sp: ScenarioParams) -> ScenarioResult {
         let trading = EngineParams.tradingAdjustment(profile.tradingHabit)
