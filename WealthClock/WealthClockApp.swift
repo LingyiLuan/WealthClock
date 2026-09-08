@@ -1,3 +1,4 @@
+import SwiftData
 import SwiftUI
 
 @main
@@ -20,5 +21,6 @@ struct WealthClockApp: App {
             ContentView()
             #endif
         }
+        .modelContainer(for: Reading.self)
     }
 }

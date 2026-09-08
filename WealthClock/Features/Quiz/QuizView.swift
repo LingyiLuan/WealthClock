@@ -4,6 +4,7 @@ import SwiftUI
 /// 问卷容器(BRIEF §4,screens_v2B.html 第一屏):一屏一题,六爻进度,下一问/上一问。
 /// M5 第一个 PR:骨架与导航,题面为占位;题型组件与引擎接入在后续 PR。
 struct QuizView: View {
+    @Environment(\.modelContext) private var modelContext
     @State private var draft = QuizDraft()
     @State private var stepIndex = 0
     @State private var finishedProfile: Profile?
@@ -130,7 +131,10 @@ struct QuizView: View {
 
     private func next() {
         if stepIndex == QuizStep.all.count - 1 {
-            finishedProfile = draft.assembleProfile()
+            let profile = draft.assembleProfile()
+            // 每次揭晓自动保存(BRIEF §6 History);历史永远免费可看/可导出/可删除。
+            modelContext.insert(Reading(profile: profile, result: FreedomEngine.run(profile)))
+            finishedProfile = profile
         } else {
             stepIndex += 1
         }
