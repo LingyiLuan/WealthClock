@@ -14,7 +14,7 @@ struct QuizView: View {
         ZStack {
             Tokens.paper.ignoresSafeArea()
             if let profile = finishedProfile {
-                RevealView(profile: profile)
+                RevealView(profile: profile, onRestart: restart)
             } else {
                 quizBody
             }
@@ -137,6 +137,13 @@ struct QuizView: View {
     }
 
     private func back() { stepIndex -= 1 }
+
+    /// 重新测算:清空答案回第一题。
+    private func restart() {
+        draft = QuizDraft()
+        stepIndex = 0
+        finishedProfile = nil
+    }
 
     private func skip() {
         if step == .mortgage {

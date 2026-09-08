@@ -199,13 +199,14 @@ struct BillView: View {
 
 /// 汇票页容器:卡片缩放适配屏幕 + ShareLink 导出(1080×1920 PNG)。
 struct BillScreen: View {
+    var profile: Profile = .sample
     @State private var exportURL: URL?
 
     var body: some View {
         GeometryReader { geo in
             ZStack(alignment: .bottom) {
                 Tokens.paper.ignoresSafeArea()
-                BillView()
+                BillView(profile: profile)
                     .scaleEffect(min(geo.size.width / 360, geo.size.height / 640) * 0.9)
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
                 if let exportURL {
@@ -220,7 +221,7 @@ struct BillScreen: View {
             }
         }
         .task {
-            exportURL = BillExporter.saveToDocuments()
+            exportURL = BillExporter.saveToDocuments(profile: profile)
         }
     }
 }

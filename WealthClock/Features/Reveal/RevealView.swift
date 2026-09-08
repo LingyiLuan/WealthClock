@@ -5,6 +5,8 @@ import SwiftUI
 /// M3 先用 Profile.sample 硬编码;唯一动效:掷钱六次(180ms/次)→ 数字 1.3s ease-out 滚动。
 struct RevealView: View {
     let profile: Profile
+    /// 问卷上下文提供:重新测算(清空答案回第一题)。nil 时不显示。
+    var onRestart: (() -> Void)?
     private let result: FreedomResult
 
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
@@ -12,9 +14,11 @@ struct RevealView: View {
     @State private var hexLines: [Bool] = []
     @State private var shownAge = 0.0
     @State private var revealed = false
+    @State private var showBill = false
 
-    init(profile: Profile = .sample) {
+    init(profile: Profile = .sample, onRestart: (() -> Void)? = nil) {
         self.profile = profile
+        self.onRestart = onRestart
         result = FreedomEngine.run(profile)
     }
 
@@ -158,11 +162,20 @@ struct RevealView: View {
                     .frame(maxWidth: .infinity, minHeight: Tokens.primaryButtonHeight)
                     .background(Tokens.ink)
             }
-            Button {} label: {
+            Button { showBill = true } label: {
                 Text("保存汇票")
                     .font(.system(size: 13, design: .serif)).kerning(2.4)
                     .foregroundStyle(Tokens.inkSoft)
                     .frame(maxWidth: .infinity, minHeight: 32)
+            }
+            .sheet(isPresented: $showBill) { BillScreen(profile: profile) }
+            if let onRestart {
+                Button(action: onRestart) {
+                    Text("重新测算")
+                        .font(.system(size: 12, design: .serif)).kerning(2)
+                        .foregroundStyle(Tokens.inkSoft.opacity(0.8))
+                        .frame(maxWidth: .infinity, minHeight: 24)
+                }
             }
         }
     }
