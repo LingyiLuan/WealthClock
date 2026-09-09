@@ -34,6 +34,15 @@ struct RevealView: View {
 
     private var omen: OmenEntry { OmenPicker.pick(for: profile, on: omenDate) }
 
+    /// 沙盘钩子:储蓄率 +5pp(按当前收入降支出)后中性自由年龄提前几年。
+    private var plusFivePercentYears: Double? {
+        guard profile.monthlyIncome > 0, let base = neutralAge else { return nil }
+        var boosted = profile
+        boosted.monthlyExpense = max(profile.monthlyExpense - 0.05 * profile.monthlyIncome, 0)
+        guard let improved = FreedomEngine.simulate(boosted, kind: .neutral).freedomAge else { return nil }
+        return ((base - improved) * 10).rounded() / 10
+    }
+
     private var savingsRatePercent: Int {
         guard profile.monthlyIncome > 0 else { return 0 }
         return Int(((1 - profile.monthlyExpense / profile.monthlyIncome) * 100).rounded())
@@ -51,6 +60,7 @@ struct RevealView: View {
                 headline
                 coinRow
                 scenarioChips
+                whatIfHook
                 HStack(spacing: 8) {
                     miyaDash
                     Text(verbatim: "密押 · \(OmenPicker.yearGanzhi())流年 · \(omen.phrase)")
@@ -202,7 +212,27 @@ struct RevealView: View {
     }
 
     private var scenariosDestination: some View {
-        ScenariosView(profile: profile)
+        ScenariosView(profile: profile)  // 沙盘在推演页顶部,进入即见
+    }
+
+    /// 沙盘钩子行:未解锁点进付费墙,已解锁直接进推演页(沙盘在顶部)。
+    @ViewBuilder private var whatIfHook: some View {
+        if let years = plusFivePercentYears, years > 0 {
+            Button {
+                if store.isUnlocked { showScenarios = true } else { showPaywall = true }
+            } label: {
+                HStack(spacing: 5) {
+                    if !store.isUnlocked {
+                        Image(systemName: "lock").font(.system(size: 9))
+                    }
+                    Text(verbatim: "储蓄率每 +5% → 提前 ≈ \(String(format: "%.1f", years)) 年 · 拉一拉看你自己的")
+                        .font(.system(size: 11, design: .serif)).kerning(1)
+                        .underline()
+                }
+                .foregroundStyle(Tokens.giltDeep)
+            }
+            .padding(.top, 10)
+        }
     }
 
     /// 密押行两侧短横线(设计稿 .miya::before/::after:22×1,朱砂 50%)。
