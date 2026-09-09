@@ -15,6 +15,7 @@ declare -a SHOTS=(
   "quiz-trading:-quiz -quizStep 9:3"
   "scenarios:-scenarios:4"
   "history:-history -seedSample:4"
+  "paywall:-paywall:3"
 )
 
 for DEVICE in "${DEVICES[@]}"; do
