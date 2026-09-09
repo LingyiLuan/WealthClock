@@ -22,12 +22,21 @@ struct PaywallView: View {
                     .padding(.top, 40)
                 PixelCoin(face: .yang).frame(width: 44, height: 44)
                     .padding(.top, 18)
-                Text("三情景结果与汇票永远免费。完整推演(曲线、归因、年度对比)买断一次,永久可用。")
+                Text("三情景结果与汇票永远免费。完整推演买断一次,永久可用。")
                     .font(.system(size: 15, design: .serif))
                     .lineSpacing(7)
                     .foregroundStyle(Tokens.ink)
                     .multilineTextAlignment(.center)
                     .padding(.top, 22)
+                VStack(alignment: .leading, spacing: 6) {
+                    Text("· 曲线:三情景资产轨迹与自由线")
+                    Text("· 归因:每个习惯各值几年,附文献依据")
+                    Text("· 沙盘:拉动储蓄率与习惯,实时看年龄变化")
+                }
+                .font(.system(size: 12.5, design: .serif))
+                .lineSpacing(4)
+                .foregroundStyle(Tokens.inkSoft)
+                .padding(.top, 14)
                 if let product = store.product {
                     Text(verbatim: product.displayPrice)
                         .font(.system(size: 34, design: .serif))
