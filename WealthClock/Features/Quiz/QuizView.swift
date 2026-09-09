@@ -32,6 +32,7 @@ struct QuizView: View {
                 quizBody
             }
         }
+        .toolbar(.hidden, for: .tabBar)
     }
 
     private var quizBody: some View {
@@ -56,23 +57,22 @@ struct QuizView: View {
                 .lineSpacing(5)
                 .foregroundStyle(Tokens.inkSoft)
                 .padding(.top, 10)
-            if step.usesWheel {
+            ScrollView {
                 QuizStepContent(step: step, draft: draft)
                     .padding(.top, 22)
-            } else {
-                ScrollView {
-                    QuizStepContent(step: step, draft: draft)
-                        .padding(.top, 22)
-                }
-                .scrollIndicators(.hidden)
-                .scrollDismissesKeyboard(.interactively)
+                    .padding(.bottom, 12)
             }
-            Spacer(minLength: 8)
-            controls
+            .scrollIndicators(.hidden)
+            .scrollDismissesKeyboard(.interactively)
         }
         .padding(.horizontal, Tokens.pageMargin)
         .contentShape(Rectangle())
         .onTapGesture { Self.endEditing() }
+        .safeAreaInset(edge: .bottom) {
+            controls
+                .padding(.horizontal, Tokens.pageMargin)
+                .background(Tokens.paper)
+        }
     }
 
     /// 点空白收起数字键盘(decimalPad 无回车键)。

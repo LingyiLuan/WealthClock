@@ -65,30 +65,41 @@ struct MoneyField: View {
     }
 }
 
-// MARK: - 滚轮
+// MARK: - 步进器(替代滚轮:滚轮与 ScrollView 手势冲突,整体废弃)
 
-struct WheelRow: View {
+struct StepperRow: View {
     let title: String
     let range: ClosedRange<Int>
     let unit: String
     @Binding var value: Int
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 4) {
+        HStack {
             Text(verbatim: title)
                 .font(.system(size: 12, design: .serif))
                 .foregroundStyle(Tokens.inkSoft)
-            Picker(title, selection: $value) {
-                ForEach(Array(range), id: \.self) { number in
-                    Text(verbatim: "\(number) \(unit)")
-                        .font(.system(size: 18, design: .monospaced))
-                        .tag(number)
-                }
+            Spacer()
+            HStack(spacing: 0) {
+                stepButton("minus") { value = max(range.lowerBound, value - 1) }
+                Text(verbatim: "\(value) \(unit)")
+                    .font(.system(size: 18, design: .monospaced))
+                    .foregroundStyle(Tokens.ink)
+                    .frame(minWidth: 92)
+                stepButton("plus") { value = min(range.upperBound, value + 1) }
             }
-            .pickerStyle(.wheel)
-            .frame(height: 108)
-            .clipped()
+            .background(.white.opacity(0.33))
+            .border(Tokens.ink.opacity(0.2), width: 1)
         }
+    }
+
+    private func stepButton(_ symbol: String, action: @escaping () -> Void) -> some View {
+        Button(action: action) {
+            Image(systemName: symbol)
+                .font(.system(size: 15, weight: .medium))
+                .foregroundStyle(Tokens.giltDeep)
+                .frame(width: 44, height: 44)
+        }
+        .buttonStyle(.plain)
     }
 }
 
@@ -144,7 +155,7 @@ struct QuizStepContent: View {
         VStack(alignment: .leading, spacing: 10) {
             switch step {
             case .age:
-                WheelRow(title: "年龄", range: 18...70, unit: "岁", value: $draft.age)
+                StepperRow(title: "年龄", range: 18...70, unit: "岁", value: $draft.age)
             case .region:
                 ForEach(RegionChoice.allCases) { choice in
                     ChoiceRow(label: choice.label, selected: draft.regionChoice == choice) {
@@ -159,14 +170,17 @@ struct QuizStepContent: View {
                 MoneyField(prefix: currencySymbol, placeholder: "可投资资产", value: $draft.investableAssets)
             case .mortgage:
                 MoneyField(prefix: currencySymbol, placeholder: "每月月供", value: $draft.mortgageMonthly)
-                WheelRow(title: "剩余年数", range: 0...40, unit: "年", value: $draft.mortgageYearsLeft)
+                StepperRow(title: "剩余年数", range: 0...40, unit: "年", value: $draft.mortgageYearsLeft)
             case .industryExperience:
-                ForEach(Industry.allCases, id: \.self) { industry in
-                    ChoiceRow(label: industry.label, selected: draft.industry == industry) {
-                        draft.industry = industry
+                LazyVGrid(columns: [GridItem(.flexible(), spacing: 10), GridItem(.flexible())], spacing: 10) {
+                    ForEach(Industry.allCases, id: \.self) { industry in
+                        ChoiceRow(label: industry.label, selected: draft.industry == industry) {
+                            draft.industry = industry
+                        }
                     }
                 }
-                WheelRow(title: "工作年限", range: 0...40, unit: "年", value: $draft.yearsExperience)
+                StepperRow(title: "工作年限", range: 0...40, unit: "年", value: $draft.yearsExperience)
+                    .padding(.top, 6)
             case .education:
                 ForEach(Education.allCases, id: \.self) { education in
                     ChoiceRow(label: education.label, selected: draft.education == education) {

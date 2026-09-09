@@ -71,11 +71,6 @@ enum QuizStep: Hashable {
     var skippable: Bool {
         self == .mortgage || self == .birthDate
     }
-
-    /// 含滚轮的屏不套 ScrollView,避免滚轮与页面滚动手势打架。
-    var usesWheel: Bool {
-        self == .age || self == .mortgage || self == .industryExperience
-    }
 }
 
 /// 地区选项 → Region + 币种(BRIEF §4 第 2 题:地区/币种一并选定)。
