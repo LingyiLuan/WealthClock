@@ -228,9 +228,9 @@ struct QuizStepContent: View {
                         ),
                         displayedComponents: .date
                     )
-                    .datePickerStyle(.wheel)
-                    .labelsHidden()
-                    .environment(\.locale, Locale(identifier: "zh-Hans"))
+                    .datePickerStyle(.compact)  // 弹出日历,不与 ScrollView 抢手势
+                    .tint(Tokens.giltDeep)
+                    .font(.system(size: 13, design: .serif))
                 }
             }
         }
