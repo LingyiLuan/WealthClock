@@ -24,9 +24,9 @@ struct ScenariosView: View {
 
     private func name(_ kind: ScenarioKind) -> String {
         switch kind {
-        case .optimistic: return "乐观"
-        case .neutral: return "中性"
-        case .pessimistic: return "悲观"
+        case .optimistic: return String(localized: "乐观")
+        case .neutral: return String(localized: "中性")
+        case .pessimistic: return String(localized: "悲观")
         }
     }
 
@@ -37,7 +37,7 @@ struct ScenariosView: View {
                     .font(.system(size: 22, design: .serif).weight(.medium)).kerning(1)
                     .foregroundStyle(Tokens.ink)
                     .padding(.top, 20)
-                Text(verbatim: "资产轨迹 · 自由线 · 三情景")
+                Text("资产轨迹 · 自由线 · 三情景")
                     .font(.system(size: 10.5, design: .monospaced)).kerning(1)
                     .foregroundStyle(Tokens.inkSoft)
                     .padding(.top, 6)
@@ -116,7 +116,7 @@ struct ScenariosView: View {
                 AxisGridLine().foregroundStyle(Tokens.rule)
                 AxisValueLabel {
                     if let amount = value.as(Double.self) {
-                        Text(verbatim: String(format: "%.0f万", amount / 10_000))
+                        Text(verbatim: amount.formatted(.number.notation(.compactName).precision(.significantDigits(3))))
                             .font(.system(size: 9, design: .monospaced))
                             .foregroundStyle(Tokens.inkSoft)
                     }
@@ -128,10 +128,10 @@ struct ScenariosView: View {
     /// 账目四行(设计稿 .ledger)。
     private var ledger: some View {
         VStack(spacing: 0) {
-            ledgerRow("月收入", String(format: "%.0f %@", profile.monthlyIncome, profile.currencyCode), gilt: false)
-            ledgerRow("月支出(不含房贷)", String(format: "%.0f", profile.monthlyExpense), gilt: false)
-            ledgerRow("可投资资产", String(format: "%.0f", profile.investableAssets), gilt: false)
-            ledgerRow("自由线(中性)", String(format: "%.0f", result.scenario(.neutral)?.freedomLine ?? 0), gilt: true)
+            ledgerRow(String(localized: "月收入"), "\(profile.monthlyIncome.formatted(.number.precision(.fractionLength(0)))) \(profile.currencyCode)", gilt: false)
+            ledgerRow(String(localized: "月支出(不含房贷)"), profile.monthlyExpense.formatted(.number.precision(.fractionLength(0))), gilt: false)
+            ledgerRow(String(localized: "可投资资产"), profile.investableAssets.formatted(.number.precision(.fractionLength(0))), gilt: false)
+            ledgerRow(String(localized: "自由线(中性)"), (result.scenario(.neutral)?.freedomLine ?? 0).formatted(.number.precision(.fractionLength(0))), gilt: true)
         }
     }
 
@@ -168,7 +168,7 @@ struct ScenariosView: View {
                             .font(.system(size: 13, design: .serif))
                             .foregroundStyle(Tokens.ink)
                         Spacer()
-                        Text(verbatim: item.deltaYears.map { String(format: "%+.1f 年", $0) } ?? "不可比")
+                        Text(verbatim: item.deltaYears.map { String(localized: "\(String(format: "%+.1f", $0)) 年") } ?? String(localized: "不可比"))
                             .font(.system(size: 12, design: .monospaced))
                             .foregroundStyle((item.deltaYears ?? 0) > 0 ? Tokens.cinnabar : Tokens.inkSoft)
                     }
@@ -180,10 +180,10 @@ struct ScenariosView: View {
 
     private func attributionName(_ key: String) -> String {
         switch key {
-        case "trading": return "炒股修正"
-        case "sideHustle": return "副业"
-        case "literacy": return "素养"
-        case "selfControl": return "自控力"
+        case "trading": return String(localized: "炒股修正")
+        case "sideHustle": return String(localized: "副业")
+        case "literacy": return String(localized: "素养")
+        case "selfControl": return String(localized: "自控力")
         default: return key
         }
     }

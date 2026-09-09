@@ -33,37 +33,37 @@ enum QuizStep: Hashable {
 
     var title: String {
         switch self {
-        case .age: return "你今年多大?"
-        case .region: return "你在哪里生活?"
-        case .income: return "税后月收入是多少?"
-        case .expense: return "每月花多少?(不含房贷)"
-        case .assets: return "手上有多少可投资资产?"
-        case .mortgage: return "有房贷吗?"
-        case .industryExperience: return "做哪一行?入行几年了?"
-        case .education: return "最高学历?"
-        case .trading: return "你炒股吗?"
-        case .sideHustle: return "有副业收入吗?"
-        case .literacy(let index): return Literacy.questions[index].prompt
-        case .selfControl: return "控制支出对你来说有多难?"
-        case .birthDate: return "出生日期(可选)"
+        case .age: return String(localized: "你今年多大?")
+        case .region: return String(localized: "你在哪里生活?")
+        case .income: return String(localized: "税后月收入是多少?")
+        case .expense: return String(localized: "每月花多少?(不含房贷)")
+        case .assets: return String(localized: "手上有多少可投资资产?")
+        case .mortgage: return String(localized: "有房贷吗?")
+        case .industryExperience: return String(localized: "做哪一行?入行几年了?")
+        case .education: return String(localized: "最高学历?")
+        case .trading: return String(localized: "你炒股吗?")
+        case .sideHustle: return String(localized: "有副业收入吗?")
+        case .literacy(let index): return LiteracyL10n.prompt(Literacy.questions[index])
+        case .selfControl: return String(localized: "控制支出对你来说有多难?")
+        case .birthDate: return String(localized: "出生日期(可选)")
         }
     }
 
     var why: String {
         switch self {
-        case .age: return "模拟从这个年龄开始,到 100 岁为止。"
-        case .region: return "地区决定收入峰值年龄的参照曲线与币种。"
-        case .income: return "只算到手的。年终奖平摊到月。"
-        case .expense: return "自由线 = 年支出 × 25 上下。支出比收入更能决定你的自由年龄。"
-        case .assets: return "不含自住房。现金、存款、基金、股票都算。"
-        case .mortgage: return "月供与剩余年数。还清后它不再计入自由线。没有可跳过。"
-        case .industryExperience: return "行业影响收入峰值出现的早晚。"
-        case .education: return "教育回报影响峰值前的收入增速——Mincer 曲线。"
-        case .trading: return "这一问会修正你的预期收益。频繁交易的散户平均跑输市场——这是有论文的,不是玄学。"
-        case .sideHustle: return "有的话收入按 +10% 假设。文献证据弱,报告里会注明。"
-        case .literacy: return "三道全球通用的素养题,答完立刻看对错。"
-        case .selfControl: return "1 = 毫无困难,7 = 非常难。文献显示这只影响悲观情景。"
-        case .birthDate: return "仅用于汇票上的密押与配色,不参与计算。"
+        case .age: return String(localized: "模拟从这个年龄开始,到 100 岁为止。")
+        case .region: return String(localized: "地区决定收入峰值年龄的参照曲线与币种。")
+        case .income: return String(localized: "只算到手的。年终奖平摊到月。")
+        case .expense: return String(localized: "自由线 = 年支出 × 25 上下。支出比收入更能决定你的自由年龄。")
+        case .assets: return String(localized: "不含自住房。现金、存款、基金、股票都算。")
+        case .mortgage: return String(localized: "月供与剩余年数。还清后它不再计入自由线。没有可跳过。")
+        case .industryExperience: return String(localized: "行业影响收入峰值出现的早晚。")
+        case .education: return String(localized: "教育回报影响峰值前的收入增速——Mincer 曲线。")
+        case .trading: return String(localized: "这一问会修正你的预期收益。频繁交易的散户平均跑输市场——这是有论文的,不是玄学。")
+        case .sideHustle: return String(localized: "有的话收入按 +10% 假设。文献证据弱,报告里会注明。")
+        case .literacy: return String(localized: "三道全球通用的素养题,答完立刻看对错。")
+        case .selfControl: return String(localized: "1 = 毫无困难,7 = 非常难。文献显示这只影响悲观情景。")
+        case .birthDate: return String(localized: "仅用于汇票上的密押与配色,不参与计算。")
         }
     }
 
@@ -81,11 +81,11 @@ enum RegionChoice: String, CaseIterable, Identifiable {
 
     var label: String {
         switch self {
-        case .cnMainland: return "中国大陆 · CNY"
-        case .hkTw: return "港澳台 · HKD"
-        case .sea: return "东南亚 · SGD"
-        case .northAmerica: return "北美 · USD"
-        case .other: return "其他 · USD"
+        case .cnMainland: return String(localized: "中国大陆 · CNY")
+        case .hkTw: return String(localized: "港澳台 · HKD")
+        case .sea: return String(localized: "东南亚 · SGD")
+        case .northAmerica: return String(localized: "北美 · USD")
+        case .other: return String(localized: "其他 · USD")
         }
     }
 
@@ -189,9 +189,9 @@ enum RegionChoice: String, CaseIterable, Identifiable {
     }
 
     func tradingDeltaText(_ habit: TradingHabit) -> String {
-        guard let delta = tradingDelta(habit) else { return "未达" }
-        if delta == 0 { return "±0 年" }
-        return String(format: "%+.1f 年", delta)
+        guard let delta = tradingDelta(habit) else { return String(localized: "未达") }
+        if delta == 0 { return String(localized: "±0 年") }
+        return String(localized: "\(String(format: "%+.1f", delta)) 年")
     }
 
     /// 已落爻数 0...12(第 N 问全部作答即落第 N 爻;附问不落爻)。

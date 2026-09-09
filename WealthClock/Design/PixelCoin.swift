@@ -52,6 +52,6 @@ struct PixelCoin: View {
                 }
             }
         }
-        .accessibilityLabel(Text(face == .yang ? "铜钱阳面" : "铜钱阴面"))
+        .accessibilityLabel(Text(face == .yang ? LocalizedStringKey("铜钱阳面") : LocalizedStringKey("铜钱阴面")))
     }
 }

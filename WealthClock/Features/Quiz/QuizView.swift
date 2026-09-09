@@ -81,7 +81,8 @@ struct QuizView: View {
     }
 
     private var eyebrow: String {
-        step.questionNumber <= 12 ? "第\(Suzhou.inscription(step.questionNumber))问 · 共十二问" : "附问 · 可选"
+        guard step.questionNumber <= 12 else { return String(localized: "附问 · 可选") }
+        return String(localized: "第\(L10n.numeral(step.questionNumber))问 · 共十二问")
     }
 
     /// 六爻进度:前 6 题第一卦,后 6 题第二卦(既济纹样与揭晓页一致)。
@@ -110,7 +111,7 @@ struct QuizView: View {
     private var controls: some View {
         VStack(spacing: 6) {
             Button(action: next) {
-                Text(stepIndex == QuizStep.all.count - 1 ? "揭晓" : "下一问")
+                Text(stepIndex == QuizStep.all.count - 1 ? LocalizedStringKey("揭晓") : LocalizedStringKey("下一问"))
                     .font(.system(size: 15, design: .serif)).kerning(3)
                     .foregroundStyle(canProceed ? Tokens.paper : Tokens.paper.opacity(0.6))
                     .frame(maxWidth: .infinity, minHeight: Tokens.primaryButtonHeight)
