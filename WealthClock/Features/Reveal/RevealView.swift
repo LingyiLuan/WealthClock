@@ -63,13 +63,13 @@ struct RevealView: View {
                 whatIfHook
                 HStack(spacing: 8) {
                     miyaDash
-                    Text(verbatim: "密押 · \(OmenPicker.yearGanzhi())流年 · \(omen.phrase)")
+                    Text(verbatim: "密押 · \(OmenPicker.yearGanzhi())流年 · \(omen.phrase)")  // l10n-ignore 玄学层保持中文
                         .font(.system(size: 11, design: .serif)).kerning(2)
                         .foregroundStyle(Tokens.cinnabar)
                     miyaDash
                 }
                 .padding(.top, 16)
-                Text(verbatim: omen.gloss)
+                Text(verbatim: omen.gloss)  // l10n-ignore
                     .font(.system(size: 10, design: .serif)).kerning(1.2)
                     .foregroundStyle(Tokens.inkSoft)
                     .padding(.top, 4)
@@ -104,7 +104,7 @@ struct RevealView: View {
                 Text(verbatim: Suzhou.string(from: Int(age.rounded())))
                     .font(.system(size: 18, design: .serif))
                     .foregroundStyle(Tokens.giltDeep)
-                Text(verbatim: "\(Suzhou.chineseUpper(Int(age.rounded()))) · 储蓄率 \(savingsRatePercent)%")
+                Text(String(localized: "\(L10n.upperNumeral(Int(age.rounded()))) · 储蓄率 \(savingsRatePercent)%"))
                     .font(.system(size: 13, design: .serif)).kerning(1.8)
                     .foregroundStyle(Tokens.ink)
             }
@@ -140,7 +140,7 @@ struct RevealView: View {
                     yao(index < hexLines.count ? hexLines[index] : nil)
                 }
             }
-            Text(hexLines.count < 6 ? "六爻 · 第\(Suzhou.chineseUpper(hexLines.count + 1))爻落定" : "六爻 · 第六爻落定")
+            Text(String(localized: "六爻 · 第\(L10n.upperNumeral(min(hexLines.count + 1, 6)))爻落定"))
                 .font(.system(size: 10, design: .serif)).kerning(2.6)
                 .foregroundStyle(Tokens.inkSoft)
         }
@@ -158,9 +158,9 @@ struct RevealView: View {
 
     private var scenarioChips: some View {
         HStack(spacing: 10) {
-            chip("乐观", result.scenario(.optimistic)?.freedomAge, mid: false)
-            chip("中性", neutralAge, mid: true)
-            chip("悲观", result.scenario(.pessimistic)?.freedomAge, mid: false)
+            chip(String(localized: "乐观"), result.scenario(.optimistic)?.freedomAge, mid: false)
+            chip(String(localized: "中性"), neutralAge, mid: true)
+            chip(String(localized: "悲观"), result.scenario(.pessimistic)?.freedomAge, mid: false)
         }
         .padding(.top, 18)
     }
@@ -170,7 +170,7 @@ struct RevealView: View {
             Text(verbatim: title)
                 .font(.system(size: 11, design: .serif)).kerning(2.2)
                 .foregroundStyle(Tokens.inkSoft)
-            Text(verbatim: age.map { String(Int($0.rounded())) } ?? "未达")
+            Text(verbatim: age.map { String(Int($0.rounded())) } ?? String(localized: "未达"))
                 .font(.system(size: 22, design: .serif))
                 .foregroundStyle(mid ? Tokens.giltDeep : Tokens.ink)
         }
@@ -225,7 +225,7 @@ struct RevealView: View {
                     if !store.isUnlocked {
                         Image(systemName: "lock").font(.system(size: 9))
                     }
-                    Text(verbatim: "储蓄率每 +5% → 提前 ≈ \(String(format: "%.1f", years)) 年 · 拉一拉看你自己的")
+                    Text(String(localized: "储蓄率每 +5% → 提前 ≈ \(String(format: "%.1f", years)) 年 · 拉一拉看你自己的"))
                         .font(.system(size: 11, design: .serif)).kerning(1)
                         .underline()
                 }
@@ -241,7 +241,7 @@ struct RevealView: View {
     }
 
     private var seal: some View {
-        Text("財")
+        Text("財")  // l10n-ignore 印章
             .font(.system(size: 22, design: .serif))
             .foregroundStyle(Tokens.cinnabar)
             .frame(width: 40, height: 40)

@@ -1,424 +1,2914 @@
 {
-  "sourceLanguage" : "zh-Hans",
-  "strings" : {
-    "WealthClock" : { "shouldTranslate" : false },
-    "財" : { "shouldTranslate" : false },
-    "自" : { "shouldTranslate" : false },
-    "由" : { "shouldTranslate" : false },
-    "Ma Shan Zheng · SIL Open Font License 1.1" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Ma Shan Zheng · SIL Open Font License 1.1" } },
-        "zh-Hant" : { "stringUnit" : { "state" : "translated", "value" : "Ma Shan Zheng · SIL Open Font License 1.1" } }
-      }
-    },
-    "示例中性情景:%lld 岁" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Sample neutral scenario: age %lld" } },
-        "zh-Hant" : { "stringUnit" : { "state" : "translated", "value" : "範例中性情境:%lld 歲" } }
-      }
-    },
-    "示例:100 岁前未达" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Sample: not reached before 100" } },
-        "zh-Hant" : { "stringUnit" : { "state" : "translated", "value" : "範例:100 歲前未達" } }
-      }
-    },
-    "你的财务自由年龄" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Your financial freedom age" } },
-        "zh-Hant" : { "stringUnit" : { "state" : "translated", "value" : "你的財務自由年齡" } }
-      }
-    },
-    "岁" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "years" } },
-        "zh-Hant" : { "stringUnit" : { "state" : "translated", "value" : "歲" } }
-      }
-    },
-    "未达" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Not yet" } },
-        "zh-Hant" : { "stringUnit" : { "state" : "translated", "value" : "未達" } }
-      }
-    },
-    "需提高储蓄率" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Raise your savings rate" } },
-        "zh-Hant" : { "stringUnit" : { "state" : "translated", "value" : "需提高儲蓄率" } }
-      }
-    },
-    "把储蓄率提到 %lld%% 可在 65 岁前自由" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Raise your savings rate to %lld%% to be free before 65" } },
-        "zh-Hant" : { "stringUnit" : { "state" : "translated", "value" : "把儲蓄率提到 %lld%% 可在 65 歲前自由" } }
-      }
-    },
-    "保存汇票" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Save the bill" } },
-        "zh-Hant" : { "stringUnit" : { "state" : "translated", "value" : "儲存匯票" } }
-      }
-    },
-    "分享汇票" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Share the bill" } },
-        "zh-Hant" : { "stringUnit" : { "state" : "translated", "value" : "分享匯票" } }
-      }
-    },
-    "查看汇票" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "View the bill" } },
-        "zh-Hant" : { "stringUnit" : { "state" : "translated", "value" : "查看匯票" } }
-      }
-    },
-    "WealthClock 汇票" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "WealthClock Bill" } },
-        "zh-Hant" : { "stringUnit" : { "state" : "translated", "value" : "WealthClock 匯票" } }
-      }
-    },
-    "重新测算" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Start over" } },
-        "zh-Hant" : { "stringUnit" : { "state" : "translated", "value" : "重新測算" } }
-      }
-    },
-    "查看完整推演" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "See the full report" } },
-        "zh-Hant" : { "stringUnit" : { "state" : "translated", "value" : "查看完整推演" } }
-      }
-    },
-    "本应用提供的是基于公开文献的情景测算与传统文化趣味解读,不构成投资、财务或法律建议。" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "WealthClock provides scenario estimates based on public research plus traditional-culture flavor text. It is not investment, financial, or legal advice." } },
-        "zh-Hant" : { "stringUnit" : { "state" : "translated", "value" : "本應用程式提供的是基於公開文獻的情境測算與傳統文化趣味解讀,不構成投資、財務或法律建議。" } }
-      }
-    },
-    "本应用提供的是基于公开文献的情景测算与传统文化趣味解读,不构成投资、财务或法律建议。所有数据仅保存在本机,应用不联网。" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "WealthClock provides scenario estimates based on public research plus traditional-culture flavor text. It is not investment, financial, or legal advice. All data stays on this device; the app never goes online." } },
-        "zh-Hant" : { "stringUnit" : { "state" : "translated", "value" : "本應用程式提供的是基於公開文獻的情境測算與傳統文化趣味解讀,不構成投資、財務或法律建議。所有資料僅儲存在本機,應用程式不連網。" } }
-      }
-    },
-    "上一问" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Previous" } },
-        "zh-Hant" : { "stringUnit" : { "state" : "translated", "value" : "上一問" } }
-      }
-    },
-    "跳过此问" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Skip this one" } },
-        "zh-Hant" : { "stringUnit" : { "state" : "translated", "value" : "跳過此問" } }
-      }
-    },
-    "每答一问 · 落一爻" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "One line falls with every answer" } },
-        "zh-Hant" : { "stringUnit" : { "state" : "translated", "value" : "每答一問 · 落一爻" } }
-      }
-    },
-    "以首次作答计分" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Scored on your first answer" } },
-        "zh-Hant" : { "stringUnit" : { "state" : "translated", "value" : "以首次作答計分" } }
-      }
-    },
-    "账户规模呢?(折合人民币)" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "And your account size? (CNY equivalent)" } },
-        "zh-Hant" : { "stringUnit" : { "state" : "translated", "value" : "帳戶規模呢?(折合人民幣)" } }
-      }
-    },
-    "毫无困难" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Effortless" } },
-        "zh-Hant" : { "stringUnit" : { "state" : "translated", "value" : "毫無困難" } }
-      }
-    },
-    "非常难" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Very hard" } },
-        "zh-Hant" : { "stringUnit" : { "state" : "translated", "value" : "非常難" } }
-      }
-    },
-    "出生日期" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Birth date" } },
-        "zh-Hant" : { "stringUnit" : { "state" : "translated", "value" : "出生日期" } }
-      }
-    },
-    "完成" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Done" } },
-        "zh-Hant" : { "stringUnit" : { "state" : "translated", "value" : "完成" } }
-      }
-    },
-    "测算" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Reading" } },
-        "zh-Hant" : { "stringUnit" : { "state" : "translated", "value" : "測算" } }
-      }
-    },
-    "历史" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "History" } },
-        "zh-Hant" : { "stringUnit" : { "state" : "translated", "value" : "歷史" } }
-      }
-    },
-    "设置" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Settings" } },
-        "zh-Hant" : { "stringUnit" : { "state" : "translated", "value" : "設定" } }
-      }
-    },
-    "还没有测算记录" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "No readings yet" } },
-        "zh-Hant" : { "stringUnit" : { "state" : "translated", "value" : "還沒有測算記錄" } }
-      }
-    },
-    "完成一次测算后,这里会替你记账。" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Finish a reading and it will be kept here." } },
-        "zh-Hant" : { "stringUnit" : { "state" : "translated", "value" : "完成一次測算後,這裡會替你記帳。" } }
-      }
-    },
-    "三情景" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Three scenarios" } },
-        "zh-Hant" : { "stringUnit" : { "state" : "translated", "value" : "三情境" } }
-      }
-    },
-    "归因(中性基准)" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Attribution (neutral baseline)" } },
-        "zh-Hant" : { "stringUnit" : { "state" : "translated", "value" : "歸因(中性基準)" } }
-      }
-    },
-    "输入摘要" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Inputs" } },
-        "zh-Hant" : { "stringUnit" : { "state" : "translated", "value" : "輸入摘要" } }
-      }
-    },
-    "密押" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Seal" } },
-        "zh-Hant" : { "stringUnit" : { "state" : "translated", "value" : "密押" } }
-      }
-    },
-    "重看揭晓" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Replay the reveal" } },
-        "zh-Hant" : { "stringUnit" : { "state" : "translated", "value" : "重看揭曉" } }
-      }
-    },
-    "年度对比" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Year over year" } },
-        "zh-Hant" : { "stringUnit" : { "state" : "translated", "value" : "年度對比" } }
-      }
-    },
-    "中性自由年龄" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Neutral freedom age" } },
-        "zh-Hant" : { "stringUnit" : { "state" : "translated", "value" : "中性自由年齡" } }
-      }
-    },
-    "明年再来测一次,这里会告诉你这一年值多少年。" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Come back next year — this line will tell you what the year was worth." } },
-        "zh-Hant" : { "stringUnit" : { "state" : "translated", "value" : "明年再來測一次,這裡會告訴你這一年值多少年。" } }
-      }
-    },
-    "储蓄率" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Savings rate" } },
-        "zh-Hant" : { "stringUnit" : { "state" : "translated", "value" : "儲蓄率" } }
-      }
-    },
-    "可投资资产" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Investable assets" } },
-        "zh-Hant" : { "stringUnit" : { "state" : "translated", "value" : "可投資資產" } }
-      }
-    },
-    "链接" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Links" } },
-        "zh-Hant" : { "stringUnit" : { "state" : "translated", "value" : "連結" } }
-      }
-    },
-    "隐私政策" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Privacy Policy" } },
-        "zh-Hant" : { "stringUnit" : { "state" : "translated", "value" : "隱私權政策" } }
-      }
-    },
-    "支持" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Support" } },
-        "zh-Hant" : { "stringUnit" : { "state" : "translated", "value" : "支援" } }
-      }
-    },
-    "联系邮箱" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Email us" } },
-        "zh-Hant" : { "stringUnit" : { "state" : "translated", "value" : "聯絡信箱" } }
-      }
-    },
-    "数据" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Data" } },
-        "zh-Hant" : { "stringUnit" : { "state" : "translated", "value" : "資料" } }
-      }
-    },
-    "导出 JSON" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Export JSON" } },
-        "zh-Hant" : { "stringUnit" : { "state" : "translated", "value" : "匯出 JSON" } }
-      }
-    },
-    "导出 CSV" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Export CSV" } },
-        "zh-Hant" : { "stringUnit" : { "state" : "translated", "value" : "匯出 CSV" } }
-      }
-    },
-    "删除全部数据" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Delete all data" } },
-        "zh-Hant" : { "stringUnit" : { "state" : "translated", "value" : "刪除全部資料" } }
-      }
-    },
-    "删除全部测算记录?此操作不可撤销。" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Delete all readings? This cannot be undone." } },
-        "zh-Hant" : { "stringUnit" : { "state" : "translated", "value" : "刪除全部測算記錄?此操作無法復原。" } }
-      }
-    },
-    "删除全部" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Delete all" } },
-        "zh-Hant" : { "stringUnit" : { "state" : "translated", "value" : "全部刪除" } }
-      }
-    },
-    "取消" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Cancel" } },
-        "zh-Hant" : { "stringUnit" : { "state" : "translated", "value" : "取消" } }
-      }
-    },
-    "关于" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "About" } },
-        "zh-Hant" : { "stringUnit" : { "state" : "translated", "value" : "關於" } }
-      }
-    },
-    "开源许可" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Open-source licenses" } },
-        "zh-Hant" : { "stringUnit" : { "state" : "translated", "value" : "開源授權" } }
-      }
-    },
-    "版本" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Version" } },
-        "zh-Hant" : { "stringUnit" : { "state" : "translated", "value" : "版本" } }
-      }
-    },
-    "推演" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Full Report" } },
-        "zh-Hant" : { "stringUnit" : { "state" : "translated", "value" : "推演" } }
-      }
-    },
-    "自由线" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Freedom line" } },
-        "zh-Hant" : { "stringUnit" : { "state" : "translated", "value" : "自由線" } }
-      }
-    },
-    "情景测算,非投资建议;密押为传统文化趣味解读,不参与计算。" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Scenario estimates, not investment advice. The seal line is traditional-culture flavor and never touches the math." } },
-        "zh-Hant" : { "stringUnit" : { "state" : "translated", "value" : "情境測算,非投資建議;密押為傳統文化趣味解讀,不參與計算。" } }
-      }
-    },
-    "沙盘" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Sandbox" } },
-        "zh-Hant" : { "stringUnit" : { "state" : "translated", "value" : "沙盤" } }
-      }
-    },
-    "试算,不入历史" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "What-if only — never saved" } },
-        "zh-Hant" : { "stringUnit" : { "state" : "translated", "value" : "試算,不入歷史" } }
-      }
-    },
-    "恢复原始" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Reset" } },
-        "zh-Hant" : { "stringUnit" : { "state" : "translated", "value" : "恢復原始" } }
-      }
-    },
-    "副业" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Side income" } },
-        "zh-Hant" : { "stringUnit" : { "state" : "translated", "value" : "副業" } }
-      }
-    },
-    "资产" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Assets" } },
-        "zh-Hant" : { "stringUnit" : { "state" : "translated", "value" : "資產" } }
-      }
-    },
-    "完整推演" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Full Report" } },
-        "zh-Hant" : { "stringUnit" : { "state" : "translated", "value" : "完整推演" } }
-      }
-    },
-    "三情景结果与汇票永远免费。完整推演买断一次,永久可用。" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Your three scenarios and the bill are free, forever. The full report is a single one-time purchase, yours for good." } },
-        "zh-Hant" : { "stringUnit" : { "state" : "translated", "value" : "三情境結果與匯票永遠免費。完整推演買斷一次,永久可用。" } }
-      }
-    },
-    "· 曲线:三情景资产轨迹与自由线" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "· Curves: asset trajectories and your freedom line" } },
-        "zh-Hant" : { "stringUnit" : { "state" : "translated", "value" : "· 曲線:三情境資產軌跡與自由線" } }
-      }
-    },
-    "· 归因:每个习惯各值几年,附文献依据" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "· Attribution: what each habit costs in years, with sources" } },
-        "zh-Hant" : { "stringUnit" : { "state" : "translated", "value" : "· 歸因:每個習慣各值幾年,附文獻依據" } }
-      }
-    },
-    "· 沙盘:拉动储蓄率与习惯,实时看年龄变化" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "· Sandbox: drag your savings rate and habits, watch your age move in real time" } },
-        "zh-Hant" : { "stringUnit" : { "state" : "translated", "value" : "· 沙盤:拉動儲蓄率與習慣,即時看年齡變化" } }
-      }
-    },
-    "恢复购买" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Restore Purchase" } },
-        "zh-Hant" : { "stringUnit" : { "state" : "translated", "value" : "恢復購買" } }
-      }
-    },
-    "进度 %lld/6" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Progress %lld of 6" } },
-        "zh-Hant" : { "stringUnit" : { "state" : "translated", "value" : "進度 %lld/6" } }
+  "sourceLanguage": "zh-Hans",
+  "strings": {
+    "%@ · 储蓄率 %lld%%": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ · savings rate %lld%%"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ · 儲蓄率 %lld%%"
+          }
+        }
+      }
+    },
+    "%@ 年": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ yrs"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ 年"
+          }
+        }
+      }
+    },
+    "%lld 岁": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Age %lld"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld 歲"
+          }
+        }
+      }
+    },
+    "1 = 毫无困难,7 = 非常难。文献显示这只影响悲观情景。": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "1 = effortless, 7 = very hard. Research says this only affects the pessimistic scenario."
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "1 = 毫無困難,7 = 非常難。文獻顯示這只影響悲觀情境。"
+          }
+        }
+      }
+    },
+    "10 万以下": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Under 100k"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "10 萬以下"
+          }
+        }
+      }
+    },
+    "100 元存入年利率 2% 的账户,五年后账户里的钱会:": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Put 100 in an account earning 2% a year. After five years the account holds:"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "100 元存入年利率 2% 的帳戶,五年後帳戶裡的錢會:"
+          }
+        }
+      }
+    },
+    "1000 万以上": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Over 10M"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "1000 萬以上"
+          }
+        }
+      }
+    },
+    "10–50 万": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "100k–500k"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "10–50 萬"
+          }
+        }
+      }
+    },
+    "50 万–1000 万": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "500k–10M"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "50 萬–1000 萬"
+          }
+        }
+      }
+    },
+    "Ma Shan Zheng · SIL Open Font License 1.1": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ma Shan Zheng · SIL Open Font License 1.1"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ma Shan Zheng · SIL Open Font License 1.1"
+          }
+        }
+      }
+    },
+    "WealthClock": {
+      "shouldTranslate": false
+    },
+    "WealthClock 汇票": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "WealthClock Bill"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "WealthClock 匯票"
+          }
+        }
+      }
+    },
+    "±0 年": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "±0 yrs"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "±0 年"
+          }
+        }
+      }
+    },
+    "· 归因:每个习惯各值几年,附文献依据": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "· Attribution: what each habit costs in years, with sources"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "· 歸因:每個習慣各值幾年,附文獻依據"
+          }
+        }
+      }
+    },
+    "· 曲线:三情景资产轨迹与自由线": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "· Curves: asset trajectories and your freedom line"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "· 曲線:三情境資產軌跡與自由線"
+          }
+        }
+      }
+    },
+    "· 沙盘:拉动储蓄率与习惯,实时看年龄变化": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "· Sandbox: drag your savings rate and habits, watch your age move in real time"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "· 沙盤:拉動儲蓄率與習慣,即時看年齡變化"
+          }
+        }
+      }
+    },
+    "“买单只公司的股票,通常比买一只股票基金更安全。”这句话:": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "“Buying a single company's stock is usually safer than a stock fund.” This statement is:"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "「買單一公司的股票,通常比買一檔股票基金更安全。」這句話:"
+          }
+        }
+      }
+    },
+    "三情景": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Three scenarios"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "三情境"
+          }
+        }
+      }
+    },
+    "三情景结果与汇票永远免费。完整推演买断一次,永久可用。": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Your three scenarios and the bill are free, forever. The full report is a single one-time purchase, yours for good."
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "三情境結果與匯票永遠免費。完整推演買斷一次,永久可用。"
+          }
+        }
+      }
+    },
+    "三道全球通用的素养题,答完立刻看对错。": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The three classic literacy questions, scored the moment you answer."
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "三道全球通用的素養題,答完立刻看對錯。"
+          }
+        }
+      }
+    },
+    "上一问": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Previous"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "上一問"
+          }
+        }
+      }
+    },
+    "下一问": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Next"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "下一問"
+          }
+        }
+      }
+    },
+    "不可比": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "n/a"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "不可比"
+          }
+        }
+      }
+    },
+    "不含自住房。现金、存款、基金、股票都算。": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Excluding your home. Cash, deposits, funds and stocks all count."
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "不含自住房。現金、存款、基金、股票都算。"
+          }
+        }
+      }
+    },
+    "不填(汇票用朱砂色系)": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Skip (the bill uses cinnabar)"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "不填(匯票用朱砂色系)"
+          }
+        }
+      }
+    },
+    "不对。": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Not quite. "
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "不對。"
+          }
+        }
+      }
+    },
+    "不炒,只定投指数": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "I don't trade — index funds only"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "不炒,只定期買指數"
+          }
+        }
+      }
+    },
+    "东南亚 · SGD": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Southeast Asia · SGD"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "東南亞 · SGD"
+          }
+        }
+      }
+    },
+    "中国大陆 · CNY": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mainland China · CNY"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "中國大陸 · CNY"
+          }
+        }
+      }
+    },
+    "中性": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Neutral"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "中性"
+          }
+        }
+      }
+    },
+    "中性自由年龄": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Neutral freedom age"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "中性自由年齡"
+          }
+        }
+      }
+    },
+    "乐观": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Optimistic"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "樂觀"
+          }
+        }
+      }
+    },
+    "买断完整推演": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Buy the full report"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "買斷完整推演"
+          }
+        }
+      }
+    },
+    "互联网 / 科技": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tech / Internet"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "網路 / 科技"
+          }
+        }
+      }
+    },
+    "交易习惯": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Trading habit"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "交易習慣"
+          }
+        }
+      }
+    },
+    "仅用于汇票上的密押与配色,不参与计算。": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Only used for the seal line and colors on your bill. Never touches the math."
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "僅用於匯票上的密押與配色,不參與計算。"
+          }
+        }
+      }
+    },
+    "以首次作答计分": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Scored on your first answer"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "以首次作答計分"
+          }
+        }
+      }
+    },
+    "体制内": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Government"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "公部門"
+          }
+        }
+      }
+    },
+    "你今年多大?": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "How old are you?"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "你今年多大?"
+          }
+        }
+      }
+    },
+    "你在哪里生活?": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Where do you live?"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "你在哪裡生活?"
+          }
+        }
+      }
+    },
+    "你炒股吗?": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Do you trade stocks?"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "你炒股嗎?"
+          }
+        }
+      }
+    },
+    "你的财务自由年龄": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Your financial freedom age"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "你的財務自由年齡"
+          }
+        }
+      }
+    },
+    "保存汇票": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Save the bill"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "儲存匯票"
+          }
+        }
+      }
+    },
+    "做哪一行?入行几年了?": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "What do you do, and for how long?"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "做哪一行?入行幾年了?"
+          }
+        }
+      }
+    },
+    "偶尔": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Rarely"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "偶爾"
+          }
+        }
+      }
+    },
+    "偶尔买卖,一年几次": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A few trades a year"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "偶爾買賣,一年幾次"
+          }
+        }
+      }
+    },
+    "储蓄率": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Savings rate"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "儲蓄率"
+          }
+        }
+      }
+    },
+    "储蓄率每 +5%% → 提前 ≈ %@ 年 · 拉一拉看你自己的": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Every +5%% savings ≈ %@ yrs earlier · drag it yourself"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "儲蓄率每 +5%% → 提前 ≈ %@ 年 · 拉一拉看你自己的"
+          }
+        }
+      }
+    },
+    "六爻 · 第%@爻落定": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Six lines · line %@ set"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "六爻 · 第%@爻落定"
+          }
+        }
+      }
+    },
+    "关于": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "About"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "關於"
+          }
+        }
+      }
+    },
+    "其他": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Other"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "其他"
+          }
+        }
+      }
+    },
+    "其他 · USD": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Elsewhere · USD"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "其他 · USD"
+          }
+        }
+      }
+    },
+    "出生日期": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Birth date"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "出生日期"
+          }
+        }
+      }
+    },
+    "出生日期(可选)": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Birth date (optional)"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "出生日期(可選)"
+          }
+        }
+      }
+    },
+    "分享汇票": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Share the bill"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "分享匯票"
+          }
+        }
+      }
+    },
+    "删除全部": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Delete all"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "全部刪除"
+          }
+        }
+      }
+    },
+    "删除全部数据": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Delete all data"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "刪除全部資料"
+          }
+        }
+      }
+    },
+    "删除全部测算记录?此操作不可撤销。": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Delete all readings? This cannot be undone."
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "刪除全部測算記錄?此操作無法復原。"
+          }
+        }
+      }
+    },
+    "利息会再生利息。五年后约 110.4 元,这就是复利。": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Interest earns interest. About 110.4 after five years — that's compounding."
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "利息會再生利息。五年後約 110.4 元,這就是複利。"
+          }
+        }
+      }
+    },
+    "制造业": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Manufacturing"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "製造業"
+          }
+        }
+      }
+    },
+    "剩余年数": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Years left"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "剩餘年數"
+          }
+        }
+      }
+    },
+    "副业": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Side income"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "副業"
+          }
+        }
+      }
+    },
+    "北美 · USD": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "North America · USD"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "北美 · USD"
+          }
+        }
+      }
+    },
+    "医疗": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Healthcare"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "醫療"
+          }
+        }
+      }
+    },
+    "单只股票承担公司个体风险;基金分散到几十上百家,波动通常更小。": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A single stock carries one company's risk; a fund spreads it across dozens or hundreds."
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "單一股票承擔公司個別風險;基金分散到幾十上百家,波動通常更小。"
+          }
+        }
+      }
+    },
+    "历史": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "History"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "歷史"
+          }
+        }
+      }
+    },
+    "取消": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cancel"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "取消"
+          }
+        }
+      }
+    },
+    "只算到手的。年终奖平摊到月。": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "After tax only. Spread any bonus across the months."
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "只算到手的。年終獎金平攤到月。"
+          }
+        }
+      }
+    },
+    "可投资产": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Investable assets"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "可投資產"
+          }
+        }
+      }
+    },
+    "可投资资产": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Investable assets"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "可投資資產"
+          }
+        }
+      }
+    },
+    "名义上多了 1%,物价涨了 2%,购买力反而下降约 1%。": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nominally up 1%, prices up 2% — your purchasing power fell about 1%."
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "名目上多了 1%,物價漲了 2%,購買力反而下降約 1%。"
+          }
+        }
+      }
+    },
+    "和今天一样": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The same as today"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "和今天一樣"
+          }
+        }
+      }
+    },
+    "地区决定收入峰值年龄的参照曲线与币种。": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Region sets the reference income curve and currency."
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "地區決定收入高峰年齡的參照曲線與幣別。"
+          }
+        }
+      }
+    },
+    "填写出生日期": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Enter birth date"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "填寫出生日期"
+          }
+        }
+      }
+    },
+    "处理中…": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Working…"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "處理中…"
+          }
+        }
+      }
+    },
+    "多于 102 元": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "More than 102"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "多於 102 元"
+          }
+        }
+      }
+    },
+    "完成": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Done"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "完成"
+          }
+        }
+      }
+    },
+    "完成一次测算后,这里会替你记账。": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Finish a reading and it will be kept here."
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "完成一次測算後,這裡會替你記帳。"
+          }
+        }
+      }
+    },
+    "完整推演": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Full Report"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "完整推演"
+          }
+        }
+      }
+    },
+    "定投": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Index"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "定投"
+          }
+        }
+      }
+    },
+    "密押": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Seal"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "密押"
+          }
+        }
+      }
+    },
+    "对": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "True"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "對"
+          }
+        }
+      }
+    },
+    "导出 CSV": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Export CSV"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "匯出 CSV"
+          }
+        }
+      }
+    },
+    "导出 JSON": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Export JSON"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "匯出 JSON"
+          }
+        }
+      }
+    },
+    "少于 102 元": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Less than 102"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "少於 102 元"
+          }
+        }
+      }
+    },
+    "岁": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "years"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "歲"
+          }
+        }
+      }
+    },
+    "工作年限": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Years of experience"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "工作年資"
+          }
+        }
+      }
+    },
+    "年": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "yrs"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "年"
+          }
+        }
+      }
+    },
+    "年度对比": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Year over year"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "年度對比"
+          }
+        }
+      }
+    },
+    "年龄": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Age"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "年齡"
+          }
+        }
+      }
+    },
+    "开源许可": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Open-source licenses"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "開源授權"
+          }
+        }
+      }
+    },
+    "归因(中性基准)": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Attribution (neutral baseline)"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "歸因(中性基準)"
+          }
+        }
+      }
+    },
+    "恢复原始": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Reset"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "恢復原始"
+          }
+        }
+      }
+    },
+    "恢复购买": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Restore Purchase"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "恢復購買"
+          }
+        }
+      }
+    },
+    "悲观": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pessimistic"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "悲觀"
+          }
+        }
+      }
+    },
+    "情景测算,非投资建议;密押为传统文化趣味解读,不参与计算。": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Scenario estimates, not investment advice. The seal line is traditional-culture flavor and never touches the math."
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "情境測算,非投資建議;密押為傳統文化趣味解讀,不參與計算。"
+          }
+        }
+      }
+    },
+    "手上有多少可投资资产?": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "How much can you invest?"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "手上有多少可投資資產?"
+          }
+        }
+      }
+    },
+    "把储蓄率提到 %lld%% 可在 65 岁前自由": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Raise your savings rate to %lld%% to be free before 65"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "把儲蓄率提到 %lld%% 可在 65 歲前自由"
+          }
+        }
+      }
+    },
+    "控制支出对你来说有多难?": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "How hard is it to control spending?"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "控制支出對你來說有多難?"
+          }
+        }
+      }
+    },
+    "推演": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Full Report"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "推演"
+          }
+        }
+      }
+    },
+    "推迟 %@": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "+%@ later"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "推遲 %@"
+          }
+        }
+      }
+    },
+    "推迟 %@ 年": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ yrs later"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "推遲 %@ 年"
+          }
+        }
+      }
+    },
+    "提前 %@": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ earlier"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "提前 %@"
+          }
+        }
+      }
+    },
+    "提前 %@ 年": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ yrs earlier"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "提前 %@ 年"
+          }
+        }
+      }
+    },
+    "揭晓": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Reveal"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "揭曉"
+          }
+        }
+      }
+    },
+    "支持": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Support"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "支援"
+          }
+        }
+      }
+    },
+    "教育": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Education"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "教育"
+          }
+        }
+      }
+    },
+    "教育回报影响峰值前的收入增速——Mincer 曲线。": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Education shapes income growth before the peak — the Mincer curve."
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "教育報酬影響高峰前的收入成長——Mincer 曲線。"
+          }
+        }
+      }
+    },
+    "数据": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Data"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "資料"
+          }
+        }
+      }
+    },
+    "文创 / 设计": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Creative / Design"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "文創 / 設計"
+          }
+        }
+      }
+    },
+    "日内": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Day"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "當沖"
+          }
+        }
+      }
+    },
+    "日内交易": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Day trading"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "當沖交易"
+          }
+        }
+      }
+    },
+    "明年再来测一次,这里会告诉你这一年值多少年。": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Come back next year — this line will tell you what the year was worth."
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "明年再來測一次,這裡會告訴你這一年值多少年。"
+          }
+        }
+      }
+    },
+    "最高学历?": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Highest degree?"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "最高學歷?"
+          }
+        }
+      }
+    },
+    "月供与剩余年数。还清后它不再计入自由线。没有可跳过。": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Monthly payment and years left. Once paid off it leaves your freedom line. Skip if none."
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "月付與剩餘年數。還清後它不再計入自由線。沒有可跳過。"
+          }
+        }
+      }
+    },
+    "月支出": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Monthly spending"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "月支出"
+          }
+        }
+      }
+    },
+    "月支出(不含房贷)": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Monthly spending (ex. mortgage)"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "月支出(不含房貸)"
+          }
+        }
+      }
+    },
+    "月收入": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Monthly income"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "月收入"
+          }
+        }
+      }
+    },
+    "有": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yes"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "有"
+          }
+        }
+      }
+    },
+    "有副业收入吗?": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Any side income?"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "有副業收入嗎?"
+          }
+        }
+      }
+    },
+    "有房贷吗?": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Do you have a mortgage?"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "有房貸嗎?"
+          }
+        }
+      }
+    },
+    "有的话收入按 +10% 假设。文献证据弱,报告里会注明。": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "If yes we assume +10% income. Weak evidence — flagged in the report."
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "有的話收入按 +10% 假設。文獻證據弱,報告裡會註明。"
+          }
+        }
+      }
+    },
+    "未达": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Not yet"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "未達"
+          }
+        }
+      }
+    },
+    "本应用提供的是基于公开文献的情景测算与传统文化趣味解读,不构成投资、财务或法律建议。": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "WealthClock provides scenario estimates based on public research plus traditional-culture flavor text. It is not investment, financial, or legal advice."
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "本應用程式提供的是基於公開文獻的情境測算與傳統文化趣味解讀,不構成投資、財務或法律建議。"
+          }
+        }
+      }
+    },
+    "本应用提供的是基于公开文献的情景测算与传统文化趣味解读,不构成投资、财务或法律建议。所有数据仅保存在本机,应用不联网。": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "WealthClock provides scenario estimates based on public research plus traditional-culture flavor text. It is not investment, financial, or legal advice. All data stays on this device; the app never goes online."
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "本應用程式提供的是基於公開文獻的情境測算與傳統文化趣味解讀,不構成投資、財務或法律建議。所有資料僅儲存在本機,應用程式不連網。"
+          }
+        }
+      }
+    },
+    "本科": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bachelor's"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "大學"
+          }
+        }
+      }
+    },
+    "本科以下": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Below bachelor's"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "大學以下"
+          }
+        }
+      }
+    },
+    "查看完整推演": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "See the full report"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "查看完整推演"
+          }
+        }
+      }
+    },
+    "查看汇票": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "View the bill"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "查看匯票"
+          }
+        }
+      }
+    },
+    "模拟从这个年龄开始,到 100 岁为止。": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The simulation runs from this age to 100."
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "模擬從這個年齡開始,到 100 歲為止。"
+          }
+        }
+      }
+    },
+    "正好 102 元": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Exactly 102"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "正好 102 元"
+          }
+        }
+      }
+    },
+    "每周": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Weekly"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "每週"
+          }
+        }
+      }
+    },
+    "每周都看盘,常换手": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Watching charts weekly, trading often"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "每週都看盤,常換手"
+          }
+        }
+      }
+    },
+    "每月月供": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Monthly payment"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "每月月付"
+          }
+        }
+      }
+    },
+    "每月花多少?(不含房贷)": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "How much do you spend a month? (ex. mortgage)"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "每月花多少?(不含房貸)"
+          }
+        }
+      }
+    },
+    "每答一问 · 落一爻": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "One line falls with every answer"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "每答一問 · 落一爻"
+          }
+        }
+      }
+    },
+    "比今天多": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "More than today"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "比今天多"
+          }
+        }
+      }
+    },
+    "比今天少": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Less than today"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "比今天少"
+          }
+        }
+      }
+    },
+    "毫无困难": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Effortless"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "毫無困難"
+          }
+        }
+      }
+    },
+    "沙盘": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sandbox"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "沙盤"
+          }
+        }
+      }
+    },
+    "没有": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "沒有"
+          }
+        }
+      }
+    },
+    "测算": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Reading"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "測算"
+          }
+        }
+      }
+    },
+    "港澳台 · HKD": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "HK / TW / MO · HKD"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "港澳台 · HKD"
+          }
+        }
+      }
+    },
+    "炒股修正": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Trading habit"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "炒股修正"
+          }
+        }
+      }
+    },
+    "版本": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Version"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "版本"
+          }
+        }
+      }
+    },
+    "由": {
+      "shouldTranslate": false
+    },
+    "硕士及以上": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Master's or above"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "碩士及以上"
+          }
+        }
+      }
+    },
+    "示例:100 岁前未达": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sample: not reached before 100"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "範例:100 歲前未達"
+          }
+        }
+      }
+    },
+    "示例中性情景:%lld 岁": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sample neutral scenario: age %lld"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "範例中性情境:%lld 歲"
+          }
+        }
+      }
+    },
+    "税后月收入": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Monthly take-home"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "稅後月收入"
+          }
+        }
+      }
+    },
+    "税后月收入是多少?": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "What's your monthly take-home pay?"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "稅後月收入是多少?"
+          }
+        }
+      }
+    },
+    "第%@问 · 共十二问": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Question %@ of 12"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "第%@問 · 共十二問"
+          }
+        }
+      }
+    },
+    "答对了。": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Correct. "
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "答對了。"
+          }
+        }
+      }
+    },
+    "素养": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Literacy"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "素養"
+          }
+        }
+      }
+    },
+    "联系邮箱": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Email us"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "聯絡信箱"
+          }
+        }
+      }
+    },
+    "自": {
+      "shouldTranslate": false
+    },
+    "自控力": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Self-control"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "自控力"
+          }
+        }
+      }
+    },
+    "自由线": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Freedom line"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "自由線"
+          }
+        }
+      }
+    },
+    "自由线 = 年支出 × 25 上下。支出比收入更能决定你的自由年龄。": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Freedom line ≈ 25× yearly spending. Spending decides your freedom age more than income does."
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "自由線 = 年支出 × 25 上下。支出比收入更能決定你的自由年齡。"
+          }
+        }
+      }
+    },
+    "自由线(中性)": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Freedom line (neutral)"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "自由線(中性)"
+          }
+        }
+      }
+    },
+    "自由职业": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Freelance"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "自由業"
+          }
+        }
+      }
+    },
+    "行业影响收入峰值出现的早晚。": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Your industry shifts when income peaks."
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "行業影響收入高峰出現的早晚。"
+          }
+        }
+      }
+    },
+    "设置": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Settings"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "設定"
+          }
+        }
+      }
+    },
+    "试算,不入历史": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "What-if only — never saved"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "試算,不入歷史"
+          }
+        }
+      }
+    },
+    "財": {
+      "shouldTranslate": false
+    },
+    "账户年利率 1%,通胀 2%。一年后,这笔钱能买到的东西:": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Your account earns 1%; inflation is 2%. A year later this money buys:"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "帳戶年利率 1%,通膨 2%。一年後,這筆錢能買到的東西:"
+          }
+        }
+      }
+    },
+    "账户规模呢?(折合人民币)": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "And your account size? (CNY equivalent)"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "帳戶規模呢?(折合人民幣)"
+          }
+        }
+      }
+    },
+    "资产": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Assets"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "資產"
+          }
+        }
+      }
+    },
+    "跳过此问": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Skip this one"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "跳過此問"
+          }
+        }
+      }
+    },
+    "输入摘要": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Inputs"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "輸入摘要"
+          }
+        }
+      }
+    },
+    "还没有测算记录": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No readings yet"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "還沒有測算記錄"
+          }
+        }
+      }
+    },
+    "这一问会修正你的预期收益。频繁交易的散户平均跑输市场——这是有论文的,不是玄学。": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This adjusts your expected return. Frequent retail traders underperform on average — that's published research, not fortune-telling."
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "這一問會修正你的預期報酬。頻繁交易的散戶平均跑輸市場——這是有論文的,不是玄學。"
+          }
+        }
+      }
+    },
+    "进度 %lld/6": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Progress %lld of 6"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "進度 %lld/6"
+          }
+        }
+      }
+    },
+    "重新测算": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Start over"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "重新測算"
+          }
+        }
+      }
+    },
+    "重看揭晓": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Replay the reveal"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "重看揭曉"
+          }
+        }
+      }
+    },
+    "金融": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Finance"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "金融"
+          }
+        }
+      }
+    },
+    "铜钱阳面": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Coin, heads"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "銅錢陽面"
+          }
+        }
+      }
+    },
+    "铜钱阴面": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Coin, tails"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "銅錢陰面"
+          }
+        }
+      }
+    },
+    "链接": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Links"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "連結"
+          }
+        }
+      }
+    },
+    "错": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "False"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "錯"
+          }
+        }
+      }
+    },
+    "附问 · 可选": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Extra · optional"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "附問 · 可選"
+          }
+        }
+      }
+    },
+    "隐私政策": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Privacy Policy"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "隱私權政策"
+          }
+        }
+      }
+    },
+    "零售 / 服务业": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Retail / Service"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "零售 / 服務業"
+          }
+        }
+      }
+    },
+    "需提高储蓄率": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Raise your savings rate"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "需提高儲蓄率"
+          }
+        }
+      }
+    },
+    "非常难": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Very hard"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "非常難"
+          }
+        }
       }
     }
   },
-  "version" : "1.0"
+  "version": "1.0"
 }

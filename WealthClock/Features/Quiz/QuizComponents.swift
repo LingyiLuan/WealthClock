@@ -114,9 +114,9 @@ struct LiteracyStepView: View {
     var body: some View {
         @Bindable var draft = draft
         VStack(alignment: .leading, spacing: 10) {
-            ForEach(Array(question.options.enumerated()), id: \.offset) { index, option in
+            ForEach(Array(question.options.enumerated()), id: \.offset) { index, _ in
                 ChoiceRow(
-                    label: option,
+                    label: LiteracyL10n.options(question)[index],
                     detail: detail(for: index),
                     selected: answer == index
                 ) {
@@ -124,7 +124,7 @@ struct LiteracyStepView: View {
                 }
             }
             if let answer {
-                Text(verbatim: (answer == question.correctIndex ? "答对了。" : "不对。") + question.explanation)
+                Text(verbatim: (answer == question.correctIndex ? String(localized: "答对了。") : String(localized: "不对。")) + LiteracyL10n.explanation(question))
                     .font(.system(size: 12, design: .serif))
                     .lineSpacing(5)
                     .foregroundStyle(answer == question.correctIndex ? Tokens.verdigris : Tokens.cinnabar)
@@ -155,7 +155,7 @@ struct QuizStepContent: View {
         VStack(alignment: .leading, spacing: 10) {
             switch step {
             case .age:
-                StepperRow(title: "年龄", range: 18...70, unit: "岁", value: $draft.age)
+                StepperRow(title: String(localized: "年龄"), range: 18...70, unit: String(localized: "岁"), value: $draft.age)
             case .region:
                 ForEach(RegionChoice.allCases) { choice in
                     ChoiceRow(label: choice.label, selected: draft.regionChoice == choice) {
@@ -163,14 +163,14 @@ struct QuizStepContent: View {
                     }
                 }
             case .income:
-                MoneyField(prefix: currencySymbol, placeholder: "税后月收入", value: $draft.monthlyIncome)
+                MoneyField(prefix: currencySymbol, placeholder: String(localized: "税后月收入"), value: $draft.monthlyIncome)
             case .expense:
-                MoneyField(prefix: currencySymbol, placeholder: "月支出", value: $draft.monthlyExpense)
+                MoneyField(prefix: currencySymbol, placeholder: String(localized: "月支出"), value: $draft.monthlyExpense)
             case .assets:
-                MoneyField(prefix: currencySymbol, placeholder: "可投资资产", value: $draft.investableAssets)
+                MoneyField(prefix: currencySymbol, placeholder: String(localized: "可投资资产"), value: $draft.investableAssets)
             case .mortgage:
-                MoneyField(prefix: currencySymbol, placeholder: "每月月供", value: $draft.mortgageMonthly)
-                StepperRow(title: "剩余年数", range: 0...40, unit: "年", value: $draft.mortgageYearsLeft)
+                MoneyField(prefix: currencySymbol, placeholder: String(localized: "每月月供"), value: $draft.mortgageMonthly)
+                StepperRow(title: String(localized: "剩余年数"), range: 0...40, unit: String(localized: "年"), value: $draft.mortgageYearsLeft)
             case .industryExperience:
                 LazyVGrid(columns: [GridItem(.flexible(), spacing: 10), GridItem(.flexible())], spacing: 10) {
                     ForEach(Industry.allCases, id: \.self) { industry in
@@ -179,7 +179,7 @@ struct QuizStepContent: View {
                         }
                     }
                 }
-                StepperRow(title: "工作年限", range: 0...40, unit: "年", value: $draft.yearsExperience)
+                StepperRow(title: String(localized: "工作年限"), range: 0...40, unit: String(localized: "年"), value: $draft.yearsExperience)
                     .padding(.top, 6)
             case .education:
                 ForEach(Education.allCases, id: \.self) { education in
@@ -203,8 +203,8 @@ struct QuizStepContent: View {
                     }
                 }
             case .sideHustle:
-                ChoiceRow(label: "有", selected: draft.hasSideHustle == true) { draft.hasSideHustle = true }
-                ChoiceRow(label: "没有", selected: draft.hasSideHustle == false) { draft.hasSideHustle = false }
+                ChoiceRow(label: String(localized: "有"), selected: draft.hasSideHustle == true) { draft.hasSideHustle = true }
+                ChoiceRow(label: String(localized: "没有"), selected: draft.hasSideHustle == false) { draft.hasSideHustle = false }
             case .literacy(let index):
                 LiteracyStepView(question: Literacy.questions[index], draft: draft)
             case .selfControl:
@@ -214,7 +214,7 @@ struct QuizStepContent: View {
                     get: { draft.birthDate != nil },
                     set: { draft.birthDate = $0 ? Date(timeIntervalSince1970: 631_152_000) : nil }
                 )) {
-                    Text(draft.birthDate == nil ? "不填(汇票用朱砂色系)" : "填写出生日期")
+                    Text(draft.birthDate == nil ? LocalizedStringKey("不填(汇票用朱砂色系)") : LocalizedStringKey("填写出生日期"))
                         .font(.system(size: 13, design: .serif))
                         .foregroundStyle(Tokens.ink)
                 }
@@ -268,16 +268,16 @@ struct QuizStepContent: View {
 extension Industry {
     var label: String {
         switch self {
-        case .tech: return "互联网 / 科技"
-        case .finance: return "金融"
-        case .healthcare: return "医疗"
-        case .education: return "教育"
-        case .manufacturing: return "制造业"
-        case .government: return "体制内"
-        case .retailService: return "零售 / 服务业"
-        case .creative: return "文创 / 设计"
-        case .freelance: return "自由职业"
-        case .other: return "其他"
+        case .tech: return String(localized: "互联网 / 科技")
+        case .finance: return String(localized: "金融")
+        case .healthcare: return String(localized: "医疗")
+        case .education: return String(localized: "教育")
+        case .manufacturing: return String(localized: "制造业")
+        case .government: return String(localized: "体制内")
+        case .retailService: return String(localized: "零售 / 服务业")
+        case .creative: return String(localized: "文创 / 设计")
+        case .freelance: return String(localized: "自由职业")
+        case .other: return String(localized: "其他")
         }
     }
 }
@@ -285,9 +285,9 @@ extension Industry {
 extension Education {
     var label: String {
         switch self {
-        case .belowBachelor: return "本科以下"
-        case .bachelor: return "本科"
-        case .masterPlus: return "硕士及以上"
+        case .belowBachelor: return String(localized: "本科以下")
+        case .bachelor: return String(localized: "本科")
+        case .masterPlus: return String(localized: "硕士及以上")
         }
     }
 }
@@ -295,10 +295,10 @@ extension Education {
 extension TradingHabit {
     var label: String {
         switch self {
-        case .indexOnly: return "不炒,只定投指数"
-        case .occasional: return "偶尔买卖,一年几次"
-        case .weekly: return "每周都看盘,常换手"
-        case .dayTrading: return "日内交易"
+        case .indexOnly: return String(localized: "不炒,只定投指数")
+        case .occasional: return String(localized: "偶尔买卖,一年几次")
+        case .weekly: return String(localized: "每周都看盘,常换手")
+        case .dayTrading: return String(localized: "日内交易")
         }
     }
 }
@@ -306,10 +306,41 @@ extension TradingHabit {
 extension AccountTier {
     var label: String {
         switch self {
-        case .under100k: return "10 万以下"
-        case .k100to500k: return "10–50 万"
-        case .k500to10m: return "50 万–1000 万"
-        case .over10m: return "1000 万以上"
+        case .under100k: return String(localized: "10 万以下")
+        case .k100to500k: return String(localized: "10–50 万")
+        case .k500to10m: return String(localized: "50 万–1000 万")
+        case .over10m: return String(localized: "1000 万以上")
+        }
+    }
+}
+
+// MARK: - 素养题文案本地化(题库在纯 Foundation 引擎里,翻译在 App 层按 id 映射)
+
+enum LiteracyL10n {
+    static func prompt(_ question: LiteracyQuestion) -> String {
+        switch question.id {
+        case "compound": return String(localized: "100 元存入年利率 2% 的账户,五年后账户里的钱会:")
+        case "inflation": return String(localized: "账户年利率 1%,通胀 2%。一年后,这笔钱能买到的东西:")
+        default: return String(localized: "“买单只公司的股票,通常比买一只股票基金更安全。”这句话:")
+        }
+    }
+
+    static func options(_ question: LiteracyQuestion) -> [String] {
+        switch question.id {
+        case "compound":
+            return [String(localized: "多于 102 元"), String(localized: "正好 102 元"), String(localized: "少于 102 元")]
+        case "inflation":
+            return [String(localized: "比今天多"), String(localized: "和今天一样"), String(localized: "比今天少")]
+        default:
+            return [String(localized: "对"), String(localized: "错")]
+        }
+    }
+
+    static func explanation(_ question: LiteracyQuestion) -> String {
+        switch question.id {
+        case "compound": return String(localized: "利息会再生利息。五年后约 110.4 元,这就是复利。")
+        case "inflation": return String(localized: "名义上多了 1%,物价涨了 2%,购买力反而下降约 1%。")
+        default: return String(localized: "单只股票承担公司个体风险;基金分散到几十上百家,波动通常更小。")
         }
     }
 }

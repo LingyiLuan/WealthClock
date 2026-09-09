@@ -120,7 +120,7 @@ struct WhatIfPanel: View {
     private var assetsField: some View {
         HStack(spacing: 6) {
             Text("资产").font(.system(size: 12, design: .serif)).foregroundStyle(Tokens.inkSoft)
-            TextField("可投资资产", value: $state.investableAssets, format: .number.precision(.fractionLength(0)))
+            TextField(String(localized: "可投资资产"), value: $state.investableAssets, format: .number.precision(.fractionLength(0)))
                 .keyboardType(.decimalPad)
                 .font(.system(size: 13, design: .monospaced))
                 .foregroundStyle(Tokens.ink)
@@ -135,9 +135,9 @@ struct WhatIfPanel: View {
 
     private func resultRow(_ result: FreedomResult) -> some View {
         HStack(spacing: 10) {
-            miniChip("乐观", .optimistic, result)
-            miniChip("中性", .neutral, result)
-            miniChip("悲观", .pessimistic, result)
+            miniChip(String(localized: "乐观"), .optimistic, result)
+            miniChip(String(localized: "中性"), .neutral, result)
+            miniChip(String(localized: "悲观"), .pessimistic, result)
         }
     }
 
@@ -152,7 +152,7 @@ struct WhatIfPanel: View {
             Text(verbatim: title)
                 .font(.system(size: 10, design: .serif)).kerning(1.5)
                 .foregroundStyle(Tokens.inkSoft)
-            Text(verbatim: live.map { String(Int($0.rounded())) } ?? "未达")
+            Text(verbatim: live.map { String(Int($0.rounded())) } ?? String(localized: "未达"))
                 .font(.system(size: 18, design: .serif))
                 .foregroundStyle(Tokens.ink)
             Text(verbatim: deltaText(delta))
@@ -168,15 +168,15 @@ struct WhatIfPanel: View {
     private func deltaText(_ delta: Double?) -> String {
         guard let delta else { return "—" }
         if delta == 0 { return "±0" }
-        return delta < 0 ? "提前 \(String(format: "%.1f", -delta))" : "推迟 \(String(format: "%.1f", delta))"
+        return delta < 0 ? String(localized: "提前 \(String(format: "%.1f", -delta))") : String(localized: "推迟 \(String(format: "%.1f", delta))")
     }
 
     private func habitShort(_ habit: TradingHabit) -> String {
         switch habit {
-        case .indexOnly: return "定投"
-        case .occasional: return "偶尔"
-        case .weekly: return "每周"
-        case .dayTrading: return "日内"
+        case .indexOnly: return String(localized: "定投")
+        case .occasional: return String(localized: "偶尔")
+        case .weekly: return String(localized: "每周")
+        case .dayTrading: return String(localized: "日内")
         }
     }
 }

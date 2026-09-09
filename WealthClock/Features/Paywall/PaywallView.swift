@@ -60,7 +60,7 @@ struct PaywallView: View {
                         busy = false
                     }
                 } label: {
-                    Text(busy ? "处理中…" : "买断完整推演")
+                    Text(busy ? LocalizedStringKey("处理中…") : LocalizedStringKey("买断完整推演"))
                         .font(.system(size: 15, design: .serif)).kerning(3)
                         .foregroundStyle(Tokens.paper)
                         .frame(maxWidth: .infinity, minHeight: Tokens.primaryButtonHeight)

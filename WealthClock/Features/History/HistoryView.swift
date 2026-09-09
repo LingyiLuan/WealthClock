@@ -41,13 +41,13 @@ struct HistoryView: View {
                 Text(verbatim: reading.date.formatted(date: .abbreviated, time: .shortened))
                     .font(.system(size: 13, design: .serif))
                     .foregroundStyle(Tokens.ink)
-                Text(verbatim: "密押 · \(reading.omenPhrase)")
+                Text(verbatim: "密押 · \(reading.omenPhrase)")  // l10n-ignore
                     .font(.system(size: 10, design: .serif)).kerning(1.2)
                     .foregroundStyle(Tokens.cinnabar)
             }
             Spacer()
             if let age = reading.result?.age(.neutral) {
-                Text(verbatim: "\(Int(age.rounded())) 岁")
+                Text(String(localized: "\(Int(age.rounded())) 岁"))
                     .font(.system(size: 20, design: .serif))
                     .foregroundStyle(Tokens.giltDeep)
             } else {
@@ -73,22 +73,22 @@ struct HistoryDetailView: View {
             if let result = reading.result {
                 Section("三情景") {
                     ForEach(result.scenarios, id: \.kind) { scenario in
-                        ledgerRow(scenarioName(scenario.kind), scenario.freedomAge.map { "\(Int($0.rounded())) 岁" } ?? "未达")
+                        ledgerRow(scenarioName(scenario.kind), scenario.freedomAge.map { String(localized: "\(Int($0.rounded())) 岁") } ?? String(localized: "未达"))
                     }
                 }
                 Section("归因(中性基准)") {
                     ForEach(result.attributions, id: \.key) { item in
-                        ledgerRow(attributionName(item.key), item.deltaYears.map { String(format: "%+.1f 年", $0) } ?? "不可比")
+                        ledgerRow(attributionName(item.key), item.deltaYears.map { String(localized: "\(String(format: "%+.1f", $0)) 年") } ?? String(localized: "不可比"))
                     }
                 }
             }
             if let profile = reading.profile {
                 Section("输入摘要") {
-                    ledgerRow("年龄", "\(profile.age)")
-                    ledgerRow("月收入", String(format: "%.0f %@", profile.monthlyIncome, profile.currencyCode))
-                    ledgerRow("月支出", String(format: "%.0f", profile.monthlyExpense))
-                    ledgerRow("可投资产", String(format: "%.0f", profile.investableAssets))
-                    ledgerRow("交易习惯", profile.tradingHabit.label)
+                    ledgerRow(String(localized: "年龄"), "\(profile.age)")
+                    ledgerRow(String(localized: "月收入"), "\(profile.monthlyIncome.formatted(.number.precision(.fractionLength(0)))) \(profile.currencyCode)")
+                    ledgerRow(String(localized: "月支出"), profile.monthlyExpense.formatted(.number.precision(.fractionLength(0))))
+                    ledgerRow(String(localized: "可投资产"), profile.investableAssets.formatted(.number.precision(.fractionLength(0))))
+                    ledgerRow(String(localized: "交易习惯"), profile.tradingHabit.label)
                 }
                 Section {
                     NavigationLink("重看揭晓") { RevealView(profile: profile, omenDate: reading.date) }
@@ -100,10 +100,10 @@ struct HistoryDetailView: View {
                 }
             }
             Section("密押") {
-                Text(verbatim: "\(reading.ganzhi)流年 · \(reading.omenPhrase)")
+                Text(verbatim: "\(reading.ganzhi)流年 · \(reading.omenPhrase)")  // l10n-ignore
                     .foregroundStyle(Tokens.cinnabar)
                     .font(.system(size: 13, design: .serif))
-                Text(verbatim: reading.omenGloss)
+                Text(verbatim: reading.omenGloss)  // l10n-ignore
                     .font(.system(size: 11, design: .serif))
                     .foregroundStyle(Tokens.inkSoft)
             }
@@ -128,10 +128,10 @@ struct HistoryDetailView: View {
                         .font(.system(size: 12, design: .monospaced))
                         .foregroundStyle((comparison.ageDelta ?? 0) <= 0 ? Tokens.verdigris : Tokens.cinnabar)
                 }
-                ledgerRow("储蓄率", "\(comparison.previousSavingsRate)% → \(comparison.currentSavingsRate)%")
+                ledgerRow(String(localized: "储蓄率"), "\(comparison.previousSavingsRate)% → \(comparison.currentSavingsRate)%")
                 ledgerRow(
-                    "可投资资产",
-                    String(format: "%.0f → %.0f", comparison.previousAssets, comparison.currentAssets)
+                    String(localized: "可投资资产"),
+                    "\(comparison.previousAssets.formatted(.number.precision(.fractionLength(0)))) → \(comparison.currentAssets.formatted(.number.precision(.fractionLength(0))))"
                 )
             } else {
                 Text("明年再来测一次,这里会告诉你这一年值多少年。")
@@ -142,10 +142,10 @@ struct HistoryDetailView: View {
     }
 
     private func ageComparisonText(_ comparison: YearComparison) -> String {
-        let previous = comparison.previousAge.map { String(Int($0.rounded())) } ?? "未达"
-        let current = comparison.currentAge.map { String(Int($0.rounded())) } ?? "未达"
+        let previous = comparison.previousAge.map { String(Int($0.rounded())) } ?? String(localized: "未达")
+        let current = comparison.currentAge.map { String(Int($0.rounded())) } ?? String(localized: "未达")
         guard let delta = comparison.ageDelta else { return "\(previous) → \(current)" }
-        let verdict = delta <= 0 ? "提前 \(String(format: "%.1f", -delta)) 年" : "推迟 \(String(format: "%.1f", delta)) 年"
+        let verdict = delta <= 0 ? String(localized: "提前 \(String(format: "%.1f", -delta)) 年") : String(localized: "推迟 \(String(format: "%.1f", delta)) 年")
         return "\(previous) → \(current),\(verdict)"
     }
 
@@ -163,18 +163,18 @@ struct HistoryDetailView: View {
 
     private func scenarioName(_ kind: String) -> String {
         switch kind {
-        case "optimistic": return "乐观"
-        case "pessimistic": return "悲观"
-        default: return "中性"
+        case "optimistic": return String(localized: "乐观")
+        case "pessimistic": return String(localized: "悲观")
+        default: return String(localized: "中性")
         }
     }
 
     private func attributionName(_ key: String) -> String {
         switch key {
-        case "trading": return "炒股修正"
-        case "sideHustle": return "副业"
-        case "literacy": return "素养"
-        case "selfControl": return "自控力"
+        case "trading": return String(localized: "炒股修正")
+        case "sideHustle": return String(localized: "副业")
+        case "literacy": return String(localized: "素养")
+        case "selfControl": return String(localized: "自控力")
         default: return key
         }
     }
