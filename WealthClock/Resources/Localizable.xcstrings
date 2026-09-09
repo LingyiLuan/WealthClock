@@ -1,39 +1,422 @@
 {
   "sourceLanguage" : "zh-Hans",
   "strings" : {
-    "WealthClock" : {
-      "shouldTranslate" : false
+    "WealthClock" : { "shouldTranslate" : false },
+    "財" : { "shouldTranslate" : false },
+    "自" : { "shouldTranslate" : false },
+    "由" : { "shouldTranslate" : false },
+    "Ma Shan Zheng · SIL Open Font License 1.1" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Ma Shan Zheng · SIL Open Font License 1.1" } },
+        "zh-Hant" : { "stringUnit" : { "state" : "translated", "value" : "Ma Shan Zheng · SIL Open Font License 1.1" } }
+      }
     },
     "示例中性情景:%lld 岁" : {
       "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Sample neutral scenario: age %lld"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "範例中性情景:%lld 歲"
-          }
-        }
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Sample neutral scenario: age %lld" } },
+        "zh-Hant" : { "stringUnit" : { "state" : "translated", "value" : "範例中性情境:%lld 歲" } }
       }
     },
     "示例:100 岁前未达" : {
       "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Sample: not reached before 100"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "範例:100 歲前未達"
-          }
-        }
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Sample: not reached before 100" } },
+        "zh-Hant" : { "stringUnit" : { "state" : "translated", "value" : "範例:100 歲前未達" } }
+      }
+    },
+    "你的财务自由年龄" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Your financial freedom age" } },
+        "zh-Hant" : { "stringUnit" : { "state" : "translated", "value" : "你的財務自由年齡" } }
+      }
+    },
+    "岁" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "years" } },
+        "zh-Hant" : { "stringUnit" : { "state" : "translated", "value" : "歲" } }
+      }
+    },
+    "未达" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Not yet" } },
+        "zh-Hant" : { "stringUnit" : { "state" : "translated", "value" : "未達" } }
+      }
+    },
+    "需提高储蓄率" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Raise your savings rate" } },
+        "zh-Hant" : { "stringUnit" : { "state" : "translated", "value" : "需提高儲蓄率" } }
+      }
+    },
+    "把储蓄率提到 %lld%% 可在 65 岁前自由" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Raise your savings rate to %lld%% to be free before 65" } },
+        "zh-Hant" : { "stringUnit" : { "state" : "translated", "value" : "把儲蓄率提到 %lld%% 可在 65 歲前自由" } }
+      }
+    },
+    "保存汇票" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Save the bill" } },
+        "zh-Hant" : { "stringUnit" : { "state" : "translated", "value" : "儲存匯票" } }
+      }
+    },
+    "分享汇票" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Share the bill" } },
+        "zh-Hant" : { "stringUnit" : { "state" : "translated", "value" : "分享匯票" } }
+      }
+    },
+    "查看汇票" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "View the bill" } },
+        "zh-Hant" : { "stringUnit" : { "state" : "translated", "value" : "查看匯票" } }
+      }
+    },
+    "WealthClock 汇票" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "WealthClock Bill" } },
+        "zh-Hant" : { "stringUnit" : { "state" : "translated", "value" : "WealthClock 匯票" } }
+      }
+    },
+    "重新测算" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Start over" } },
+        "zh-Hant" : { "stringUnit" : { "state" : "translated", "value" : "重新測算" } }
+      }
+    },
+    "查看完整推演" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "See the full report" } },
+        "zh-Hant" : { "stringUnit" : { "state" : "translated", "value" : "查看完整推演" } }
+      }
+    },
+    "本应用提供的是基于公开文献的情景测算与传统文化趣味解读,不构成投资、财务或法律建议。" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "WealthClock provides scenario estimates based on public research plus traditional-culture flavor text. It is not investment, financial, or legal advice." } },
+        "zh-Hant" : { "stringUnit" : { "state" : "translated", "value" : "本應用程式提供的是基於公開文獻的情境測算與傳統文化趣味解讀,不構成投資、財務或法律建議。" } }
+      }
+    },
+    "本应用提供的是基于公开文献的情景测算与传统文化趣味解读,不构成投资、财务或法律建议。所有数据仅保存在本机,应用不联网。" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "WealthClock provides scenario estimates based on public research plus traditional-culture flavor text. It is not investment, financial, or legal advice. All data stays on this device; the app never goes online." } },
+        "zh-Hant" : { "stringUnit" : { "state" : "translated", "value" : "本應用程式提供的是基於公開文獻的情境測算與傳統文化趣味解讀,不構成投資、財務或法律建議。所有資料僅儲存在本機,應用程式不連網。" } }
+      }
+    },
+    "上一问" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Previous" } },
+        "zh-Hant" : { "stringUnit" : { "state" : "translated", "value" : "上一問" } }
+      }
+    },
+    "跳过此问" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Skip this one" } },
+        "zh-Hant" : { "stringUnit" : { "state" : "translated", "value" : "跳過此問" } }
+      }
+    },
+    "每答一问 · 落一爻" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "One line falls with every answer" } },
+        "zh-Hant" : { "stringUnit" : { "state" : "translated", "value" : "每答一問 · 落一爻" } }
+      }
+    },
+    "以首次作答计分" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Scored on your first answer" } },
+        "zh-Hant" : { "stringUnit" : { "state" : "translated", "value" : "以首次作答計分" } }
+      }
+    },
+    "账户规模呢?(折合人民币)" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "And your account size? (CNY equivalent)" } },
+        "zh-Hant" : { "stringUnit" : { "state" : "translated", "value" : "帳戶規模呢?(折合人民幣)" } }
+      }
+    },
+    "毫无困难" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Effortless" } },
+        "zh-Hant" : { "stringUnit" : { "state" : "translated", "value" : "毫無困難" } }
+      }
+    },
+    "非常难" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Very hard" } },
+        "zh-Hant" : { "stringUnit" : { "state" : "translated", "value" : "非常難" } }
+      }
+    },
+    "出生日期" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Birth date" } },
+        "zh-Hant" : { "stringUnit" : { "state" : "translated", "value" : "出生日期" } }
+      }
+    },
+    "完成" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Done" } },
+        "zh-Hant" : { "stringUnit" : { "state" : "translated", "value" : "完成" } }
+      }
+    },
+    "测算" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Reading" } },
+        "zh-Hant" : { "stringUnit" : { "state" : "translated", "value" : "測算" } }
+      }
+    },
+    "历史" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "History" } },
+        "zh-Hant" : { "stringUnit" : { "state" : "translated", "value" : "歷史" } }
+      }
+    },
+    "设置" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Settings" } },
+        "zh-Hant" : { "stringUnit" : { "state" : "translated", "value" : "設定" } }
+      }
+    },
+    "还没有测算记录" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "No readings yet" } },
+        "zh-Hant" : { "stringUnit" : { "state" : "translated", "value" : "還沒有測算記錄" } }
+      }
+    },
+    "完成一次测算后,这里会替你记账。" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Finish a reading and it will be kept here." } },
+        "zh-Hant" : { "stringUnit" : { "state" : "translated", "value" : "完成一次測算後,這裡會替你記帳。" } }
+      }
+    },
+    "三情景" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Three scenarios" } },
+        "zh-Hant" : { "stringUnit" : { "state" : "translated", "value" : "三情境" } }
+      }
+    },
+    "归因(中性基准)" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Attribution (neutral baseline)" } },
+        "zh-Hant" : { "stringUnit" : { "state" : "translated", "value" : "歸因(中性基準)" } }
+      }
+    },
+    "输入摘要" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Inputs" } },
+        "zh-Hant" : { "stringUnit" : { "state" : "translated", "value" : "輸入摘要" } }
+      }
+    },
+    "密押" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Seal" } },
+        "zh-Hant" : { "stringUnit" : { "state" : "translated", "value" : "密押" } }
+      }
+    },
+    "重看揭晓" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Replay the reveal" } },
+        "zh-Hant" : { "stringUnit" : { "state" : "translated", "value" : "重看揭曉" } }
+      }
+    },
+    "年度对比" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Year over year" } },
+        "zh-Hant" : { "stringUnit" : { "state" : "translated", "value" : "年度對比" } }
+      }
+    },
+    "中性自由年龄" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Neutral freedom age" } },
+        "zh-Hant" : { "stringUnit" : { "state" : "translated", "value" : "中性自由年齡" } }
+      }
+    },
+    "明年再来测一次,这里会告诉你这一年值多少年。" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Come back next year — this line will tell you what the year was worth." } },
+        "zh-Hant" : { "stringUnit" : { "state" : "translated", "value" : "明年再來測一次,這裡會告訴你這一年值多少年。" } }
+      }
+    },
+    "储蓄率" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Savings rate" } },
+        "zh-Hant" : { "stringUnit" : { "state" : "translated", "value" : "儲蓄率" } }
+      }
+    },
+    "可投资资产" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Investable assets" } },
+        "zh-Hant" : { "stringUnit" : { "state" : "translated", "value" : "可投資資產" } }
+      }
+    },
+    "链接" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Links" } },
+        "zh-Hant" : { "stringUnit" : { "state" : "translated", "value" : "連結" } }
+      }
+    },
+    "隐私政策" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Privacy Policy" } },
+        "zh-Hant" : { "stringUnit" : { "state" : "translated", "value" : "隱私權政策" } }
+      }
+    },
+    "支持" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Support" } },
+        "zh-Hant" : { "stringUnit" : { "state" : "translated", "value" : "支援" } }
+      }
+    },
+    "联系邮箱" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Email us" } },
+        "zh-Hant" : { "stringUnit" : { "state" : "translated", "value" : "聯絡信箱" } }
+      }
+    },
+    "数据" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Data" } },
+        "zh-Hant" : { "stringUnit" : { "state" : "translated", "value" : "資料" } }
+      }
+    },
+    "导出 JSON" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Export JSON" } },
+        "zh-Hant" : { "stringUnit" : { "state" : "translated", "value" : "匯出 JSON" } }
+      }
+    },
+    "导出 CSV" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Export CSV" } },
+        "zh-Hant" : { "stringUnit" : { "state" : "translated", "value" : "匯出 CSV" } }
+      }
+    },
+    "删除全部数据" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Delete all data" } },
+        "zh-Hant" : { "stringUnit" : { "state" : "translated", "value" : "刪除全部資料" } }
+      }
+    },
+    "删除全部测算记录?此操作不可撤销。" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Delete all readings? This cannot be undone." } },
+        "zh-Hant" : { "stringUnit" : { "state" : "translated", "value" : "刪除全部測算記錄?此操作無法復原。" } }
+      }
+    },
+    "删除全部" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Delete all" } },
+        "zh-Hant" : { "stringUnit" : { "state" : "translated", "value" : "全部刪除" } }
+      }
+    },
+    "取消" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Cancel" } },
+        "zh-Hant" : { "stringUnit" : { "state" : "translated", "value" : "取消" } }
+      }
+    },
+    "关于" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "About" } },
+        "zh-Hant" : { "stringUnit" : { "state" : "translated", "value" : "關於" } }
+      }
+    },
+    "开源许可" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Open-source licenses" } },
+        "zh-Hant" : { "stringUnit" : { "state" : "translated", "value" : "開源授權" } }
+      }
+    },
+    "版本" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Version" } },
+        "zh-Hant" : { "stringUnit" : { "state" : "translated", "value" : "版本" } }
+      }
+    },
+    "推演" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Full Report" } },
+        "zh-Hant" : { "stringUnit" : { "state" : "translated", "value" : "推演" } }
+      }
+    },
+    "自由线" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Freedom line" } },
+        "zh-Hant" : { "stringUnit" : { "state" : "translated", "value" : "自由線" } }
+      }
+    },
+    "情景测算,非投资建议;密押为传统文化趣味解读,不参与计算。" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Scenario estimates, not investment advice. The seal line is traditional-culture flavor and never touches the math." } },
+        "zh-Hant" : { "stringUnit" : { "state" : "translated", "value" : "情境測算,非投資建議;密押為傳統文化趣味解讀,不參與計算。" } }
+      }
+    },
+    "沙盘" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Sandbox" } },
+        "zh-Hant" : { "stringUnit" : { "state" : "translated", "value" : "沙盤" } }
+      }
+    },
+    "试算,不入历史" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "What-if only — never saved" } },
+        "zh-Hant" : { "stringUnit" : { "state" : "translated", "value" : "試算,不入歷史" } }
+      }
+    },
+    "恢复原始" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Reset" } },
+        "zh-Hant" : { "stringUnit" : { "state" : "translated", "value" : "恢復原始" } }
+      }
+    },
+    "副业" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Side income" } },
+        "zh-Hant" : { "stringUnit" : { "state" : "translated", "value" : "副業" } }
+      }
+    },
+    "资产" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Assets" } },
+        "zh-Hant" : { "stringUnit" : { "state" : "translated", "value" : "資產" } }
+      }
+    },
+    "完整推演" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Full Report" } },
+        "zh-Hant" : { "stringUnit" : { "state" : "translated", "value" : "完整推演" } }
+      }
+    },
+    "三情景结果与汇票永远免费。完整推演买断一次,永久可用。" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Your three scenarios and the bill are free, forever. The full report is a single one-time purchase, yours for good." } },
+        "zh-Hant" : { "stringUnit" : { "state" : "translated", "value" : "三情境結果與匯票永遠免費。完整推演買斷一次,永久可用。" } }
+      }
+    },
+    "· 曲线:三情景资产轨迹与自由线" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "· Curves: asset trajectories and your freedom line" } },
+        "zh-Hant" : { "stringUnit" : { "state" : "translated", "value" : "· 曲線:三情境資產軌跡與自由線" } }
+      }
+    },
+    "· 归因:每个习惯各值几年,附文献依据" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "· Attribution: what each habit costs in years, with sources" } },
+        "zh-Hant" : { "stringUnit" : { "state" : "translated", "value" : "· 歸因:每個習慣各值幾年,附文獻依據" } }
+      }
+    },
+    "· 沙盘:拉动储蓄率与习惯,实时看年龄变化" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "· Sandbox: drag your savings rate and habits, watch your age move in real time" } },
+        "zh-Hant" : { "stringUnit" : { "state" : "translated", "value" : "· 沙盤:拉動儲蓄率與習慣,即時看年齡變化" } }
+      }
+    },
+    "恢复购买" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Restore Purchase" } },
+        "zh-Hant" : { "stringUnit" : { "state" : "translated", "value" : "恢復購買" } }
+      }
+    },
+    "进度 %lld/6" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Progress %lld of 6" } },
+        "zh-Hant" : { "stringUnit" : { "state" : "translated", "value" : "進度 %lld/6" } }
       }
     }
   },
