@@ -161,6 +161,22 @@
         }
       }
     },
+    "OFL.txt 未找到": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "OFL.txt not found"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "OFL.txt 未找到"
+          }
+        }
+      }
+    },
     "WealthClock": {
       "shouldTranslate": false
     },
@@ -660,6 +676,22 @@
         }
       }
     },
+    "依据:%@": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Source: %@"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "依據:%@"
+          }
+        }
+      }
+    },
     "保存汇票": {
       "localizations": {
         "en": {
@@ -1136,6 +1168,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "和今天一樣"
+          }
+        }
+      }
+    },
+    "商品加载失败": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Couldn't load the product"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "商品載入失敗"
           }
         }
       }

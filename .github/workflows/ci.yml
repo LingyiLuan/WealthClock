@@ -69,6 +69,8 @@ jobs:
             echo "protected path touched"
             echo '${{ toJson(github.event.pull_request.labels.*.name) }}' | grep -q 'L0-human-reviewed' || (echo "::error::Protected path changed without L0-human-reviewed label (AGENTS.md §3)." && exit 1)
           fi
+      - name: L10n audit (no hard-coded Chinese outside catalog paths)
+        run: scripts/l10n_audit.sh
       - name: No networking symbols
         run: |
           ! grep -rnE "URLSession|Alamofire|NWConnection" --include='*.swift' WealthClock Packages || (echo "::error::networking is forbidden in v1" && exit 1)

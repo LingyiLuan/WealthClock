@@ -59,7 +59,7 @@ final class StoreManager {
     func purchase() async -> Bool {
         if product == nil { await loadProduct() }
         guard let product else {
-            lastError = lastError ?? "商品加载失败"
+            lastError = lastError ?? String(localized: "商品加载失败")
             return false
         }
         do {

@@ -134,7 +134,7 @@ struct LicenseView: View {
     private var licenseText: String {
         guard let url = Bundle.main.url(forResource: "OFL", withExtension: "txt"),
               let text = try? String(contentsOf: url, encoding: .utf8)
-        else { return "OFL.txt 未找到" }
+        else { return String(localized: "OFL.txt 未找到") }
         return text
     }
 }

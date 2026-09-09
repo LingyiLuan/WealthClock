@@ -14,6 +14,9 @@ echo "== 3/4 swiftlint --strict"
 command -v swiftlint >/dev/null || { echo "brew install swiftlint"; exit 1; }
 swiftlint --strict
 
+echo "== 3.5/4 l10n audit"
+scripts/l10n_audit.sh
+
 echo "== 4/4 app build+test (simulator)"
 UDID=$(xcrun simctl list devices available --json | python3 -c "import sys,json; d=json.load(sys.stdin)['devices']; c=[x for k,v in d.items() if 'iOS' in k for x in v if x['name'].startswith('iPhone')]; print(c[-1]['udid'])")
 mkdir -p artifacts
