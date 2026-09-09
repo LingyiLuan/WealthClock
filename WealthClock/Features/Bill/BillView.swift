@@ -1,3 +1,4 @@
+// l10n-ignore-file(汇票/密押/画廊为设计与玄学层,文案不随语言变)
 import FreedomEngine
 import SwiftUI
 

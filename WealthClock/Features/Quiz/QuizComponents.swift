@@ -220,8 +220,7 @@ struct QuizStepContent: View {
                 }
                 .tint(Tokens.giltDeep)
                 if draft.birthDate != nil {
-                    DatePicker(
-                        "出生日期",
+                    DatePicker("出生日期",
                         selection: Binding(
                             get: { draft.birthDate ?? Date(timeIntervalSince1970: 631_152_000) },
                             set: { draft.birthDate = $0 }

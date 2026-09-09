@@ -157,7 +157,7 @@ struct ScenariosView: View {
                 .foregroundStyle(Tokens.ink)
             ForEach(result.attributions, id: \.key) { item in
                 DisclosureGroup {
-                    Text(verbatim: "依据:\(item.basis)")
+                    Text(String(localized: "依据:\(item.basis)"))
                         .font(.system(size: 11, design: .serif))
                         .foregroundStyle(Tokens.inkSoft)
                         .frame(maxWidth: .infinity, alignment: .leading)

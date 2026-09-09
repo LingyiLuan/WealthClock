@@ -1,3 +1,4 @@
+// l10n-ignore-file(汇票/密押/画廊为设计与玄学层,文案不随语言变)
 import SwiftUI
 
 /// 汇票单色系列(sharecard_v3.html data-hue/paper/tint;tokens.md 五行→色系)。
