@@ -41,6 +41,8 @@ struct ScenariosView: View {
                     .font(.system(size: 10.5, design: .monospaced)).kerning(1)
                     .foregroundStyle(Tokens.inkSoft)
                     .padding(.top, 6)
+                WhatIfPanel(original: profile, originalResult: result)
+                    .padding(.top, 14)
                 legend.padding(.top, 14)
                 chart
                     .frame(height: 230)
