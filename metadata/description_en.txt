@@ -1,23 +1,30 @@
-Answer 12 questions and WealthClock computes your financial freedom age — three futures (optimistic, neutral, pessimistic) grounded in published research, revealed through a coin-toss ritual and delivered as an engraved banknote-style share card.
+Fortune-telling, done with math.
 
-FREE, IN FULL
-· Your complete three-scenario freedom age — no paywalled verdicts, all three numbers visible
-· The coin-toss reveal: three coins, six lines, a rolling pixel counter
-· The engraved "bill" share card, tinted by traditional five-element colors
-· Full history: every reading saved on device, exportable as JSON/CSV, deletable anytime
-· The classic three-question financial literacy quiz with instant answers
+Answer 12 questions and WealthClock calculates your financial freedom age — not one number but three: optimistic, neutral, pessimistic. The answer is revealed with a coin-toss ritual and delivered on an engraved, banknote-style "bill" you can save and share.
 
-ONE-TIME UNLOCK: THE FULL REPORT
-· Sandbox: drag your savings rate and habits, watch your freedom age move in real time
-· Year-by-year asset curves for all three scenarios with your freedom line
-· Attribution: how many years your trading habits, side income, literacy and self-control each cost or save — with sources
-· Year-over-year comparison when you return
-One purchase, yours forever. No subscription.
+Free, always:
+· Your freedom age in three scenarios
+· The share card, exported in full resolution
+· Your complete history — view, export, or delete it any time
 
-WHY TRUST THE MATH
-Parameters come from published research: safe-withdrawal-rate studies, age-earnings profiles, account-level studies of retail trading, and financial-literacy literature. Every number shows its source. The fortune-flavored garnish (seal line, colors) never touches the math.
+The model is built on published research, not mysticism:
+· Savings rate and years to freedom (Bengen 1994; Trinity 1998; Morningstar's 2025 withdrawal-rate update)
+· Age-earnings curves (the Mincer equation; Fang & Qiu 2023 on peak earning age in China)
+· How trading habits affect long-run returns (Shanghai Stock Exchange account data 2016–2019; Barber & Odean 2000)
+· Financial literacy and self-control (Lusardi & Mitchell's "Big Three")
+Every adjustment in your report points back to its source.
 
-PRIVACY
-Fully offline. No account, no server, no data collection — everything stays on your device.
+The fortune layer is decoration, not computation. The omen line and colour on your bill come from traditional Chinese culture and are clearly labelled as having no effect on any calculation. Skip your birth date and the numbers don't change.
 
-Disclaimer: WealthClock provides scenario estimates based on public research plus traditional-culture flavor text. It is not investment, financial, or legal advice.
+One-time purchase unlocks the full report:
+· Sandbox: drag your savings rate and habits, watch the age move in real time
+· Asset trajectories for all three scenarios against your freedom line
+· Attribution: how many years trading, side income, literacy and self-control each add or remove
+· Year-over-year comparison: test again next year and see what the year was worth
+
+Our principles:
+· Fully offline. No account, no network requests, no data collected.
+· Your history is always free — export as JSON/CSV, delete in one tap.
+· The free result is the whole result. Payment buys depth, not access.
+
+WealthClock provides scenario calculations based on published research and traditional-culture flavour text. It is not investment, financial, or legal advice.
