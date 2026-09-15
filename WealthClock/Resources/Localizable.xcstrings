@@ -212,6 +212,22 @@
         }
       }
     },
+    "· 年度对比:明年再测,看这一年值多少年": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "· Year over year: test again next year and see what the year was worth"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "· 年度對比:明年再測,看這一年值多少年"
+          }
+        }
+      }
+    },
     "· 归因:每个习惯各值几年,附文献依据": {
       "localizations": {
         "en": {

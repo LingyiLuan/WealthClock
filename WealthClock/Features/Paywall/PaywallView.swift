@@ -29,9 +29,10 @@ struct PaywallView: View {
                     .multilineTextAlignment(.center)
                     .padding(.top, 22)
                 VStack(alignment: .leading, spacing: 6) {
+                    Text("· 沙盘:拉动储蓄率与习惯,实时看年龄变化")
                     Text("· 曲线:三情景资产轨迹与自由线")
                     Text("· 归因:每个习惯各值几年,附文献依据")
-                    Text("· 沙盘:拉动储蓄率与习惯,实时看年龄变化")
+                    Text("· 年度对比:明年再测,看这一年值多少年")
                 }
                 .font(.system(size: 12.5, design: .serif))
                 .lineSpacing(4)
