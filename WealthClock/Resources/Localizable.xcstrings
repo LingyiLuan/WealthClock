@@ -580,6 +580,22 @@
         }
       }
     },
+    "交易验签失败": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Transaction failed verification"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "交易驗簽失敗"
+          }
+        }
+      }
+    },
     "仅用于汇票上的密押与配色,不参与计算。": {
       "localizations": {
         "en": {

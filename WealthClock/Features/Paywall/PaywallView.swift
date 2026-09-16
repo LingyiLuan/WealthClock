@@ -93,6 +93,11 @@ struct PaywallView: View {
             .padding(.horizontal, Tokens.pageMargin)
         }
         .task { store.start() }
+        // UI 解锁与 purchase() 返回值解耦:无论哪条路径(购买/恢复/Transaction.updates)
+        // 把 isUnlocked 翻真,付费墙都立即退场。
+        .onChange(of: store.isUnlocked) { _, unlocked in
+            if unlocked { dismiss() }
+        }
     }
 }
 
