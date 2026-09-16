@@ -21,7 +21,7 @@ final class StoreManager {
         if updatesTask == nil {
             updatesTask = Task { [weak self] in
                 for await update in Transaction.updates {
-                    if case .verified(let transaction) = update {
+                    if let transaction = Self.accepted(update) {
                         await transaction.finish()
                     }
                     await self?.refreshEntitlement()
@@ -42,17 +42,35 @@ final class StoreManager {
         }
     }
 
+    /// 验签放行规则:正式/沙盒必须 .verified;仅 Xcode 本地测试环境接受 .unverified——
+    /// 新 Xcode 模拟器用 scheme 挂 .storekit 时存在已知验签证书问题(SKTestSession 自装测试证书,
+    /// 故单测绿而真实路径 .unverified),environment == .xcode 不可能出现在生产。
+    static func accepted(_ result: VerificationResult<Transaction>) -> Transaction? {
+        switch result {
+        case .verified(let transaction):
+            return transaction
+        case .unverified(let transaction, let error):
+            if transaction.environment == .xcode {
+                print("STOREKIT-DIAG unverified accepted (env=xcode): \(error.localizedDescription)")
+                return transaction
+            }
+            return nil
+        }
+    }
+
     /// 解锁状态只信 StoreKit(BRIEF §6 Paywall;删除重装后由恢复购买/自动同步找回)。
     func refreshEntitlement() async {
         var unlocked = false
         for await entitlement in Transaction.currentEntitlements {
-            if case .verified(let transaction) = entitlement,
-               transaction.productID == Self.productID,
-               transaction.revocationDate == nil {
+            if let transaction = Self.accepted(entitlement), owns(transaction) {
                 unlocked = true
             }
         }
         isUnlocked = unlocked
+    }
+
+    private func owns(_ transaction: Transaction) -> Bool {
+        transaction.productID == Self.productID && transaction.revocationDate == nil
     }
 
     @discardableResult
@@ -64,11 +82,17 @@ final class StoreManager {
         }
         do {
             let outcome = try await product.purchase()
-            if case .success(let verification) = outcome, case .verified(let transaction) = verification {
-                await transaction.finish()
+            if case .success(let verification) = outcome {
+                if let transaction = Self.accepted(verification) {
+                    await transaction.finish()
+                } else {
+                    lastError = String(localized: "交易验签失败")
+                    print("STOREKIT-DIAG purchase success but verification rejected (non-xcode env)")
+                }
                 await refreshEntitlement()
                 return isUnlocked
             }
+            print("STOREKIT-DIAG purchase outcome not .success: \(outcome)")
             return false
         } catch {
             lastError = error.localizedDescription

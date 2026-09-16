@@ -46,4 +46,29 @@ final class StoreFlowTests: XCTestCase {
         }
         session.clearTransactions()
     }
+
+    /// 回归守护(真实路径 bug:购买成功但付费墙未解锁):
+    /// 走 App 真实入口(start() 常驻监听 + shared 单例),购买后 isUnlocked 必须翻真——
+    /// 这是付费墙 onChange dismiss 与揭晓页门禁进推演的唯一依据。
+    @MainActor
+    func testPurchaseUnlocksSharedManagerForUI() async throws {
+        let url = try XCTUnwrap(Bundle.main.url(forResource: "WealthClock", withExtension: "storekit"))
+        let session = try SKTestSession(contentsOf: url)
+        session.resetToDefaultState()
+        session.clearTransactions()
+        session.disableDialogs = true
+
+        let store = StoreManager.shared
+        store.start()  // App 真实入口:启动即挂 Transaction.updates 常驻监听
+        await store.refreshEntitlement()
+        XCTAssertFalse(store.isUnlocked)
+        XCTAssertTrue(!store.isUnlocked, "门禁此时应选付费墙")
+
+        _ = await store.purchase()
+        XCTAssertTrue(store.isUnlocked, "购买后共享实例必须解锁——这是付费墙 dismiss 与门禁进推演的唯一依据")
+
+        print("STOREKIT-EVIDENCE ui-unlock test: isUnlocked=\(store.isUnlocked)")
+        session.clearTransactions()
+        await store.refreshEntitlement()
+    }
 }
