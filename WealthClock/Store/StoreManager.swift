@@ -50,10 +50,18 @@ final class StoreManager {
         case .verified(let transaction):
             return transaction
         case .unverified(let transaction, let error):
+            // 仅限调试:scheme 挂 .storekit 时,新 Xcode 模拟器的本地交易验签可能返回 .unverified
+            // (SKTestSession 自装测试证书故单测不受影响)。放行条件双保险:DEBUG 构建 + env==.xcode。
+            // Release 构建下 .unverified 无条件拒绝(L0 审阅意见,2026-09-17)。
+            #if DEBUG
             if transaction.environment == .xcode {
-                print("STOREKIT-DIAG unverified accepted (env=xcode): \(error.localizedDescription)")
+                print("STOREKIT-DIAG unverified accepted (env=xcode, DEBUG build): \(error.localizedDescription)")
                 return transaction
             }
+            #else
+            _ = transaction
+            _ = error
+            #endif
             return nil
         }
     }
